@@ -1,23 +1,3 @@
-// ... (All existing code remains the same)
-
-// New JavaScript for theme switching
-const themeToggleBtn = document.getElementById('theme-toggle');
-const body = document.body;
-
-themeToggleBtn.addEventListener('click', () => {
-    if (body.getAttribute('data-theme') === 'dark') {
-        body.setAttribute('data-theme', 'light');
-        themeToggleBtn.textContent = '☀️'; // Sun emoji for light mode
-    } else {
-        body.setAttribute('data-theme', 'dark');
-        themeToggleBtn.textContent = '🌙'; // Moon emoji for dark mode
-    }
-});
-
-// The rest of your functions (fetch, renderGames, updateSummary, popup logic, etc.)
-// from the previous complete script remain unchanged.
-// Paste them after the above code.
-
 const totalGamesEl = document.getElementById('totalGames');
 const totalSizeEl = document.getElementById('totalSize');
 const totalPriceEl = document.getElementById('totalPrice');
@@ -27,10 +7,24 @@ const closeBtn = document.querySelector('.close-btn');
 const summaryTextDiv = document.getElementById('summaryText');
 const copyListBtn = document.getElementById('copyListBtn');
 const whatsappBtn = document.getElementById('whatsappBtn');
+const themeToggleBtn = document.getElementById('theme-toggle');
 
 let allGames = [];
 let generatedSummary = '';
 
+// Theme Toggle Logic
+themeToggleBtn.addEventListener('click', () => {
+    const body = document.body;
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.setAttribute('data-theme', 'light');
+        themeToggleBtn.textContent = '🌝️';
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        themeToggleBtn.textContent = '🌚';
+    }
+});
+
+// Fetch and render games
 fetch('JSON/filelist.json')
     .then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -53,12 +47,14 @@ fetch('JSON/filelist.json')
         document.querySelector('main').innerHTML = '<p>Oops! We couldn\'t load the game list. Please ensure your JSON files are in the correct location.</p>';
     });
 
+// Function to render the game list in a table
 function renderGames() {
     const tableBody = document.querySelector('#gameList tbody');
     tableBody.innerHTML = '';
     
     allGames.forEach(game => {
         const row = document.createElement('tr');
+        
         const checkboxCell = document.createElement('td');
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -68,39 +64,52 @@ function renderGames() {
         checkbox.addEventListener('change', updateSummary);
         checkboxCell.appendChild(checkbox);
         row.appendChild(checkboxCell);
+
         const nameCell = document.createElement('td');
         nameCell.textContent = game.Name;
         row.appendChild(nameCell);
+
         const sizeCell = document.createElement('td');
         sizeCell.textContent = `${game.SizeGB} GB`;
         row.appendChild(sizeCell);
+        
         tableBody.appendChild(row);
     });
 }
 
+// Function to update the summary details
 function updateSummary() {
     const selected = Array.from(document.querySelectorAll('#gameList input:checked'));
     let totalSize = 0;
+    
     selected.forEach(cb => {
         totalSize += parseFloat(cb.dataset.size);
     });
+
     let totalPrice = totalSize;
     if (totalSize > 100) {
         totalPrice /= 2;
     }
+    
+    // Round the price down to the nearest multiple of 5
+    **totalPrice = Math.floor(totalPrice / 5) * 5;**
+
     totalGamesEl.textContent = selected.length;
     totalSizeEl.textContent = totalSize.toFixed(2);
     totalPriceEl.textContent = totalPrice.toFixed(2);
+    
     let summaryText = '';
     selected.forEach(cb => {
         summaryText += `${cb.dataset.name} | ${cb.dataset.size} GB | Drive: ${cb.dataset.drive}\n`;
     });
-    summaryText += `\nTotal Games Selected: ${selected.length}\n`;
-    summaryText += `Total Size: ${totalSize.toFixed(2)} GB\n`;
-    summaryText += `Total Price: £${totalPrice.toFixed(2)}`;
+
+    summaryText += `\nألعاب تم تحديدها : ${selected.length}\n`;
+    summaryText += `الحجم الكلي : ${totalSize.toFixed(2)} جيجا\n`;
+    summaryText += `السعر : ${totalPrice.toFixed(2)} جنية`;
     generatedSummary = summaryText;
 }
 
+// Event listeners for the popup
 openSummaryBtn.addEventListener('click', () => {
     const selected = Array.from(document.querySelectorAll('#gameList input:checked'));
     if (selected.length === 0) {
@@ -121,6 +130,7 @@ window.addEventListener('click', (event) => {
     }
 });
 
+// Event listener for the "Copy List" button
 copyListBtn.addEventListener('click', () => {
     navigator.clipboard.writeText(generatedSummary)
     .then(() => {
@@ -133,8 +143,9 @@ copyListBtn.addEventListener('click', () => {
     });
 });
 
+// Event listener for the "Send via WhatsApp" button
 whatsappBtn.addEventListener('click', () => {
-    const phoneNumber = "201204838286";
+    const phoneNumber = "201204838286"; 
     const encodedMessage = encodeURIComponent(generatedSummary);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');

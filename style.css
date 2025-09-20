@@ -77,8 +77,7 @@ main {
     max-width: 800px;
     margin: 20px auto;
     padding: 0 15px;
-    /* This padding is crucial for mobile view */
-    padding-bottom: 120px; 
+    padding-bottom: 120px;
 }
 
 table {
@@ -160,7 +159,6 @@ tr:hover {
     background-color: #20b85a;
 }
 
-/* Popup/Modal styles - unchanged */
 .popup-container {
     display: none;
     position: fixed;
