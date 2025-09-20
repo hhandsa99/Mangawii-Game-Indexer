@@ -1,16 +1,12 @@
 /*
     Final, Corrected Style Sheet for Mangawii-Game-Indexer
 
-    This CSS file fixes the following issues:
-    1.  The large header on mobile view.
-    2.  The vertical stacking of the summary box on mobile.
-    3.  The small size of the site logo.
-
+    This CSS file provides a new, correct layout for the summary bar on both PC and mobile.
+    
     Changes made:
-    -   Increased the default and mobile `height` of the `.site-logo`.
-    -   Modified the mobile header to use a `flex` row for a more compact and elegant layout.
-    -   Adjusted the mobile summary box to use a horizontal `flex` layout to prevent vertical stacking.
-    -   Updated various spacing and alignment properties to ensure a clean, stable layout across all devices.
+    -   Ensured the summary box text remains on a single line on all screen sizes.
+    -   Maintained the button position below the text on mobile view.
+    -   Kept previous fixes for header size and logo visibility.
 */
 
 :root {
@@ -90,9 +86,8 @@ header {
     position: relative;
 }
 
-/* FIX: Increased logo size for better visibility */
 header img.site-logo {
-    height: 60px; /* New, larger size */
+    height: 60px;
     width: auto;
     object-fit: contain;
     display: block;
@@ -147,12 +142,11 @@ h1 {
 .theme-icon-sun { fill: #00A7F9; }
 .theme-icon-moon { fill: #00A7F9; }
 
-/* FIX: Compact mobile header layout */
 @media (max-width: 700px) {
     .header-inner {
-        flex-direction: row; /* Changed to row for a horizontal layout */
+        flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-between; /* Space out the logo and the rest */
+        justify-content: space-between;
         align-items: center;
         padding: 1rem;
         min-height: auto;
@@ -160,7 +154,7 @@ h1 {
     }
 
     header img.site-logo {
-        height: 40px; /* New, larger size for mobile */
+        height: 40px;
         margin-right: 0;
         margin-bottom: 0;
     }
@@ -168,8 +162,8 @@ h1 {
     h1 {
         font-size: 1.15rem;
         margin: 0;
-        text-align: right; /* Adjust alignment to make room */
-        flex-grow: 1; /* Allows it to take up available space */
+        text-align: right;
+        flex-grow: 1;
         padding: 0 10px;
     }
     
@@ -308,25 +302,27 @@ input[type="checkbox"] {
     border-top: 3px solid var(--primary-color);
     box-shadow: 0 -2px 16px #00A7F91a;
     display: flex;
-    flex-direction: row; /* FIX: Changed to row for horizontal layout */
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between; /* Spacing for horizontal layout */
+    justify-content: space-between;
     padding: 18px 24px;
     z-index: 20;
     font-size: 1.13em;
 }
 
 .summary-box-info {
+    flex-grow: 1;
+    justify-content: center;
     display: flex;
-    flex-direction: row; /* FIX: Changed to row for horizontal info layout */
-    justify-content: flex-start;
+    flex-direction: row;
     align-items: center;
     gap: 18px;
     font-weight: 600;
     font-size: 1.04em;
     letter-spacing: 0.5px;
 }
+
 .summary-box-info .divider {
     color: var(--primary-color);
     font-weight: bold;
@@ -449,18 +445,21 @@ input[type="checkbox"] {
         padding-bottom: 175px;
     }
     .summary-box {
-        flex-direction: column; /* FIX: Changed to column for better mobile stacking */
+        flex-direction: column; /* This keeps the button below the text on mobile */
         align-items: center;
         padding: 12px 8px;
         gap: 14px;
     }
     .summary-box-info {
-        flex-direction: column; /* FIX: Changed to column to stack the info */
-        gap: 6px;
+        flex-direction: row; /* This keeps the text on one line with dividers on mobile */
+        justify-content: center;
+        flex-wrap: wrap;
+        align-self: stretch;
+        gap: 18px;
         font-size: 1em;
     }
     .summary-box-info .divider {
-        display: none; /* FIX: Hiding dividers on mobile for cleaner look */
+        display: block; /* The dividers will now be visible on mobile */
     }
     .summary-box button {
         margin-top: 8px;
