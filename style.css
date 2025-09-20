@@ -2,21 +2,41 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #e9f0f6; /* Soft blue background */
+    color: #333;
 }
 
 header {
-    background-color: #333;
+    background-color: #4a6fa5; /* Dark blue header */
     color: white;
     padding: 1rem;
     text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    position: absolute;
+    left: 20px;
+}
+
+.logo img {
+    height: 50px; /* Adjust as needed */
+    width: auto;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.8rem;
 }
 
 main {
     max-width: 800px;
     margin: 20px auto;
     padding: 0 15px;
-    padding-bottom: 100px; /* Add space for the fixed summary box */
+    padding-bottom: 100px;
 }
 
 table {
@@ -28,7 +48,8 @@ table {
 }
 
 thead {
-    background-color: #f2f2f2;
+    background-color: #4a6fa5;
+    color: white;
 }
 
 th, td {
@@ -43,11 +64,10 @@ th:first-child, td:first-child {
 
 th {
     font-weight: bold;
-    color: #555;
 }
 
 tr:hover {
-    background-color: #f9f9f9;
+    background-color: #f2f7fa; /* Light hover effect */
 }
 
 .summary-box {
@@ -70,18 +90,82 @@ tr:hover {
 }
 
 .summary-box button {
-    background-color: #5cb85c;
+    background-color: #4a6fa5;
     color: white;
     border: none;
     padding: 8px 12px;
     cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 600px) {
-    .summary-box {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-    }
+.summary-box button:hover {
+    background-color: #3a5c8e;
+}
+
+/* Popup/Modal styles */
+.popup-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Black with opacity */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-text {
+    white-space: pre-wrap; /* Preserve line breaks */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-buttons button {
+    width: 48%;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+/* Animations */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }

@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Game Library</title>
     <link rel="stylesheet" href="style.css">
-</head>
+    </head>
 <body>
     <header>
+        <div class="logo">
+            <img src="images/your-logo.png" alt="Brand Logo">
+        </div>
         <h1>My Game Library</h1>
     </header>
 
@@ -15,21 +18,33 @@
         <table id="gameList">
             <thead>
                 <tr>
-                    <th></th> <th>Game Name</th>
+                    <th></th>
+                    <th>Game Name</th>
                     <th>Size (GB)</th>
                 </tr>
             </thead>
-            <tbody>
-                </tbody>
+            <tbody></tbody>
         </table>
     </main>
-    
+
     <div class="summary-box">
         <h3>Summary</h3>
         <p>Total Games Selected: <span id="totalGames">0</span></p>
         <p>Total Size: <span id="totalSize">0.00</span> GB</p>
         <p>Total Price: £<span id="totalPrice">0.00</span></p>
-        <button id="copySummary">Copy Summary</button>
+        <button id="openSummaryPopup">Open Summary</button>
+    </div>
+
+    <div id="popup" class="popup-container">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h3>Game List Summary</h3>
+            <div class="popup-text" id="summaryText"></div>
+            <div class="popup-buttons">
+                <button id="copyListBtn">Copy List</button>
+                <button id="whatsappBtn">Send via WhatsApp</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
