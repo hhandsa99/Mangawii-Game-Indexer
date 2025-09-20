@@ -28,15 +28,22 @@
     --summary-text-color: #e0e0e0;
 }
 
-body {
-    **font-family: 'Almarai', sans-serif;**
+/* Base Styles */
+html, body {
+    width: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+body {
+    font-family: 'Almarai', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* Header Styles */
 header {
     background-color: var(--primary-color);
     color: var(--primary-text-color);
@@ -54,9 +61,9 @@ header {
 }
 
 .logo img {
-    height: 80px;
+    height: 50px;
     width: auto;
-    border-radius: 20%;
+    border-radius: 50%;
 }
 
 #theme-toggle {
@@ -73,13 +80,15 @@ h1 {
     font-size: 1.8rem;
 }
 
+/* Main Content Styles */
 main {
     max-width: 800px;
     margin: 20px auto;
     padding: 0 15px;
-    padding-bottom: 120px; 
+    padding-bottom: 120px;
 }
 
+/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -114,6 +123,7 @@ tr:hover {
     color: var(--primary-text-color);
 }
 
+/* Summary Box Styles */
 .summary-box {
     position: fixed;
     bottom: 0;
@@ -248,21 +258,21 @@ tr:hover {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding-top: 15px; 
+        padding-top: 15px;
     }
 
     .logo {
-        position: static; 
-        margin-bottom: 10px; 
+        position: static;
+        margin-bottom: 10px;
     }
 
     #theme-toggle {
-        position: static; 
+        position: static;
         margin-top: 10px;
     }
 
     h1 {
-        font-size: 1.4rem; 
+        font-size: 1.4rem;
         text-align: center;
         margin: 0;
     }
