@@ -8,20 +8,56 @@ const summaryTextDiv = document.getElementById('summaryText');
 const copyListBtn = document.getElementById('copyListBtn');
 const whatsappBtn = document.getElementById('whatsappBtn');
 const themeToggleBtn = document.getElementById('theme-toggle');
+const searchInput = document.getElementById('searchInput');
 
 let allGames = [];
+let filteredGames = [];
+let selectedGames = new Set();
 let generatedSummary = '';
+
+// Modern SVG icons for theme toggle
+const sunSVG = `
+<svg class="theme-icon-svg" viewBox="0 0 32 32">
+    <circle class="theme-icon-sun" cx="16" cy="16" r="9" stroke="var(--icon-fg)" stroke-width="2" fill="var(--accent-color)" />
+    <g stroke="var(--icon-fg)" stroke-width="2">
+      <line x1="16" y1="3" x2="16" y2="7"/>
+      <line x1="16" y1="25" x2="16" y2="29"/>
+      <line x1="3" y1="16" x2="7" y2="16"/>
+      <line x1="25" y1="16" x2="29" y2="16"/>
+      <line x1="7.8" y1="7.8" x2="10.5" y2="10.5"/>
+      <line x1="21.5" y1="21.5" x2="24.2" y2="24.2"/>
+      <line x1="7.8" y1="24.2" x2="10.5" y2="21.5"/>
+      <line x1="21.5" y1="10.5" x2="24.2" y2="7.8"/>
+    </g>
+</svg>
+`;
+const moonSVG = `
+<svg class="theme-icon-svg" viewBox="0 0 32 32">
+    <path class="theme-icon-moon" d="M25.5,18.5A11,11,0,1,1,17,6.5a9.5,9.5,0,1,0,8.5,12Z"
+          fill="var(--accent-color)" stroke="var(--icon-fg)" stroke-width="2"/>
+</svg>
+`;
+
+function setThemeIcon() {
+    if (document.body.getAttribute('data-theme') === 'dark') {
+        themeToggleBtn.innerHTML = moonSVG;
+    } else {
+        themeToggleBtn.innerHTML = sunSVG;
+    }
+}
+
+// Set icon on load
+setThemeIcon();
 
 // Theme Toggle Logic
 themeToggleBtn.addEventListener('click', () => {
     const body = document.body;
     if (body.getAttribute('data-theme') === 'dark') {
         body.setAttribute('data-theme', 'light');
-        themeToggleBtn.textContent = '🌝️';
     } else {
         body.setAttribute('data-theme', 'dark');
-        themeToggleBtn.textContent = '🌚';
     }
+    setThemeIcon();
 });
 
 // Fetch and render games
@@ -40,12 +76,27 @@ fetch('JSON/filelist.json')
     .then(results => {
         allGames = results.flat();
         allGames.sort((a, b) => a.Name.localeCompare(b.Name));
+        filteredGames = [...allGames];
         renderGames();
     })
     .catch(error => {
         console.error('Error loading game data:', error);
-        document.querySelector('main').innerHTML = '<p>Oops! We couldn\'t load the game list. Please ensure your JSON files are in the correct location.</p>';
+        document.querySelector('main').innerHTML = '<p>تعذر تحميل قائمة الألعاب. تأكد من وجود ملفات JSON في المكان الصحيح.</p>';
     });
+
+// Search filter logic
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase();
+    if (!query) {
+        filteredGames = [...allGames];
+    } else {
+        filteredGames = allGames.filter(game =>
+            game.Name.toLowerCase().includes(query)
+        );
+    }
+    renderGames();
+    updateSummary();
+});
 
 // Function to render the game list in a table
 function renderGames() {
@@ -53,35 +104,44 @@ function renderGames() {
     tableBody.innerHTML = '';
 
     // Group games by the first letter of their name
-    const groupedGames = allGames.reduce((groups, game) => {
+    const groupedGames = filteredGames.reduce((groups, game) => {
         const letter = game.Name[0].toUpperCase();
-        if (!groups[letter]) {
-            groups[letter] = [];
-        }
+        if (!groups[letter]) groups[letter] = [];
         groups[letter].push(game);
         return groups;
     }, {});
 
-    // Render each group with a letter heading
     for (const letter of Object.keys(groupedGames).sort()) {
         const separatorRow = document.createElement('tr');
         separatorRow.className = 'letter-separator';
         const separatorCell = document.createElement('td');
-        separatorCell.colSpan = 3; // Span across all 3 columns
+        separatorCell.colSpan = 3;
         separatorCell.textContent = `${letter}.`;
         separatorRow.appendChild(separatorCell);
         tableBody.appendChild(separatorRow);
 
         groupedGames[letter].forEach(game => {
             const row = document.createElement('tr');
-            
+
             const checkboxCell = document.createElement('td');
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.dataset.size = game.SizeGB;
             checkbox.dataset.name = game.Name;
             checkbox.dataset.drive = game.Drive;
-            checkbox.addEventListener('change', updateSummary);
+
+            // Keep checked state for selected games even if filtered
+            checkbox.checked = selectedGames.has(game.Name);
+
+            checkbox.addEventListener('change', function () {
+                if (checkbox.checked) {
+                    selectedGames.add(game.Name);
+                } else {
+                    selectedGames.delete(game.Name);
+                }
+                updateSummary();
+            });
+
             checkboxCell.appendChild(checkbox);
             row.appendChild(checkboxCell);
 
@@ -92,30 +152,27 @@ function renderGames() {
             const sizeCell = document.createElement('td');
             sizeCell.textContent = `${game.SizeGB} GB`;
             row.appendChild(sizeCell);
-            
+
             tableBody.appendChild(row);
         });
     }
 }
 
 // Function to update the summary details
-// Function to update the summary details
 function updateSummary() {
-    const selected = Array.from(document.querySelectorAll('#gameList input:checked'));
+    // Find all selected games from allGames (not just filtered)
+    const selected = allGames.filter(game => selectedGames.has(game.Name));
     let totalSize = 0;
-    
-    selected.forEach(cb => {
-        totalSize += parseFloat(cb.dataset.size);
+
+    selected.forEach(game => {
+        totalSize += parseFloat(game.SizeGB);
     });
 
     let totalPrice = totalSize;
     if (totalSize > 100) {
         totalPrice /= 2;
     }
-    
     totalPrice = Math.round(totalPrice / 5) * 5;
-
-    // Apply minimum price only if games are selected
     if (selected.length > 0 && totalPrice < 20) {
         totalPrice = 20;
     }
@@ -123,58 +180,53 @@ function updateSummary() {
     totalGamesEl.textContent = selected.length;
     totalSizeEl.textContent = totalSize.toFixed(2);
     totalPriceEl.textContent = totalPrice.toFixed(2);
-    
+
     let summaryText = '';
-    selected.forEach(cb => {
-        summaryText += `${cb.dataset.name} | ${cb.dataset.size} GB | Drive: ${cb.dataset.drive}\n`;
+    selected.forEach(game => {
+        summaryText += `${game.Name} | ${game.SizeGB} GB | Drive: ${game.Drive}\n`;
     });
 
-    summaryText += `\nألعاب تم تحديدها : ${selected.length}\n`;
-    summaryText += `الحجم الكلي : ${totalSize.toFixed(2)} جيجا\n`;
-    summaryText += `السعر : ${totalPrice.toFixed(2)} جنية`;
+    summaryText += `\nالألعاب المحددة: ${selected.length}\n`;
+    summaryText += `الحجم الكلي: ${totalSize.toFixed(2)} جيجا\n`;
+    summaryText += `السعر: ${totalPrice.toFixed(2)} جنيه`;
     generatedSummary = summaryText;
 }
 
 // Event listeners for the popup
 openSummaryBtn.addEventListener('click', () => {
-    const selected = Array.from(document.querySelectorAll('#gameList input:checked'));
+    // Use global selectedGames, not just filtered
+    const selected = allGames.filter(game => selectedGames.has(game.Name));
     if (selected.length === 0) {
-        alert('No games selected.');
+        alert('لم يتم تحديد أي ألعاب.');
         return;
     }
     summaryTextDiv.textContent = generatedSummary;
     popup.style.display = 'flex';
 });
-
 closeBtn.addEventListener('click', () => {
     popup.style.display = 'none';
 });
-
 window.addEventListener('click', (event) => {
     if (event.target === popup) {
         popup.style.display = 'none';
     }
 });
 
-// Event listener for the "Copy List" button
+// Copy and WhatsApp
 copyListBtn.addEventListener('click', () => {
     navigator.clipboard.writeText(generatedSummary)
     .then(() => {
-        alert('Summary copied to clipboard!');
+        alert('تم نسخ الملخص إلى الحافظة!');
         popup.style.display = 'none';
     })
     .catch(err => {
-        console.error('Failed to copy text: ', err);
-        alert('Failed to copy. Please try again.');
+        alert('فشل النسخ. حاول مرة أخرى.');
     });
 });
-
-// Event listener for the "Send via WhatsApp" button
 whatsappBtn.addEventListener('click', () => {
-    const phoneNumber = "201204838286"; 
+    const phoneNumber = "201204838286";
     const encodedMessage = encodeURIComponent(generatedSummary);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
     popup.style.display = 'none';
-
 });
