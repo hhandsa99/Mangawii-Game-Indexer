@@ -29,7 +29,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    **font-family: 'Almarai', sans-serif;**
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
@@ -54,8 +54,9 @@ header {
 }
 
 .logo img {
-    height: 80px;
+    height: 50px;
     width: auto;
+    border-radius: 50%;
 }
 
 #theme-toggle {
@@ -76,7 +77,6 @@ main {
     max-width: 800px;
     margin: 20px auto;
     padding: 0 15px;
-    /* This padding is crucial for mobile view */
     padding-bottom: 120px; 
 }
 
@@ -128,7 +128,7 @@ tr:hover {
     align-items: center;
     flex-wrap: wrap;
     border-top: 2px solid var(--primary-color);
-	z-index: 10;
+    z-index: 10;
 }
 
 .summary-box p {
@@ -234,7 +234,7 @@ tr:hover {
     font-weight: bold;
     font-size: 1.2em;
     padding: 10px 0;
-    position: sticky; /* Make the separator sticky on scroll */
+    position: sticky;
     top: 0;
     z-index: 5;
     text-align: left;
