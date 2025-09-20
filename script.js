@@ -1,180 +1,80 @@
-const totalGamesEl = document.getElementById('totalGames');
-const totalSizeEl = document.getElementById('totalSize');
-const totalPriceEl = document.getElementById('totalPrice');
-const openSummaryBtn = document.getElementById('openSummaryPopup');
-const popup = document.getElementById('popup');
-const closeBtn = document.querySelector('.close-btn');
-const summaryTextDiv = document.getElementById('summaryText');
-const copyListBtn = document.getElementById('copyListBtn');
-const whatsappBtn = document.getElementById('whatsappBtn');
-const themeToggleBtn = document.getElementById('theme-toggle');
+// Adapted for new UI structure with Corona Admin
+// Assumes JSON data is loaded from JSON/games.json (adjust as needed)
 
-let allGames = [];
-let generatedSummary = '';
+let gamesData = [];
 
-// Theme Toggle Logic
-themeToggleBtn.addEventListener('click', () => {
-    const body = document.body;
-    if (body.getAttribute('data-theme') === 'dark') {
-        body.setAttribute('data-theme', 'light');
-        themeToggleBtn.textContent = '🌝️';
-    } else {
-        body.setAttribute('data-theme', 'dark');
-        themeToggleBtn.textContent = '🌚';
-    }
+// Fetch the games data on load
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('JSON/games.json')
+        .then(response => response.json())
+        .then(data => {
+            gamesData = data;
+            renderTable(gamesData);
+        })
+        .catch(error => {
+            console.error('Error loading games.json:', error);
+        });
+
+    // Attach search event
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        searchGames();
+    });
 });
 
-// Fetch and render games
-fetch('JSON/filelist.json')
-    .then(res => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        return res.json();
-    })
-    .then(fileNames => {
-        const jsonFiles = fileNames.map(name => `JSON/${name}`);
-        return Promise.all(jsonFiles.map(file => fetch(file).then(res => {
-            if (!res.ok) throw new Error(`HTTP error! status: ${res.status} for file ${file}`);
-            return res.json();
-        })));
-    })
-    .then(results => {
-        allGames = results.flat();
-        allGames.sort((a, b) => a.Name.localeCompare(b.Name));
-        renderGames();
-    })
-    .catch(error => {
-        console.error('Error loading game data:', error);
-        document.querySelector('main').innerHTML = '<p>Oops! We couldn\'t load the game list. Please ensure your JSON files are in the correct location.</p>';
-    });
-
-// Function to render the game list in a table
-function renderGames() {
-    const tableBody = document.querySelector('#gameList tbody');
-    tableBody.innerHTML = '';
-
-    // Group games by the first letter of their name
-    const groupedGames = allGames.reduce((groups, game) => {
-        const letter = game.Name[0].toUpperCase();
-        if (!groups[letter]) {
-            groups[letter] = [];
-        }
-        groups[letter].push(game);
-        return groups;
-    }, {});
-
-    // Render each group with a letter heading
-    for (const letter of Object.keys(groupedGames).sort()) {
-        const separatorRow = document.createElement('tr');
-        separatorRow.className = 'letter-separator';
-        const separatorCell = document.createElement('td');
-        separatorCell.colSpan = 3; // Span across all 3 columns
-        separatorCell.textContent = `${letter}.`;
-        separatorRow.appendChild(separatorCell);
-        tableBody.appendChild(separatorRow);
-
-        groupedGames[letter].forEach(game => {
-            const row = document.createElement('tr');
-            
-            const checkboxCell = document.createElement('td');
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.dataset.size = game.SizeGB;
-            checkbox.dataset.name = game.Name;
-            checkbox.dataset.drive = game.Drive;
-            checkbox.addEventListener('change', updateSummary);
-            checkboxCell.appendChild(checkbox);
-            row.appendChild(checkboxCell);
-
-            const nameCell = document.createElement('td');
-            nameCell.textContent = game.Name;
-            row.appendChild(nameCell);
-
-            const sizeCell = document.createElement('td');
-            sizeCell.textContent = `${game.SizeGB} GB`;
-            row.appendChild(sizeCell);
-            
-            tableBody.appendChild(row);
-        });
-    }
-}
-
-// Function to update the summary details
-// Function to update the summary details
-function updateSummary() {
-    const selected = Array.from(document.querySelectorAll('#gameList input:checked'));
-    let totalSize = 0;
-    
-    selected.forEach(cb => {
-        totalSize += parseFloat(cb.dataset.size);
-    });
-
-    let totalPrice = totalSize;
-    if (totalSize > 100) {
-        totalPrice /= 2;
-    }
-    
-    totalPrice = Math.round(totalPrice / 5) * 5;
-
-    // Apply minimum price only if games are selected
-    if (selected.length > 0 && totalPrice < 20) {
-        totalPrice = 20;
-    }
-
-    totalGamesEl.textContent = selected.length;
-    totalSizeEl.textContent = totalSize.toFixed(2);
-    totalPriceEl.textContent = totalPrice.toFixed(2);
-    
-    let summaryText = '';
-    selected.forEach(cb => {
-        summaryText += `${cb.dataset.name} | ${cb.dataset.size} GB | Drive: ${cb.dataset.drive}\n`;
-    });
-
-    summaryText += `\nألعاب تم تحديدها : ${selected.length}\n`;
-    summaryText += `الحجم الكلي : ${totalSize.toFixed(2)} جيجا\n`;
-    summaryText += `السعر : ${totalPrice.toFixed(2)} جنية`;
-    generatedSummary = summaryText;
-}
-
-// Event listeners for the popup
-openSummaryBtn.addEventListener('click', () => {
-    const selected = Array.from(document.querySelectorAll('#gameList input:checked'));
-    if (selected.length === 0) {
-        alert('No games selected.');
+function searchGames() {
+    const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+    if (!searchTerm) {
+        renderTable(gamesData);
         return;
     }
-    summaryTextDiv.textContent = generatedSummary;
-    popup.style.display = 'flex';
-});
+    const filtered = gamesData.filter(game =>
+        (game.title && game.title.toLowerCase().includes(searchTerm)) ||
+        (game.platform && game.platform.toLowerCase().includes(searchTerm)) ||
+        (game.genre && game.genre.toLowerCase().includes(searchTerm))
+    );
+    renderTable(filtered);
+}
 
-closeBtn.addEventListener('click', () => {
-    popup.style.display = 'none';
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target === popup) {
-        popup.style.display = 'none';
+function renderTable(data) {
+    const tableBody = document.querySelector('#resultsTable tbody');
+    tableBody.innerHTML = '';
+    if (!data.length) {
+        tableBody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">No results found.</td></tr>';
+        return;
     }
-});
+    data.forEach(game => {
+        const row = document.createElement('tr');
 
-// Event listener for the "Copy List" button
-copyListBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(generatedSummary)
-    .then(() => {
-        alert('Summary copied to clipboard!');
-        popup.style.display = 'none';
-    })
-    .catch(err => {
-        console.error('Failed to copy text: ', err);
-        alert('Failed to copy. Please try again.');
+        // Image cell
+        const imgTd = document.createElement('td');
+        if (game.image) {
+            imgTd.innerHTML = `<img src="images/${game.image}" alt="${game.title}" class="game-img-table" style="height:48px;">`;
+        } else {
+            imgTd.innerHTML = `<span class="text-muted">N/A</span>`;
+        }
+        row.appendChild(imgTd);
+
+        // Title
+        const titleTd = document.createElement('td');
+        titleTd.textContent = game.title || '';
+        row.appendChild(titleTd);
+
+        // Platform
+        const platTd = document.createElement('td');
+        platTd.textContent = game.platform || '';
+        row.appendChild(platTd);
+
+        // Genre
+        const genreTd = document.createElement('td');
+        genreTd.textContent = game.genre || '';
+        row.appendChild(genreTd);
+
+        // Release
+        const relTd = document.createElement('td');
+        relTd.textContent = game.release || '';
+        row.appendChild(relTd);
+
+        tableBody.appendChild(row);
     });
-});
-
-// Event listener for the "Send via WhatsApp" button
-whatsappBtn.addEventListener('click', () => {
-    const phoneNumber = "201204838286"; 
-    const encodedMessage = encodeURIComponent(generatedSummary);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank');
-    popup.style.display = 'none';
-
-});
+}

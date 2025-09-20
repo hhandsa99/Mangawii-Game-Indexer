@@ -2,55 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECHNICAL | GAMES</title>
+    <title>Mangawii Game Indexer - Admin Dashboard</title>
+    <!-- Corona Admin Template CSS (adjust paths if needed) -->
+    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/corona-style.css">
+    <!-- Custom styles (your overrides) -->
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body data-theme="light">
-    <header>
-        <div class="logo">
-            <img src="images/site_logo.png" alt="Brand Logo">
-        </div>
-        <h1>ألعاب اوفلاين</h1>
-        <button id="theme-toggle">🌝</button>
-    </header>
-
-    <main>
-        <table id="gameList">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>اسم اللعبة</th>
-                    <th>الحجم</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </main>
-    
-    <div class="summary-box">
-        <h3>ملخص الطلب</h3>
-        <p>ألعاب تم تحديدها : <span id="totalGames">0</span></p>
-        <p>الحجم الكلي : <span id="totalSize">0.00</span> جيجا</p>
-        <p>السعر : <span id="totalPrice">0.00</span> جنية</p>
-        <button id="openSummaryPopup">تأكيد</button>
-    </div>
-
-    <div id="popup" class="popup-container">
-        <div class="popup-content">
-            <span class="close-btn">&times;</span>
-            <h3>ملخص الطلب</h3>
-            <div class="popup-text" id="summaryText"></div>
-            <div class="popup-buttons">
-                <button id="copyListBtn">Copy | نسخ</button>
-                <button id="whatsappBtn">إرسال عن طريق الواتساب</button>
+<body>
+    <div class="container-scroller">
+        <!-- Sidebar -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="menu-title">Game Indexer</span>
+                        <i class="fas fa-gamepad menu-icon"></i>
+                    </a>
+                </li>
+                <!-- Add other nav items if needed -->
+            </ul>
+        </nav>
+        <div class="container-fluid page-body-wrapper">
+            <!-- Navbar -->
+            <nav class="navbar p-0 fixed-top d-flex flex-row">
+                <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+                    <a class="navbar-brand brand-logo-mini" href="#"><img src="assets/images/logo-mini.svg" alt="logo"/></a>
+                </div>
+                <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+                    <!-- Add other navbar content if needed -->
+                </div>
+            </nav>
+            <!-- Main Panel -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Mangawii Game Indexer</h4>
+                                    <!-- Search and Filters -->
+                                    <form id="search-form" class="mb-3">
+                                        <div class="input-group">
+                                            <input type="text" id="searchInput" class="form-control" placeholder="Search for a game...">
+                                            <button id="searchBtn" type="submit" class="btn btn-primary">Search</button>
+                                        </div>
+                                    </form>
+                                    <!-- Results Table -->
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" id="resultsTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Image</th>
+                                                    <th>Game Title</th>
+                                                    <th>Platform</th>
+                                                    <th>Genre</th>
+                                                    <th>Release</th>
+                                                    <!-- Add more columns as needed -->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Populated by script.js -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Optionally add pagination or more controls -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
             </div>
+            <!-- main-panel ends -->
         </div>
+        <!-- page-body-wrapper ends -->
     </div>
-
+    <!-- plugins:js -->
+    <script src="assets/vendors/jquery/jquery.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- endinject -->
     <script src="script.js"></script>
 </body>
 </html>
