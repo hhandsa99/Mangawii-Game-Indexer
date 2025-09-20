@@ -44,17 +44,17 @@
     --whatsapp-color: #25D366;
 }
 
+/* --- Base & LTR Settings --- */
 html, body {
-/* Use Geologica for Latin characters and Almarai as fallback for Arabic */
     font-family: 'Geologica', 'Almarai', sans-serif;
-    font-weight: 700; /* All text will now be bold */
+    font-weight: 700;
     background: var(--background-color);
     color: var(--text-color);
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    direction: ltr;
+    direction: ltr; 
 }
 
 /* --- HEADER --- */
@@ -121,50 +121,6 @@ h1 {
     box-shadow: 0 0 0 3px #00A7F911;
 }
 
-.theme-icon-svg {
-    width: 30px;
-    height: 30px;
-    display: block;
-    border-radius: 50%;
-    background: none;
-    box-shadow: none;
-    transition: background 0.2s, box-shadow 0.2s;
-}
-.theme-icon-sun { fill: #00A7F9; }
-.theme-icon-moon { fill: #00A7F9; }
-
-@media (max-width: 700px) {
-    .header-inner {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        min-height: auto;
-        gap: 0;
-    }
-
-    header img.site-logo {
-        height: 40px;
-        margin-right: 0;
-        margin-bottom: 0;
-    }
-    
-    h1 {
-        font-size: 1.15rem;
-        margin: 0;
-        text-align: right;
-        flex-grow: 1;
-        padding: 0 10px;
-    }
-    
-    #theme-toggle {
-        min-width: 36px;
-        min-height: 36px;
-        margin-left: 0;
-    }
-}
-
 /* --- SEARCH BAR --- */
 .search-container {
     display: flex;
@@ -183,7 +139,8 @@ h1 {
 
 .search-container input {
     width: 100%;
-    padding: 0.8rem 2.8rem 0.8rem 1.2rem;
+    /* Switched padding to correctly align text with icon */
+    padding: 0.8rem 1.2rem 0.8rem 2.8rem;
     border-radius: 30px;
     border: none;
     background: transparent;
@@ -193,7 +150,8 @@ h1 {
     transition: background 0.2s;
     font-weight: 500;
     letter-spacing: 0.5px;
-    text-align: right;
+    /* Aligned text to the left for LTR */
+    text-align: left;
 }
 
 .search-container input:focus {
@@ -202,6 +160,7 @@ h1 {
 
 .search-container .search-icon {
     position: absolute;
+    /* Moved icon to the right side for LTR layout */
     left: 1.3rem;
     top: 50%;
     transform: translateY(-50%);
@@ -242,6 +201,7 @@ thead {
 
 th, td {
     padding: 14px 10px;
+    /* Aligned text to the left for LTR */
     text-align: left;
     border-bottom: 1px solid var(--table-border);
 }
@@ -271,6 +231,7 @@ tr:hover:not(.letter-separator) {
     position: sticky;
     top: 0;
     z-index: 5;
+    /* Aligned text to the left for LTR */
     text-align: left;
     color: var(--primary-color);
     border-bottom: 2px solid var(--primary-color);
@@ -286,6 +247,7 @@ input[type="checkbox"] {
 .summary-box {
     position: fixed;
     bottom: 0;
+    /* Pinned to the left side for LTR */
     left: 0;
     width: 100%;
     background: var(--summary-bg);
@@ -320,7 +282,10 @@ input[type="checkbox"] {
     margin: 0;
     font-size: 1.25em;
 }
-.summary-box button {
+
+/* Base button style for summary and popup */
+.summary-box button,
+.popup-buttons button {
     background: var(--button-bg);
     color: var(--button-text);
     border: none;
@@ -332,14 +297,27 @@ input[type="checkbox"] {
     transition: background 0.2s;
     font-weight: 600;
 }
-.summary-box button:hover {
+
+.summary-box button:hover,
+.popup-buttons button:hover {
     background: var(--button-hover);
 }
 
+/* Specific button styles for WhatsApp and Copy */
+#copyListBtn {
+    width: 48%; 
+    padding: 10px; 
+    font-size: 1em;
+}
+
 #whatsappBtn {
+    width: 48%;
+    padding: 10px;
+    font-size: 1em;
     background: var(--whatsapp-color);
     color: white;
 }
+
 #whatsappBtn:hover {
     background: #20b85a;
 }
@@ -359,6 +337,7 @@ input[type="checkbox"] {
     align-items: center;
     direction: ltr;
 }
+
 .popup-content {
     background: var(--table-bg);
     margin: 10vh auto;
@@ -370,10 +349,13 @@ input[type="checkbox"] {
     position: relative;
     box-shadow: 0 4px 24px #00A7F927;
     animation: animatetop 0.4s;
+    direction: ltr;
 }
+
 .close-btn {
     color: var(--text-color);
     position: absolute;
+    /* Pinned to the right for LTR */
     right: 10px;
     top: 7px;
     font-size: 28px;
@@ -381,7 +363,9 @@ input[type="checkbox"] {
     cursor: pointer;
     transition: color 0.2s;
 }
+
 .close-btn:hover { color: var(--primary-color); }
+
 .popup-text {
     white-space: pre-wrap;
     font-family: 'Courier New', Courier, monospace;
@@ -391,13 +375,15 @@ input[type="checkbox"] {
     border-radius: 5px;
     margin-bottom: 15px;
     color: var(--text-color);
+    direction: rtl; /* Retained RTL for Arabic text content */
+    text-align: right;
 }
+
 .popup-buttons {
     display: flex;
     justify-content: space-between;
     gap: 8px;
 }
-.popup-buttons button { width: 48%; padding: 10px; font-size: 1em; }
 
 @keyframes animatetop {
     from {top: -300px; opacity: 0}
@@ -423,7 +409,7 @@ input[type="checkbox"] {
     h1 {
         font-size: 1.15rem;
         margin: 0;
-        text-align: right;
+        text-align: left;
         flex-grow: 1;
         padding: 0 10px;
     }
