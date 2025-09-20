@@ -51,30 +51,51 @@ fetch('JSON/filelist.json')
 function renderGames() {
     const tableBody = document.querySelector('#gameList tbody');
     tableBody.innerHTML = '';
-    
-    allGames.forEach(game => {
-        const row = document.createElement('tr');
-        
-        const checkboxCell = document.createElement('td');
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.dataset.size = game.SizeGB;
-        checkbox.dataset.name = game.Name;
-        checkbox.dataset.drive = game.Drive;
-        checkbox.addEventListener('change', updateSummary);
-        checkboxCell.appendChild(checkbox);
-        row.appendChild(checkboxCell);
 
-        const nameCell = document.createElement('td');
-        nameCell.textContent = game.Name;
-        row.appendChild(nameCell);
+    // Group games by the first letter of their name
+    const groupedGames = allGames.reduce((groups, game) => {
+        const letter = game.Name[0].toUpperCase();
+        if (!groups[letter]) {
+            groups[letter] = [];
+        }
+        groups[letter].push(game);
+        return groups;
+    }, {});
 
-        const sizeCell = document.createElement('td');
-        sizeCell.textContent = `${game.SizeGB} GB`;
-        row.appendChild(sizeCell);
-        
-        tableBody.appendChild(row);
-    });
+    // Render each group with a letter heading
+    for (const letter of Object.keys(groupedGames).sort()) {
+        const separatorRow = document.createElement('tr');
+        separatorRow.className = 'letter-separator';
+        const separatorCell = document.createElement('td');
+        separatorCell.colSpan = 3; // Span across all 3 columns
+        separatorCell.textContent = `${letter}.`;
+        separatorRow.appendChild(separatorCell);
+        tableBody.appendChild(separatorRow);
+
+        groupedGames[letter].forEach(game => {
+            const row = document.createElement('tr');
+            
+            const checkboxCell = document.createElement('td');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.dataset.size = game.SizeGB;
+            checkbox.dataset.name = game.Name;
+            checkbox.dataset.drive = game.Drive;
+            checkbox.addEventListener('change', updateSummary);
+            checkboxCell.appendChild(checkbox);
+            row.appendChild(checkboxCell);
+
+            const nameCell = document.createElement('td');
+            nameCell.textContent = game.Name;
+            row.appendChild(nameCell);
+
+            const sizeCell = document.createElement('td');
+            sizeCell.textContent = `${game.SizeGB} GB`;
+            row.appendChild(sizeCell);
+            
+            tableBody.appendChild(row);
+        });
+    }
 }
 
 // Function to update the summary details
@@ -91,8 +112,8 @@ function updateSummary() {
         totalPrice /= 2;
     }
     
-    // Round the price down to the nearest multiple of 5
-    **totalPrice = Math.floor(totalPrice / 5) * 5;**
+    // Round the price to the nearest multiple of 5
+    totalPrice = **Math.round(totalPrice / 5) * 5;**
 
     totalGamesEl.textContent = selected.length;
     totalSizeEl.textContent = totalSize.toFixed(2);
