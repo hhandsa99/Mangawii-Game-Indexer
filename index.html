@@ -1,68 +1,74 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECHNICAL | GAMES</title>
+    <title>Wii Games Indexer</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body data-theme="light">
+<body>
+
     <header>
-    <div class="header-inner">
-        <img src="images/site_logo.png" alt="شعار الموقع" class="site-logo">
-        <h1>قسم الألعاب</h1>
-        <button id="theme-toggle" title="تبديل الوضع" aria-label="تبديل الوضع">
-    <img id="theme-icon" src="images/light.svg" alt="تبديل الوضع" />
-        </button>
-    </div>
-</header>
+        <div class="header-inner">
+            <img src="wii-logo.webp" alt="Wii Logo" class="site-logo">
+            <h1>Wii Games Indexer</h1>
+            <button id="theme-toggle" aria-label="Toggle dark mode">
+                <svg id="theme-icon-sun" class="theme-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 17.5c-3.05 0-5.5-2.45-5.5-5.5s2.45-5.5 5.5-5.5 5.5 2.45 5.5 5.5-2.45 5.5-5.5 5.5zm0-9.5c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM12 2c.55 0 1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1v2c0 .55.45 1 1 1zm0 18c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1zM5.99 4.58l-1.41-1.41c-.39-.39-.39-1.02 0-1.41s1.02-.39 1.41 0l1.41 1.41c.39.39.39 1.02 0 1.41-.39.4-1.03.4-1.41.01zm12.37 12.37l-1.41-1.41c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l1.41 1.41c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41zm1.41-12.37l-1.41 1.41c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l1.41-1.41c.39-.39.39-1.02 0-1.41s-1.02-.39-1.41 0zm-12.37 12.37l-1.41 1.41c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l1.41-1.41c.39-.39.39-1.02 0-1.41s-1.02-.39-1.41 0z"/>
+                </svg>
+                <svg id="theme-icon-moon" class="theme-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.4 22C6.71 22 2 17.29 2 11.6c0-4.66 3.69-8.45 8.35-8.6c.2-.01.4-.01.6-.01 2.65 0 5.09 1.15 6.84 3.01 1.57 1.6 2.5 3.76 2.5 6.1s-.93 4.5-2.5 6.1c-1.75 1.86-4.19 3.01-6.84 3.01-.2 0-.4 0-.6-.01zm-.55-2.09c.14.01.29.02.44.02 4.14 0 7.5-3.36 7.5-7.5s-3.36-7.5-7.5-7.5c-.15 0-.29 0-.44-.02-3.82.52-6.71 3.8-6.71 7.82 0 4.02 2.89 7.3 6.71 7.82z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
 
     <main>
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." autocomplete="off">
-            <span class="search-icon">
-                <img src="images/search.svg" alt="بحث">
-            </span>
+            <div class="search-icon">
+                <img src="search-icon.svg" alt="Search Icon">
+            </div>
+            <input type="text" id="search-input" placeholder="Search for a game...">
         </div>
-        <table id="gameList">
+        <table id="games-table">
             <thead>
                 <tr>
                     <th></th>
-                    <th>اسم اللعبة</th>
-                    <th>الحجم</th>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Price</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+                </tbody>
         </table>
     </main>
-    
+
     <div class="summary-box">
-    <div class="summary-box-info">
-        <span>الحجم الكلي: <span id="totalSize">0.00</span> جيجا</span>
-        <span class="divider">|</span>
-        <span>السعر: <span id="totalPrice">0.00</span> جنيه</span>
-        <span class="divider">|</span>
-        <span>الألعاب المحددة: <span id="totalGames">0</span></span>
+        <div class="summary-box-info">
+            <span id="total-games">Total: 0</span>
+            <span class="divider">|</span>
+            <span id="selected-games">Selected: 0</span>
+            <span class="divider">|</span>
+            <span id="total-price">Price: $0</span>
+        </div>
+        <button id="whatsappBtn">Send via WhatsApp</button>
     </div>
-    <button id="openSummaryPopup">تأكيد</button>
-</div>
-</div>
 
     <div id="popup" class="popup-container">
         <div class="popup-content">
             <span class="close-btn">&times;</span>
-            <h3>ملخص الطلب</h3>
-            <div class="popup-text" id="summaryText"></div>
+            <pre id="popup-text"></pre>
             <div class="popup-buttons">
-                <button id="copyListBtn">نسخ</button>
-                <button id="whatsappBtn">إرسال عبر واتساب</button>
+                <button id="copy-btn">Copy to Clipboard</button>
+                <button id="whatsapp-popup-btn">Open WhatsApp</button>
             </div>
         </div>
     </div>
-    
-    <script src="script.js"></script>
+
 </body>
 </html>
