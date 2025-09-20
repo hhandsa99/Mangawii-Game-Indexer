@@ -38,44 +38,35 @@ fetch('JSON/filelist.json')
 // The rest of your functions (renderGames, updateSummary, copySummary) remain the same.
 
 function renderGames() {
-    gameListDiv.innerHTML = '';
-    const grouped = {};
-    
+    const tableBody = document.querySelector('#gameList tbody');
+    tableBody.innerHTML = ''; // Clear previous content
+
     allGames.forEach(game => {
-        const letter = game.Name[0].toUpperCase();
-        if (!grouped[letter]) grouped[letter] = [];
-        grouped[letter].push(game);
+        const row = document.createElement('tr');
+        
+        // Checkbox column
+        const checkboxCell = document.createElement('td');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.dataset.size = game.SizeGB;
+        checkbox.dataset.name = game.Name;
+        checkbox.dataset.drive = game.Drive;
+        checkbox.addEventListener('change', updateSummary);
+        checkboxCell.appendChild(checkbox);
+        row.appendChild(checkboxCell);
+
+        // Game Name column
+        const nameCell = document.createElement('td');
+        nameCell.textContent = game.Name;
+        row.appendChild(nameCell);
+
+        // Size column
+        const sizeCell = document.createElement('td');
+        sizeCell.textContent = `${game.SizeGB} GB`;
+        row.appendChild(sizeCell);
+        
+        tableBody.appendChild(row);
     });
-
-    for (const letter of Object.keys(grouped).sort()) {
-        const groupDiv = document.createElement('div');
-        groupDiv.className = 'letter-group';
-
-        const heading = document.createElement('div');
-        heading.className = 'letter-heading';
-        heading.textContent = letter;
-        groupDiv.appendChild(heading);
-
-        grouped[letter].forEach(game => {
-            const gameDiv = document.createElement('div');
-            gameDiv.className = 'game-item';
-
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.dataset.size = game.SizeGB;
-            checkbox.dataset.name = game.Name;
-            checkbox.dataset.drive = game.Drive;
-            checkbox.addEventListener('change', updateSummary);
-
-            const label = document.createElement('label');
-            label.textContent = `${game.Name} (${game.SizeGB} GB, Drive: ${game.Drive})`;
-
-            gameDiv.appendChild(checkbox);
-            gameDiv.appendChild(label);
-            groupDiv.appendChild(gameDiv);
-        });
-        gameListDiv.appendChild(groupDiv);
-    }
 }
 
 function updateSummary() {
@@ -97,14 +88,17 @@ function updateSummary() {
     totalPriceEl.textContent = totalPrice.toFixed(2);
 }
 
+// Updated copySummary function
 copyBtn.addEventListener('click', () => {
-    const selected = Array.from(document.querySelectorAll('.game-item input:checked'));
+    const selected = Array.from(document.querySelectorAll('#gameList input:checked'));
     if (selected.length === 0) return alert('No games selected.');
 
     let summary = 'Selected Games:\n';
     let totalSize = 0;
+    
+    // Generate the summary string with the new format
     selected.forEach(cb => {
-        summary += `- ${cb.dataset.name} (Drive: ${cb.dataset.drive}, Size: ${cb.dataset.size} GB)\n`;
+        summary += `${cb.dataset.name} | ${cb.dataset.size} GB | Drive: ${cb.dataset.drive}\n`;
         totalSize += parseFloat(cb.dataset.size);
     });
 

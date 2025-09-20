@@ -83,3 +83,33 @@ main {
         text-align: left;
     }
 }
+
+/* Add these styles to your existing style.css */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th:first-child, td:first-child {
+    width: 40px; /* Space for checkbox */
+}
+
+th {
+    font-weight: bold;
+    color: #555;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
