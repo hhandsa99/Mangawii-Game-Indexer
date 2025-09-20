@@ -8,6 +8,7 @@ const summaryTextDiv = document.getElementById('summaryText');
 const copyListBtn = document.getElementById('copyListBtn');
 const whatsappBtn = document.getElementById('whatsappBtn');
 const themeToggleBtn = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
 const searchInput = document.getElementById('searchInput');
 
 let allGames = [];
@@ -16,37 +17,19 @@ let selectedGames = new Set();
 let generatedSummary = '';
 
 // Modern SVG icons for theme toggle
-const sunSVG = `
-<svg class="theme-icon-svg" viewBox="0 0 32 32">
-    <circle class="theme-icon-sun" cx="16" cy="16" r="9" stroke="#00A7F9" stroke-width="2" fill="#ffd600" />
-    <g stroke="#00A7F9" stroke-width="2">
-      <line x1="16" y1="3" x2="16" y2="7"/>
-      <line x1="16" y1="25" x2="16" y2="29"/>
-      <line x1="3" y1="16" x2="7" y2="16"/>
-      <line x1="25" y1="16" x2="29" y2="16"/>
-      <line x1="7.8" y1="7.8" x2="10.5" y2="10.5"/>
-      <line x1="21.5" y1="21.5" x2="24.2" y2="24.2"/>
-      <line x1="7.8" y1="24.2" x2="10.5" y2="21.5"/>
-      <line x1="21.5" y1="10.5" x2="24.2" y2="7.8"/>
-    </g>
-</svg>
-`;
-const moonSVG = `
-<svg class="theme-icon-svg" viewBox="0 0 32 32">
-    <path class="theme-icon-moon" d="M25.5,18.5A11,11,0,1,1,17,6.5a9.5,9.5,0,1,0,8.5,12Z"
-          fill="#ffd600" stroke="#00A7F9" stroke-width="2"/>
-</svg>
-`;
+// Paths to your icons
+const sunIconPath = "images/sun.svg";
+const moonIconPath = "images/moon.svg";
 
 function setThemeIcon() {
     if (document.body.getAttribute('data-theme') === 'dark') {
-        themeToggleBtn.innerHTML = moonSVG;
+        themeIcon.src = moonIconPath;
+        themeIcon.alt = "الوضع الليلي";
     } else {
-        themeToggleBtn.innerHTML = sunSVG;
+        themeIcon.src = sunIconPath;
+        themeIcon.alt = "الوضع النهاري";
     }
 }
-
-// Set icon on load
 setThemeIcon();
 
 // Theme Toggle Logic
