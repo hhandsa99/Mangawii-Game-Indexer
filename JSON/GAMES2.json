@@ -11,11 +11,6 @@
     },
     {
         "Drive":  "E",
-        "Name":  "ARMA 3 بايظه",
-        "SizeGB":  9.97
-    },
-    {
-        "Drive":  "E",
         "Name":  "Assassin\u0027s Creed - Origins",
         "SizeGB":  69.06
     },
@@ -515,3 +510,4 @@
         "SizeGB":  2.98
     }
 ]
+
