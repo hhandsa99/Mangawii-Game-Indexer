@@ -115,8 +115,8 @@ function updateSummary() {
     
     totalPrice = Math.round(totalPrice / 5) * 5;
 
-    // Set a minimum price of 20
-    if (totalPrice < 20) {
+    // Apply minimum price only if games are selected
+    if (selected.length > 0 && totalPrice < 20) {
         totalPrice = 20;
     }
 
@@ -176,4 +176,5 @@ whatsappBtn.addEventListener('click', () => {
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
     popup.style.display = 'none';
+
 });
