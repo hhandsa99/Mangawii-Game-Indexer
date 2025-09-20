@@ -6,23 +6,34 @@ const copyBtn = document.getElementById('copySummary');
 
 let allGames = [];
 
-// Step 1: Fetch the list of JSON file names
+// Start the chain by fetching the file list
 fetch('JSON/filelist.json')
-    .then(res => res.json())
+    .then(res => {
+        // Check for HTTP errors like 404 (File Not Found)
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+    })
     .then(fileNames => {
-        // Step 2: Construct the full paths
         const jsonFiles = fileNames.map(name => `JSON/${name}`);
-        
-        // Step 3: Load each JSON file dynamically
-        return Promise.all(jsonFiles.map(file => fetch(file).then(res => res.json())));
+        return Promise.all(jsonFiles.map(file => fetch(file).then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status} for file ${file}`);
+            }
+            return res.json();
+        })));
     })
     .then(results => {
-        // Step 4: Process the data
         allGames = results.flat();
         allGames.sort((a, b) => a.Name.localeCompare(b.Name));
         renderGames();
     })
-    .catch(error => console.error('Error loading game data:', error));
+    .catch(error => {
+        console.error('Error loading game data:', error);
+        // Display a user-friendly message on the page
+        gameListDiv.innerHTML = '<p>Oops! We couldn\'t load the game list. Please try again later.</p>';
+    });
 
 // The rest of your functions (renderGames, updateSummary, copySummary) remain the same.
 
