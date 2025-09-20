@@ -112,8 +112,7 @@ function updateSummary() {
         totalPrice /= 2;
     }
     
-    // Round the price to the nearest multiple of 5
-    totalPrice = **Math.round(totalPrice / 5) * 5;**
+    totalPrice = Math.round(totalPrice / 5) * 5;
 
     totalGamesEl.textContent = selected.length;
     totalSizeEl.textContent = totalSize.toFixed(2);
