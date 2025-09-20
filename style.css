@@ -44,17 +44,18 @@
     --whatsapp-color: #25D366;
 }
 
+/* --- Base & RTL Settings --- */
 html, body {
-/* Use Geologica for Latin characters and Almarai as fallback for Arabic */
     font-family: 'Geologica', 'Almarai', sans-serif;
-    font-weight: 700; /* All text will now be bold */
+    font-weight: 700;
     background: var(--background-color);
     color: var(--text-color);
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    direction: ltr;
+    /* This is the core fix. All content is now RTL */
+    direction: rtl; 
 }
 
 /* --- HEADER --- */
@@ -71,7 +72,7 @@ header {
     padding: 0.6rem 2.4rem 0.6rem 2.4rem;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 2.2rem;
     min-height: 74px;
     position: relative;
@@ -82,7 +83,6 @@ header img.site-logo {
     width: auto;
     object-fit: contain;
     display: block;
-    margin-right: 1.5rem;
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -95,8 +95,7 @@ h1 {
     font-weight: 800;
     letter-spacing: 1px;
     color: var(--primary-color);
-    flex: 1;
-    text-align: left;
+    text-align: right;
     user-select: none;
 }
 
@@ -112,57 +111,12 @@ h1 {
     border-radius: 50%;
     transition: background 0.15s, box-shadow 0.15s;
     outline: none;
-    margin-left: auto;
 }
 
 #theme-toggle:focus,
 #theme-toggle:hover {
     background: #eaf6fd;
     box-shadow: 0 0 0 3px #00A7F911;
-}
-
-.theme-icon-svg {
-    width: 30px;
-    height: 30px;
-    display: block;
-    border-radius: 50%;
-    background: none;
-    box-shadow: none;
-    transition: background 0.2s, box-shadow 0.2s;
-}
-.theme-icon-sun { fill: #00A7F9; }
-.theme-icon-moon { fill: #00A7F9; }
-
-@media (max-width: 700px) {
-    .header-inner {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        min-height: auto;
-        gap: 0;
-    }
-
-    header img.site-logo {
-        height: 40px;
-        margin-right: 0;
-        margin-bottom: 0;
-    }
-    
-    h1 {
-        font-size: 1.15rem;
-        margin: 0;
-        text-align: right;
-        flex-grow: 1;
-        padding: 0 10px;
-    }
-    
-    #theme-toggle {
-        min-width: 36px;
-        min-height: 36px;
-        margin-left: 0;
-    }
 }
 
 /* --- SEARCH BAR --- */
@@ -178,12 +132,12 @@ h1 {
     border: 1.5px solid var(--search-border);
     box-shadow: 0 2px 10px 0 #00A7F903;
     transition: border-color 0.2s, box-shadow 0.2s;
-    direction: ltr;
+    direction: rtl;
 }
 
 .search-container input {
     width: 100%;
-    padding: 0.8rem 2.8rem 0.8rem 1.2rem;
+    padding: 0.8rem 1.2rem 0.8rem 2.8rem;
     border-radius: 30px;
     border: none;
     background: transparent;
@@ -202,7 +156,8 @@ h1 {
 
 .search-container .search-icon {
     position: absolute;
-    left: 1.3rem;
+    /* Moved icon to the right side */
+    right: 1.3rem;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -233,7 +188,7 @@ table {
     border-radius: 10px;
     overflow: hidden;
     font-size: 1.07em;
-    direction: ltr;
+    direction: rtl;
 }
 
 thead {
@@ -242,7 +197,7 @@ thead {
 
 th, td {
     padding: 14px 10px;
-    text-align: left;
+    text-align: right;
     border-bottom: 1px solid var(--table-border);
 }
 
@@ -271,7 +226,7 @@ tr:hover:not(.letter-separator) {
     position: sticky;
     top: 0;
     z-index: 5;
-    text-align: left;
+    text-align: right;
     color: var(--primary-color);
     border-bottom: 2px solid var(--primary-color);
 }
@@ -286,7 +241,8 @@ input[type="checkbox"] {
 .summary-box {
     position: fixed;
     bottom: 0;
-    left: 0;
+    /* Corrected from 'left' to 'right' for RTL layout */
+    right: 0;
     width: 100%;
     background: var(--summary-bg);
     color: var(--summary-text);
@@ -301,6 +257,7 @@ input[type="checkbox"] {
     padding: 18px 24px;
     z-index: 20;
     font-size: 1.13em;
+    direction: rtl;
 }
 
 .summary-box-info {
@@ -336,14 +293,6 @@ input[type="checkbox"] {
     background: var(--button-hover);
 }
 
-#whatsappBtn {
-    background: var(--whatsapp-color);
-    color: white;
-}
-#whatsappBtn:hover {
-    background: #20b85a;
-}
-
 /* --- POPUP --- */
 .popup-container {
     display: none;
@@ -370,11 +319,13 @@ input[type="checkbox"] {
     position: relative;
     box-shadow: 0 4px 24px #00A7F927;
     animation: animatetop 0.4s;
+    direction: rtl;
 }
 .close-btn {
     color: var(--text-color);
     position: absolute;
-    right: 10px;
+    /* Moved to the left for RTL alignment */
+    left: 10px;
     top: 7px;
     font-size: 28px;
     font-weight: bold;
@@ -391,13 +342,49 @@ input[type="checkbox"] {
     border-radius: 5px;
     margin-bottom: 15px;
     color: var(--text-color);
+    direction: rtl; /* Fixed to be consistent with popup content */
+    text-align: right; /* Fixed for RTL */
 }
 .popup-buttons {
     display: flex;
     justify-content: space-between;
     gap: 8px;
 }
-.popup-buttons button { width: 48%; padding: 10px; font-size: 1em; }
+.popup-buttons button {
+    /* Applying the same base style as summary-box button */
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 10px 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    box-shadow: 0 2px 5px #00A7F902;
+    transition: background 0.2s;
+    font-weight: 600;
+    /* Specific styling for popup buttons */
+    width: 48%; 
+    padding: 10px; 
+    font-size: 1em; 
+}
+.popup-buttons button:hover {
+    background: var(--button-hover);
+}
+
+#whatsappBtn {
+    background: var(--whatsapp-color);
+    color: white;
+}
+#whatsappBtn:hover {
+    background: #20b85a;
+}
+#copyListBtn {
+    /* No special color, inherits from .popup-buttons button */
+}
+#copyListBtn:hover {
+    /* Inherits hover color from .popup-buttons button:hover */
+}
+
 
 @keyframes animatetop {
     from {top: -300px; opacity: 0}
@@ -423,14 +410,14 @@ input[type="checkbox"] {
     h1 {
         font-size: 1.15rem;
         margin: 0;
-        text-align: right;
+        text-align: left;
         flex-grow: 1;
         padding: 0 10px;
     }
     #theme-toggle {
         min-width: 36px;
         min-height: 36px;
-        margin-left: 0;
+        margin-right: 0;
     }
     main {
         padding-bottom: 175px;
