@@ -1,11 +1,11 @@
 /*
     Final, Corrected Style Sheet for Mangawii-Game-Indexer
 
-    This CSS file provides a new, correct layout for the summary bar on both PC and mobile.
+    This CSS file provides a new, correct layout for the summary bar on PC view.
     
     Changes made:
-    -   Ensured the summary box text remains on a single line on all screen sizes.
-    -   Maintained the button position below the text on mobile view.
+    -   Removed flex-grow from the summary box info on PC view.
+    -   Updated the parent summary box to center the contents and use gap for spacing.
     -   Kept previous fixes for header size and logo visibility.
 */
 
@@ -305,14 +305,16 @@ input[type="checkbox"] {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    /* FIX: Center the content and use gap for spacing */
+    justify-content: center;
+    gap: 30px;
     padding: 18px 24px;
     z-index: 20;
     font-size: 1.13em;
 }
 
 .summary-box-info {
-    flex-grow: 1;
+    /* FIX: Removed flex-grow to prevent it from pushing the button off-screen */
     justify-content: center;
     display: flex;
     flex-direction: row;
@@ -445,13 +447,13 @@ input[type="checkbox"] {
         padding-bottom: 175px;
     }
     .summary-box {
-        flex-direction: column; /* This keeps the button below the text on mobile */
+        flex-direction: column;
         align-items: center;
         padding: 12px 8px;
         gap: 14px;
     }
     .summary-box-info {
-        flex-direction: row; /* This keeps the text on one line with dividers on mobile */
+        flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
         align-self: stretch;
@@ -459,7 +461,7 @@ input[type="checkbox"] {
         font-size: 1em;
     }
     .summary-box-info .divider {
-        display: block; /* The dividers will now be visible on mobile */
+        display: block;
     }
     .summary-box button {
         margin-top: 8px;
