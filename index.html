@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Game Selector</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Game Library</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>My Game Library</h1>
+    </header>
 
-<h1>Game Selector</h1>
+    <main>
+        <div id="gameList"></div>
+    </main>
+    
+    <div class="summary-box">
+        <h3>Summary</h3>
+        <p>Total Games Selected: <span id="totalGames">0</span></p>
+        <p>Total Size: <span id="totalSize">0.00</span> GB</p>
+        <p>Total Price: £<span id="totalPrice">0.00</span></p>
+        <button id="copySummary">Copy Summary</button>
+    </div>
 
-<div id="gameList"></div>
-
-<div id="summary">
-  <p>Total Size: <span id="totalSize">0</span> GB</p>
-  <p>Total Price: $<span id="totalPrice">0</span></p>
-  <button id="copySummary">Copy Summary</button>
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

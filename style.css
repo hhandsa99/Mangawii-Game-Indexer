@@ -1,33 +1,85 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 10px;
+    margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
 }
 
-h1 {
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
     text-align: center;
 }
 
-#gameList {
-    margin: 20px 0;
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 15px;
 }
 
 .letter-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .letter-heading {
+    font-size: 1.5rem;
     font-weight: bold;
-    font-size: 1.2em;
-    margin-top: 10px;
+    color: #555;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .game-item {
     display: flex;
     align-items: center;
-    margin: 3px 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.game-item:last-child {
+    border-bottom: none;
 }
 
 .game-item input[type="checkbox"] {
-    margin-right: 10px;
+    margin-right: 15px;
+    min-width: 20px;
+    min-height: 20px;
+}
+
+.summary-box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.summary-box p {
+    margin: 5px 10px 5px 0;
+}
+
+.summary-box button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+/* Media query for mobile responsiveness */
+@media (max-width: 600px) {
+    .summary-box {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
 }
