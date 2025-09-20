@@ -17,16 +17,16 @@ let selectedGames = new Set();
 let generatedSummary = '';
 
 // Modern SVG icons for theme toggle
-// Paths to your icons
-const sunIconPath = "images/sun.svg";
-const moonIconPath = "images/moon.svg";
+// Path to your SVG icons
+const lightIconPath = "images/light.svg";
+const darkIconPath = "images/dark.svg";
 
 function setThemeIcon() {
     if (document.body.getAttribute('data-theme') === 'dark') {
-        themeIcon.src = moonIconPath;
+        themeIcon.src = darkIconPath;
         themeIcon.alt = "الوضع الليلي";
     } else {
-        themeIcon.src = sunIconPath;
+        themeIcon.src = lightIconPath;
         themeIcon.alt = "الوضع النهاري";
     }
 }
