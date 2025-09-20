@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Mangawii Game Indexer - Admin Dashboard</title>
-    <!-- Corona Admin Template CSS (adjust paths if needed) -->
-    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/corona-style.css">
-    <!-- Custom styles (your overrides) -->
+    <!-- Corona Admin Template CSS -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <!-- Plugin CSS for this page (optional, if you use these features) -->
+    <!-- <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css"> -->
+    <!-- Main Corona Template CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,10 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <span class="menu-title">Game Indexer</span>
-                        <i class="fas fa-gamepad menu-icon"></i>
+                        <i class="mdi mdi-gamepad-variant menu-icon"></i>
                     </a>
                 </li>
-                <!-- Add other nav items if needed -->
             </ul>
         </nav>
         <div class="container-fluid page-body-wrapper">
@@ -79,10 +84,22 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
-    <!-- plugins:js -->
-    <script src="assets/vendors/jquery/jquery.min.js"></script>
-    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- plugins:js (Corona bundled vendor scripts) -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- Plugin js for this page (optional, if you use these features) -->
+    <!-- <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script> -->
+    <!-- inject:js (Corona core scripts) -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
     <!-- endinject -->
+    <!-- Your custom JS -->
     <script src="script.js"></script>
 </body>
 </html>
