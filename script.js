@@ -99,6 +99,7 @@ function renderGames() {
 }
 
 // Function to update the summary details
+// Function to update the summary details
 function updateSummary() {
     const selected = Array.from(document.querySelectorAll('#gameList input:checked'));
     let totalSize = 0;
@@ -113,6 +114,11 @@ function updateSummary() {
     }
     
     totalPrice = Math.round(totalPrice / 5) * 5;
+
+    // Set a minimum price of 20
+    if (totalPrice < 20) {
+        totalPrice = 20;
+    }
 
     totalGamesEl.textContent = selected.length;
     totalSizeEl.textContent = totalSize.toFixed(2);

@@ -56,7 +56,6 @@ header {
 .logo img {
     height: 80px;
     width: auto;
-    border-radius: 1%;
 }
 
 #theme-toggle {
@@ -129,6 +128,7 @@ tr:hover {
     align-items: center;
     flex-wrap: wrap;
     border-top: 2px solid var(--primary-color);
+	z-index: 10;
 }
 
 .summary-box p {
@@ -171,7 +171,6 @@ tr:hover {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
-    display: flex;
     justify-content: center;
     align-items: center;
 }
