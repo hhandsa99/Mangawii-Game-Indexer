@@ -133,7 +133,7 @@ copyListBtn.addEventListener('click', () => {
 // Event listener for the "Send via WhatsApp" button
 whatsappBtn.addEventListener('click', () => {
     // Replace with your specific WhatsApp number, including country code (e.g., "1234567890")
-    const phoneNumber = "YOUR_WHATSAPP_NUMBER_HERE"; 
+    const phoneNumber = "201204838286"; 
     const encodedMessage = encodeURIComponent(generatedSummary);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
