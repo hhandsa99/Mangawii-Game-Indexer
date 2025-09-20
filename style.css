@@ -1,14 +1,3 @@
-/*
-    Final, Corrected Style Sheet for Mangawii-Game-Indexer
-
-    This CSS file provides a new, correct layout for the summary bar on PC view.
-    
-    Changes made:
-    -   Removed flex-grow from the summary box info on PC view.
-    -   Updated the parent summary box to center the contents and use gap for spacing.
-    -   Kept previous fixes for header size and logo visibility.
-*/
-
 :root {
     --primary-color: #00A7F9;
     --primary-dark: #007bb5;
@@ -56,7 +45,8 @@
 }
 
 html, body {
-    font-family: 'Almarai', 'Segoe UI', 'Arial', sans-serif;
+    /* Updated font to Roboto Condensed */
+    font-family: 'Roboto Condensed', 'Segoe UI', 'Arial', sans-serif;
     background: var(--background-color);
     color: var(--text-color);
     margin: 0;
@@ -305,7 +295,6 @@ input[type="checkbox"] {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    /* FIX: Center the content and use gap for spacing */
     justify-content: center;
     gap: 30px;
     padding: 18px 24px;
@@ -314,7 +303,6 @@ input[type="checkbox"] {
 }
 
 .summary-box-info {
-    /* FIX: Removed flex-grow to prevent it from pushing the button off-screen */
     justify-content: center;
     display: flex;
     flex-direction: row;
