@@ -45,8 +45,9 @@
 }
 
 html, body {
-    /* Updated font to Roboto Condensed */
-    font-family: 'Roboto Condensed', 'Segoe UI', 'Arial', sans-serif;
+/* Use Geologica for Latin characters and Almarai as fallback for Arabic */
+    font-family: 'Geologica', 'Almarai', sans-serif;
+    font-weight: 700; /* All text will now be bold */
     background: var(--background-color);
     color: var(--text-color);
     margin: 0;
