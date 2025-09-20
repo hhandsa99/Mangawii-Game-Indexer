@@ -18,8 +18,8 @@ let generatedSummary = '';
 // Modern SVG icons for theme toggle
 const sunSVG = `
 <svg class="theme-icon-svg" viewBox="0 0 32 32">
-    <circle class="theme-icon-sun" cx="16" cy="16" r="9" stroke="var(--icon-fg)" stroke-width="2" fill="var(--accent-color)" />
-    <g stroke="var(--icon-fg)" stroke-width="2">
+    <circle class="theme-icon-sun" cx="16" cy="16" r="9" stroke="#00A7F9" stroke-width="2" fill="#ffd600" />
+    <g stroke="#00A7F9" stroke-width="2">
       <line x1="16" y1="3" x2="16" y2="7"/>
       <line x1="16" y1="25" x2="16" y2="29"/>
       <line x1="3" y1="16" x2="7" y2="16"/>
@@ -34,7 +34,7 @@ const sunSVG = `
 const moonSVG = `
 <svg class="theme-icon-svg" viewBox="0 0 32 32">
     <path class="theme-icon-moon" d="M25.5,18.5A11,11,0,1,1,17,6.5a9.5,9.5,0,1,0,8.5,12Z"
-          fill="var(--accent-color)" stroke="var(--icon-fg)" stroke-width="2"/>
+          fill="#ffd600" stroke="#00A7F9" stroke-width="2"/>
 </svg>
 `;
 
