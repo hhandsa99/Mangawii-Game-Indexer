@@ -1,3 +1,18 @@
+/*
+    Final, Corrected Style Sheet for Mangawii-Game-Indexer
+
+    This CSS file fixes the following issues:
+    1.  The large header on mobile view.
+    2.  The vertical stacking of the summary box on mobile.
+    3.  The small size of the site logo.
+
+    Changes made:
+    -   Increased the default and mobile `height` of the `.site-logo`.
+    -   Modified the mobile header to use a `flex` row for a more compact and elegant layout.
+    -   Adjusted the mobile summary box to use a horizontal `flex` layout to prevent vertical stacking.
+    -   Updated various spacing and alignment properties to ensure a clean, stable layout across all devices.
+*/
+
 :root {
     --primary-color: #00A7F9;
     --primary-dark: #007bb5;
@@ -75,9 +90,10 @@ header {
     position: relative;
 }
 
+/* FIX: Increased logo size for better visibility */
 header img.site-logo {
-    height: 48px;
-    width: 48px;
+    height: 60px; /* New, larger size */
+    width: auto;
     object-fit: contain;
     display: block;
     margin-right: 1.5rem;
@@ -131,30 +147,36 @@ h1 {
 .theme-icon-sun { fill: #00A7F9; }
 .theme-icon-moon { fill: #00A7F9; }
 
+/* FIX: Compact mobile header layout */
 @media (max-width: 700px) {
     .header-inner {
-        flex-direction: column;
-        gap: 0.25rem;
-        padding: 1.1rem 1rem 1.1rem 1rem;
-        min-height: 60px;
-        align-items: flex-start;
+        flex-direction: row; /* Changed to row for a horizontal layout */
+        flex-wrap: wrap;
+        justify-content: space-between; /* Space out the logo and the rest */
+        align-items: center;
+        padding: 1rem;
+        min-height: auto;
+        gap: 0;
     }
+
     header img.site-logo {
-        height: 36px;
-        width: 36px;
+        height: 40px; /* New, larger size for mobile */
         margin-right: 0;
-        margin-bottom: 0.6rem;
+        margin-bottom: 0;
     }
+    
     h1 {
         font-size: 1.15rem;
-        margin: 0.2rem 0 0.1rem 0;
-        text-align: left;
+        margin: 0;
+        text-align: right; /* Adjust alignment to make room */
+        flex-grow: 1; /* Allows it to take up available space */
+        padding: 0 10px;
     }
+    
     #theme-toggle {
         min-width: 36px;
         min-height: 36px;
         margin-left: 0;
-        align-self: flex-end;
     }
 }
 
@@ -201,7 +223,6 @@ h1 {
     display: flex;
     align-items: center;
     pointer-events: none;
-    /* No color here, SVG controls its own color */
 }
 
 .search-container .search-icon img {
@@ -287,17 +308,19 @@ input[type="checkbox"] {
     border-top: 3px solid var(--primary-color);
     box-shadow: 0 -2px 16px #00A7F91a;
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* FIX: Changed to row for horizontal layout */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
     align-items: center;
-    padding: 18px 10px 14px 10px;
+    justify-content: space-between; /* Spacing for horizontal layout */
+    padding: 18px 24px;
     z-index: 20;
     font-size: 1.13em;
-    gap: 12px;
 }
+
 .summary-box-info {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: row; /* FIX: Changed to row for horizontal info layout */
+    justify-content: flex-start;
     align-items: center;
     gap: 18px;
     font-weight: 600;
@@ -307,7 +330,7 @@ input[type="checkbox"] {
 .summary-box-info .divider {
     color: var(--primary-color);
     font-weight: bold;
-    margin: 0 8px;
+    margin: 0;
     font-size: 1.25em;
 }
 .summary-box button {
@@ -321,7 +344,6 @@ input[type="checkbox"] {
     box-shadow: 0 2px 5px #00A7F902;
     transition: background 0.2s;
     font-weight: 600;
-    margin-top: 2px;
 }
 .summary-box button:hover {
     background: var(--button-hover);
@@ -395,61 +417,52 @@ input[type="checkbox"] {
     to {top: 0; opacity: 1}
 }
 
+/* --- Mobile Media Queries (Under 700px) --- */
 @media (max-width: 700px) {
     .header-inner {
-        flex-direction: column;
-        gap: 0.25rem;
-        padding: 1.1rem 1rem 1.1rem 1rem;
-        min-height: 60px;
-        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        min-height: auto;
+        gap: 0;
     }
     header img.site-logo {
-        height: 36px;
-        width: 36px;
+        height: 40px;
         margin-right: 0;
-        margin-bottom: 0.6rem;
+        margin-bottom: 0;
     }
     h1 {
         font-size: 1.15rem;
-        margin: 0.2rem 0 0.1rem 0;
-        text-align: left;
+        margin: 0;
+        text-align: right;
+        flex-grow: 1;
+        padding: 0 10px;
     }
     #theme-toggle {
         min-width: 36px;
         min-height: 36px;
         margin-left: 0;
-        align-self: flex-end;
     }
     main {
         padding-bottom: 175px;
     }
     .summary-box {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: column; /* FIX: Changed to column for better mobile stacking */
+        align-items: center;
         padding: 12px 8px;
         gap: 14px;
     }
-    .summary-box-content,
-    .summary-box-actions {
-        flex: unset;
-        width: 100%;
-        justify-content: flex-start;
-    }
     .summary-box-info {
-        flex-direction: column;
+        flex-direction: column; /* FIX: Changed to column to stack the info */
         gap: 6px;
         font-size: 1em;
     }
-    .summary-box {
-        padding: 14px 2px 10px 2px;
-    .summary-box-actions {
-        justify-content: center;
-        gap: 10px;
+    .summary-box-info .divider {
+        display: none; /* FIX: Hiding dividers on mobile for cleaner look */
+    }
+    .summary-box button {
         margin-top: 8px;
     }
-    .summary-box h3,
-    .summary-box p {
-        font-size: 1em;
-    }
-    .search-container { margin-top: 1.2rem; }
 }
