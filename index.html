@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +12,10 @@
 <body data-theme="light">
     <header>
         <div class="header-inner">
-            <div class="logo">
-                <img src="images/site_logo.png" alt="شعار الموقع">
-            </div>
+            <img src="images/site_logo.png" alt="شعار الموقع" class="site-logo">
             <h1>ألعاب اوفلاين</h1>
             <button id="theme-toggle" title="تبديل الوضع" aria-label="تبديل الوضع">
-                <!-- SVG icon will be injected here by JS -->
+                <!-- SVG injected by JS -->
             </button>
         </div>
     </header>
@@ -25,7 +23,9 @@
     <main>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." autocomplete="off">
-            <span class="search-icon">🔍</span>
+            <span class="search-icon">
+                <img src="images/search.svg" alt="بحث">
+            </span>
         </div>
         <table id="gameList">
             <thead>
