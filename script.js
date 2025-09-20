@@ -1,3 +1,23 @@
+// ... (All existing code remains the same)
+
+// New JavaScript for theme switching
+const themeToggleBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+themeToggleBtn.addEventListener('click', () => {
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.setAttribute('data-theme', 'light');
+        themeToggleBtn.textContent = '☀️'; // Sun emoji for light mode
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        themeToggleBtn.textContent = '🌙'; // Moon emoji for dark mode
+    }
+});
+
+// The rest of your functions (fetch, renderGames, updateSummary, popup logic, etc.)
+// from the previous complete script remain unchanged.
+// Paste them after the above code.
+
 const totalGamesEl = document.getElementById('totalGames');
 const totalSizeEl = document.getElementById('totalSize');
 const totalPriceEl = document.getElementById('totalPrice');
@@ -9,13 +29,8 @@ const copyListBtn = document.getElementById('copyListBtn');
 const whatsappBtn = document.getElementById('whatsappBtn');
 
 let allGames = [];
-let generatedSummary = ''; // Store the summary to use in the popup
+let generatedSummary = '';
 
-// ... (fetch and renderGames functions from the previous response remain the same)
-
-// The fetch logic and renderGames function
-// Make sure this is the correct version with the table rendering
-// ... (Your existing fetch and renderGames code here)
 fetch('JSON/filelist.json')
     .then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -23,7 +38,6 @@ fetch('JSON/filelist.json')
     })
     .then(fileNames => {
         const jsonFiles = fileNames.map(name => `JSON/${name}`);
-        
         return Promise.all(jsonFiles.map(file => fetch(file).then(res => {
             if (!res.ok) throw new Error(`HTTP error! status: ${res.status} for file ${file}`);
             return res.json();
@@ -54,15 +68,12 @@ function renderGames() {
         checkbox.addEventListener('change', updateSummary);
         checkboxCell.appendChild(checkbox);
         row.appendChild(checkboxCell);
-
         const nameCell = document.createElement('td');
         nameCell.textContent = game.Name;
         row.appendChild(nameCell);
-
         const sizeCell = document.createElement('td');
         sizeCell.textContent = `${game.SizeGB} GB`;
         row.appendChild(sizeCell);
-        
         tableBody.appendChild(row);
     });
 }
@@ -70,21 +81,16 @@ function renderGames() {
 function updateSummary() {
     const selected = Array.from(document.querySelectorAll('#gameList input:checked'));
     let totalSize = 0;
-    
     selected.forEach(cb => {
         totalSize += parseFloat(cb.dataset.size);
     });
-
     let totalPrice = totalSize;
     if (totalSize > 100) {
         totalPrice /= 2;
     }
-
     totalGamesEl.textContent = selected.length;
     totalSizeEl.textContent = totalSize.toFixed(2);
     totalPriceEl.textContent = totalPrice.toFixed(2);
-    
-    // Generate and store the summary for the popup
     let summaryText = '';
     selected.forEach(cb => {
         summaryText += `${cb.dataset.name} | ${cb.dataset.size} GB | Drive: ${cb.dataset.drive}\n`;
@@ -95,7 +101,6 @@ function updateSummary() {
     generatedSummary = summaryText;
 }
 
-// Event listeners for the popup
 openSummaryBtn.addEventListener('click', () => {
     const selected = Array.from(document.querySelectorAll('#gameList input:checked'));
     if (selected.length === 0) {
@@ -110,14 +115,12 @@ closeBtn.addEventListener('click', () => {
     popup.style.display = 'none';
 });
 
-// Close popup if the user clicks outside of it
 window.addEventListener('click', (event) => {
     if (event.target === popup) {
         popup.style.display = 'none';
     }
 });
 
-// Event listener for the "Copy List" button
 copyListBtn.addEventListener('click', () => {
     navigator.clipboard.writeText(generatedSummary)
     .then(() => {
@@ -130,10 +133,8 @@ copyListBtn.addEventListener('click', () => {
     });
 });
 
-// Event listener for the "Send via WhatsApp" button
 whatsappBtn.addEventListener('click', () => {
-    // Replace with your specific WhatsApp number, including country code (e.g., "1234567890")
-    const phoneNumber = "201204838286"; 
+    const phoneNumber = "201204838286";
     const encodedMessage = encodeURIComponent(generatedSummary);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
