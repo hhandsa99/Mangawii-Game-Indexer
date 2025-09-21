@@ -11,45 +11,46 @@
 </head>
 <body data-theme="light">
     <header>
-    <div class="header-inner">
-        <img src="images/site_logo.png" alt="شعار الموقع" class="site-logo">
-        <h1>قسم الألعاب</h1>
-        <button id="theme-toggle" title="تبديل الوضع" aria-label="تبديل الوضع">
-    <img id="theme-icon" src="images/light.svg" alt="تبديل الوضع" />
-        </button>
-    </div>
-</header>
-
-    <main>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="ابحث عن لعبة" autocomplete="off">
-            <span class="search-icon">
-                <img src="images/search.svg" alt="بحث">
-            </span>
+        <div class="header-inner">
+            <img src="images/site_logo.png" alt="شعار الموقع" class="site-logo">
+            <h1>قسم الألعاب</h1>
+            <button id="theme-toggle" title="تبديل الوضع" aria-label="تبديل الوضع">
+                <img id="theme-icon" src="images/light.svg" alt="تبديل الوضع" />
+            </button>
         </div>
-        <table id="gameList">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>اسم اللعبة</th>
-                    <th>الحجم</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </main>
-    
-    <div class="summary-box">
-    <div class="summary-box-info">
-        <span>الحجم الكلي: <span id="totalSize">0.00</span> جيجا</span>
-        <span class="divider">|</span>
-        <span>السعر: <span id="totalPrice">0.00</span> جنيه</span>
-        <span class="divider">|</span>
-        <span>الألعاب المحددة: <span id="totalGames">0</span></span>
+    </header>
+
+    <div class="page-container">
+        <main>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="ابحث عن لعبة" autocomplete="off">
+                <span class="search-icon">
+                    <img src="images/search.svg" alt="بحث">
+                </span>
+            </div>
+            <table id="gameList">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>اسم اللعبة</th>
+                        <th>الحجم</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </main>
+        
+        <div class="summary-box">
+            <div class="summary-box-info">
+                <span>الحجم الكلي: <span id="totalSize">0.00</span> جيجا</span>
+                <span class="divider">|</span>
+                <span>السعر: <span id="totalPrice">0.00</span> جنيه</span>
+                <span class="divider">|</span>
+                <span>الألعاب المحددة: <span id="totalGames">0</span></span>
+            </div>
+            <button id="openSummaryPopup">تأكيد</button>
+        </div>
     </div>
-    <button id="openSummaryPopup">تأكيد</button>
-</div>
-</div>
 
     <div id="popup" class="popup-container">
         <div class="popup-content">
