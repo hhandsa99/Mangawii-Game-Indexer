@@ -57,6 +57,13 @@ html, body {
     direction: ltr; 
 }
 
+/* This new container class ensures consistent max-width and centering for all main content */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
 /* --- HEADER --- */
 header {
     background: var(--header-bg);
@@ -66,15 +73,14 @@ header {
 }
 
 .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0.6rem 2.4rem 0.6rem 2.4rem;
+    padding: 0.6rem 2.4rem; /* Padding for mobile view */
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 2.2rem;
     min-height: 74px;
-    position: relative;
+    max-width: 1200px; /* Use a wider container for the header to look better */
+    margin: 0 auto;
 }
 
 header img.site-logo {
@@ -139,7 +145,6 @@ h1 {
 
 .search-container input {
     width: 100%;
-    /* Switched padding to correctly align text with icon */
     padding: 0.8rem 1.2rem 0.8rem 2.8rem;
     border-radius: 30px;
     border: none;
@@ -150,7 +155,6 @@ h1 {
     transition: background 0.2s;
     font-weight: 500;
     letter-spacing: 0.5px;
-    /* Aligned text to the left for LTR */
     text-align: left;
 }
 
@@ -160,8 +164,7 @@ h1 {
 
 .search-container .search-icon {
     position: absolute;
-    /* Moved icon to the right side for LTR layout */
-    left: 1.3rem;
+    right: 1.3rem;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -178,8 +181,6 @@ h1 {
 
 /* --- MAIN/TABLE --- */
 main {
-    max-width: 900px;
-    margin: 0 auto;
     padding: 0 10px 140px 10px;
 }
 
@@ -201,7 +202,6 @@ thead {
 
 th, td {
     padding: 14px 10px;
-    /* Aligned text to the left for LTR */
     text-align: left;
     border-bottom: 1px solid var(--table-border);
 }
@@ -231,7 +231,6 @@ tr:hover:not(.letter-separator) {
     position: sticky;
     top: 0;
     z-index: 5;
-    /* Aligned text to the left for LTR */
     text-align: left;
     color: var(--primary-color);
     border-bottom: 2px solid var(--primary-color);
@@ -247,7 +246,6 @@ input[type="checkbox"] {
 .summary-box {
     position: fixed;
     bottom: 0;
-    /* Pinned to the left side for LTR */
     left: 0;
     width: 100%;
     background: var(--summary-bg);
@@ -283,9 +281,8 @@ input[type="checkbox"] {
     font-size: 1.25em;
 }
 
-/* Base button style for summary and popup */
-.summary-box button,
-.popup-buttons button {
+/* Shared button class for consistent styling */
+.button-style {
     background: var(--button-bg);
     color: var(--button-text);
     border: none;
@@ -298,22 +295,12 @@ input[type="checkbox"] {
     font-weight: 600;
 }
 
-.summary-box button:hover,
-.popup-buttons button:hover {
+.button-style:hover {
     background: var(--button-hover);
 }
 
-/* Specific button styles for WhatsApp and Copy */
-#copyListBtn {
-    width: 48%; 
-    padding: 10px; 
-    font-size: 1em;
-}
-
+/* Specific overrides for WhatsApp and Copy buttons */
 #whatsappBtn {
-    width: 48%;
-    padding: 10px;
-    font-size: 1em;
     background: var(--whatsapp-color);
     color: white;
 }
@@ -355,7 +342,6 @@ input[type="checkbox"] {
 .close-btn {
     color: var(--text-color);
     position: absolute;
-    /* Pinned to the right for LTR */
     right: 10px;
     top: 7px;
     font-size: 28px;
@@ -375,7 +361,8 @@ input[type="checkbox"] {
     border-radius: 5px;
     margin-bottom: 15px;
     color: var(--text-color);
-    direction: rtl; /* Retained RTL for Arabic text content */
+    /* Retain RTL for Arabic text content within the LTR layout */
+    direction: rtl;
     text-align: right;
 }
 
