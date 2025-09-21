@@ -151,7 +151,7 @@ h1 {
     font-weight: 500;
     letter-spacing: 0.5px;
     /* Aligned text to the left for LTR */
-    text-align: left;
+    text-align: right;
 }
 
 .search-container input:focus {
