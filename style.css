@@ -390,6 +390,22 @@ input[type="checkbox"] {
 
 /* --- Mobile Media Queries (Under 700px) --- */
 @media (max-width: 700px) {
+    /* Remove padding from page-container on mobile to allow edge-to-edge */
+    .page-container {
+        padding: 0;
+    }
+    
+    /* Add margin to search container for proper spacing */
+    .search-container {
+        margin: 2rem 10px 0 10px;
+        border-radius: 20px;
+    }
+    
+    /* Add padding back to main content */
+    main {
+        padding: 0.7rem 10px 175px 10px;
+    }
+    
     .header-inner {
         flex-direction: row;
         flex-wrap: wrap;
@@ -415,9 +431,6 @@ input[type="checkbox"] {
         min-width: 36px;
         min-height: 36px;
         margin-left: 0;
-    }
-    main {
-        padding-bottom: 175px;
     }
     .summary-box {
         flex-direction: column;
