@@ -83,7 +83,7 @@ function renderGames() {
     if (filteredGames.length === 0) {
         const emptyRow = document.createElement('tr');
         emptyRow.innerHTML = `
-            <td colspan="4" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+            <td colspan="3" style="text-align: center; padding: 2rem; color: var(--text-muted);">
                 <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
                 لا توجد ألعاب مطابقة للبحث
             </td>
@@ -105,7 +105,7 @@ function renderGames() {
         // Letter separator
         const separatorRow = document.createElement('tr');
         separatorRow.className = 'letter-separator';
-        separatorRow.innerHTML = `<td colspan="4">${letter}</td>`;
+        separatorRow.innerHTML = `<td colspan="3">${letter}</td>`;
         tableBody.appendChild(separatorRow);
 
         // Games in this letter group
@@ -119,7 +119,6 @@ function renderGames() {
                 </td>
                 <td class="name-col">${game.Name}</td>
                 <td class="size-col">${game.SizeGB} GB</td>
-                <td class="drive-col">${game.Drive}</td>
             `;
             tableBody.appendChild(row);
         });
@@ -186,7 +185,7 @@ function updateSummary() {
     animateValue(totalSizeEl, parseFloat(totalSizeEl.textContent) || 0, totalSize, 500);
     animateValue(totalPriceEl, parseFloat(totalPriceEl.textContent) || 0, totalPrice, 500);
 
-    // Generate summary text
+    // Generate summary text (still includes drive info in popup)
     let summaryText = '';
     selected.forEach(game => {
         summaryText += `${game.Name} | ${game.SizeGB} GB | Drive: ${game.Drive}\n`;
@@ -282,7 +281,7 @@ function showNotification(message, type = 'info') {
         align-items: center;
         gap: var(--space-sm);
         color: var(--text-primary);
-        font-weight: 500;
+        font-weight: 600;
         animation: slideInRight 0.3s ease-out;
     `;
     
