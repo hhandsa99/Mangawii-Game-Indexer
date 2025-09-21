@@ -57,7 +57,7 @@ html, body {
     direction: ltr;  
 }
 
-/* ADDED NEW CLASS TO HOLD THE CONTENT */
+/* NEW: Consistent container for all main content */
 .page-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -73,8 +73,7 @@ header {
 }
 
 .header-inner {
-    /* REMOVED MAX-WIDTH AND MARGIN TO ALLOW FULL WIDTH */
-    padding: 0.6rem 2.4rem 0.6rem 2.4rem;
+    padding: 0.6rem 2.4rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -131,7 +130,7 @@ h1 {
 .search-container {
     display: flex;
     align-items: center;
-    /* REMOVED MAX-WIDTH AND MARGIN TO ALIGN WITH CONTENT CONTAINER */
+    width: 100%;
     position: relative;
     background: var(--search-bg);
     border-radius: 30px;
@@ -139,11 +138,11 @@ h1 {
     box-shadow: 0 2px 10px 0 #00A7F903;
     transition: border-color 0.2s, box-shadow 0.2s;
     direction: ltr;
+    margin-top: 2rem; /* Added margin for space below header */
 }
 
 .search-container input {
     width: 100%;
-    /* Switched padding to correctly align text with icon */
     padding: 0.8rem 1.2rem 0.8rem 2.8rem;
     border-radius: 30px;
     border: none;
@@ -154,7 +153,6 @@ h1 {
     transition: background 0.2s;
     font-weight: 500;
     letter-spacing: 0.5px;
-    /* Aligned text to the left for LTR */
     text-align: right;
 }
 
@@ -164,7 +162,6 @@ h1 {
 
 .search-container .search-icon {
     position: absolute;
-    /* Moved icon to the right side for LTR layout */
     left: 1.3rem;
     top: 50%;
     transform: translateY(-50%);
@@ -182,8 +179,8 @@ h1 {
 
 /* --- MAIN/TABLE --- */
 main {
-    /* REMOVED MAX-WIDTH AND MARGIN TO ALIGN WITH PAGE-CONTAINER */
-    padding: 0 10px 140px 10px;
+    padding-top: 0.7rem; /* Added padding for space above main content */
+    padding-bottom: 140px;
 }
 
 table {
@@ -204,7 +201,6 @@ thead {
 
 th, td {
     padding: 14px 10px;
-    /* Aligned text to the left for LTR */
     text-align: left;
     border-bottom: 1px solid var(--table-border);
 }
@@ -234,7 +230,6 @@ tr:hover:not(.letter-separator) {
     position: sticky;
     top: 0;
     z-index: 5;
-    /* Aligned text to the left for LTR */
     text-align: left;
     color: var(--primary-color);
     border-bottom: 2px solid var(--primary-color);
@@ -250,7 +245,6 @@ input[type="checkbox"] {
 .summary-box {
     position: fixed;
     bottom: 0;
-    /* Pinned to the left side for LTR */
     left: 0;
     width: 100%;
     background: var(--summary-bg);
@@ -358,7 +352,6 @@ input[type="checkbox"] {
 .close-btn {
     color: var(--text-color);
     position: absolute;
-    /* Pinned to the right for LTR */
     right: 10px;
     top: 7px;
     font-size: 28px;
