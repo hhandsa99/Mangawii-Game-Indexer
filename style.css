@@ -54,7 +54,14 @@ html, body {
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    direction: ltr; 
+    direction: ltr;  
+}
+
+/* ADDED NEW CLASS TO HOLD THE CONTENT */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
 }
 
 /* --- HEADER --- */
@@ -66,8 +73,7 @@ header {
 }
 
 .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
+    /* REMOVED MAX-WIDTH AND MARGIN TO ALLOW FULL WIDTH */
     padding: 0.6rem 2.4rem 0.6rem 2.4rem;
     display: flex;
     align-items: center;
@@ -125,9 +131,7 @@ h1 {
 .search-container {
     display: flex;
     align-items: center;
-    margin: 2rem auto 0.7rem auto;
-    max-width: 420px;
-    width: 100%;
+    /* REMOVED MAX-WIDTH AND MARGIN TO ALIGN WITH CONTENT CONTAINER */
     position: relative;
     background: var(--search-bg);
     border-radius: 30px;
@@ -178,8 +182,7 @@ h1 {
 
 /* --- MAIN/TABLE --- */
 main {
-    max-width: 900px;
-    margin: 0 auto;
+    /* REMOVED MAX-WIDTH AND MARGIN TO ALIGN WITH PAGE-CONTAINER */
     padding: 0 10px 140px 10px;
 }
 
@@ -305,8 +308,8 @@ input[type="checkbox"] {
 
 /* Specific button styles for WhatsApp and Copy */
 #copyListBtn {
-    width: 48%; 
-    padding: 10px; 
+    width: 48%;  
+    padding: 10px;  
     font-size: 1em;
 }
 
