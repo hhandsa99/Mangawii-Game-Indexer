@@ -1,254 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mangawii Game Indexer - Windows 11 Style</title>
+    <title>TECHNICAL | GAMES - Windows 11 Style</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body data-theme="light">
     <!-- Windows 11 Style Title Bar -->
     <div class="title-bar">
         <div class="title-bar-controls">
             <div class="window-controls">
-                <button class="control-btn minimize" title="Minimize">
+                <button class="control-btn minimize" title="تصغير">
                     <i class="fas fa-minus"></i>
                 </button>
-                <button class="control-btn maximize" title="Maximize">
+                <button class="control-btn maximize" title="تكبير">
                     <i class="fas fa-square"></i>
                 </button>
-                <button class="control-btn close" title="Close">
+                <button class="control-btn close" title="إغلاق">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
         </div>
         <div class="title-bar-title">
             <i class="fas fa-gamepad"></i>
-            Mangawii Game Indexer
+            TECHNICAL | GAMES
         </div>
     </div>
 
-    <!-- Main Application Container -->
-    <div class="app-container">
-        <!-- Sidebar Navigation -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <div class="logo">
-                    <i class="fas fa-gamepad"></i>
-                    <span>Mangawii</span>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="images/site_logo.png" alt="شعار الموقع" class="site-logo">
+                    <h1 class="site-title">قسم الألعاب</h1>
                 </div>
+                <button id="theme-toggle" class="theme-toggle" title="تبديل الوضع" aria-label="تبديل الوضع">
+                    <i class="fas fa-sun theme-icon"></i>
+                </button>
             </div>
-            
-            <div class="nav-menu">
-                <div class="nav-item active" data-section="dashboard">
-                    <i class="fas fa-home"></i>
-                    <span>Dashboard</span>
-                </div>
-                <div class="nav-item" data-section="games">
-                    <i class="fas fa-gamepad"></i>
-                    <span>Games</span>
-                </div>
-                <div class="nav-item" data-section="library">
-                    <i class="fas fa-book"></i>
-                    <span>Library</span>
-                </div>
-                <div class="nav-item" data-section="favorites">
-                    <i class="fas fa-heart"></i>
-                    <span>Favorites</span>
-                </div>
-                <div class="nav-item" data-section="settings">
-                    <i class="fas fa-cog"></i>
-                    <span>Settings</span>
-                </div>
-            </div>
+        </div>
+    </header>
 
-            <div class="sidebar-footer">
-                <div class="user-profile">
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="user-info">
-                        <span class="username">Player</span>
-                        <span class="user-status">Online</span>
-                    </div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن لعبة..." autocomplete="off">
+                    <button class="search-clear" id="searchClear" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
             </div>
-        </nav>
+        </section>
 
-        <!-- Main Content Area -->
-        <main class="main-content">
-            <!-- Header -->
-            <header class="content-header">
-                <div class="search-container">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Search games..." id="searchInput">
+        <!-- Games List Section -->
+        <section class="games-section">
+            <div class="games-container">
+                <div class="games-header">
+                    <h2 class="games-title">قائمة الألعاب</h2>
+                    <div class="games-stats">
+                        <span class="stat-item">
+                            <i class="fas fa-gamepad"></i>
+                            <span id="totalGamesCount">0</span> لعبة
+                        </span>
                     </div>
                 </div>
                 
-                <div class="header-actions">
-                    <button class="action-btn" title="Notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </button>
-                    <button class="action-btn" title="Settings">
-                        <i class="fas fa-cog"></i>
-                    </button>
+                <div class="games-table-container">
+                    <table id="gameList" class="games-table">
+                        <thead>
+                            <tr>
+                                <th class="checkbox-col">
+                                    <input type="checkbox" id="selectAll" class="select-all-checkbox">
+                                </th>
+                                <th class="name-col">اسم اللعبة</th>
+                                <th class="size-col">الحجم</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
-            </header>
+            </div>
+        </section>
+    </main>
 
-            <!-- Dashboard Section -->
-            <section id="dashboard" class="content-section active">
-                <div class="section-header">
-                    <h1>Dashboard</h1>
-                    <p>Welcome to your gaming hub</p>
+    <!-- Summary Bar -->
+    <div class="summary-bar">
+        <div class="summary-content">
+            <div class="summary-info">
+                <div class="summary-item">
+                    <i class="fas fa-hdd"></i>
+                    <span class="summary-label">الحجم الكلي:</span>
+                    <span class="summary-value" id="totalSize">0.00</span>
+                    <span class="summary-unit">جيجا</span>
                 </div>
-
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3>Total Games</h3>
-                            <span class="stat-number">1,247</span>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3>Play Time</h3>
-                            <span class="stat-number">342h</span>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3>Favorites</h3>
-                            <span class="stat-number">89</span>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3>Achievements</h3>
-                            <span class="stat-number">156</span>
-                        </div>
-                    </div>
+                <div class="summary-divider"></div>
+                <div class="summary-item">
+                    <i class="fas fa-tag"></i>
+                    <span class="summary-label">السعر:</span>
+                    <span class="summary-value" id="totalPrice">0.00</span>
+                    <span class="summary-unit">جنيه</span>
                 </div>
-
-                <div class="content-grid">
-                    <div class="content-card">
-                        <div class="card-header">
-                            <h3>Recent Games</h3>
-                            <button class="btn-secondary">View All</button>
-                        </div>
-                        <div class="game-list" id="recentGames">
-                            <!-- Recent games will be populated here -->
-                        </div>
-                    </div>
-
-                    <div class="content-card">
-                        <div class="card-header">
-                            <h3>Quick Actions</h3>
-                        </div>
-                        <div class="quick-actions">
-                            <button class="quick-action-btn">
-                                <i class="fas fa-plus"></i>
-                                <span>Add Game</span>
-                            </button>
-                            <button class="quick-action-btn">
-                                <i class="fas fa-download"></i>
-                                <span>Import Library</span>
-                            </button>
-                            <button class="quick-action-btn">
-                                <i class="fas fa-share"></i>
-                                <span>Share Library</span>
-                            </button>
-                        </div>
-                    </div>
+                <div class="summary-divider"></div>
+                <div class="summary-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span class="summary-label">المحددة:</span>
+                    <span class="summary-value" id="totalGames">0</span>
+                    <span class="summary-unit">لعبة</span>
                 </div>
-            </section>
-
-            <!-- Games Section -->
-            <section id="games" class="content-section">
-                <div class="section-header">
-                    <h1>Games Library</h1>
-                    <div class="section-actions">
-                        <div class="view-toggle">
-                            <button class="toggle-btn active" data-view="grid">
-                                <i class="fas fa-th"></i>
-                            </button>
-                            <button class="toggle-btn" data-view="list">
-                                <i class="fas fa-list"></i>
-                            </button>
-                        </div>
-                        <button class="btn-primary">
-                            <i class="fas fa-plus"></i>
-                            Add Game
-                        </button>
-                    </div>
-                </div>
-
-                <div class="games-container" id="gamesContainer">
-                    <!-- Games will be populated here -->
-                </div>
-            </section>
-
-            <!-- Library Section -->
-            <section id="library" class="content-section">
-                <div class="section-header">
-                    <h1>Library Management</h1>
-                    <p>Organize and manage your game collection</p>
-                </div>
-                <!-- Library content will be here -->
-            </section>
-
-            <!-- Favorites Section -->
-            <section id="favorites" class="content-section">
-                <div class="section-header">
-                    <h1>Favorite Games</h1>
-                    <p>Your most loved games</p>
-                </div>
-                <!-- Favorites content will be here -->
-            </section>
-
-            <!-- Settings Section -->
-            <section id="settings" class="content-section">
-                <div class="section-header">
-                    <h1>Settings</h1>
-                    <p>Customize your experience</p>
-                </div>
-                <!-- Settings content will be here -->
-            </section>
-        </main>
+            </div>
+            <button id="openSummaryPopup" class="summary-btn">
+                <i class="fas fa-shopping-cart"></i>
+                تأكيد الطلب
+            </button>
+        </div>
     </div>
 
-    <!-- Game Modal -->
-    <div id="gameModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Game Details</h2>
-                <button class="modal-close">
+    <!-- Popup Modal -->
+    <div id="popup" class="popup-overlay">
+        <div class="popup-container">
+            <div class="popup-header">
+                <h3 class="popup-title">
+                    <i class="fas fa-clipboard-list"></i>
+                    ملخص الطلب
+                </h3>
+                <button class="popup-close" id="closeBtn">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Game details will be populated here -->
+            <div class="popup-content">
+                <div class="popup-text" id="summaryText"></div>
             </div>
+            <div class="popup-actions">
+                <button id="copyListBtn" class="popup-btn copy-btn">
+                    <i class="fas fa-copy"></i>
+                    نسخ
+                </button>
+                <button id="whatsappBtn" class="popup-btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    واتساب
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>جاري تحميل الألعاب...</p>
         </div>
     </div>
 
