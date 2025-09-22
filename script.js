@@ -225,4 +225,194 @@ function animateValue(element, start, end, duration) {
 }
 
 // ===== WINDOWS 11 POPUP MANAGEMENT =====
-function openSummaryP
+function openSummaryPopup() {
+    const selected = allGames.filter(game => selectedGames.has(game.Name));
+    if (selected.length === 0) {
+        showNotification('لم يتم تحديد أي ألعاب.', 'warning');
+        return;
+    }
+    
+    summaryTextDiv.textContent = generatedSummary;
+    popup.classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeSummaryPopup() {
+    popup.classList.remove('show');
+    document.body.style.overflow = 'auto';
+}
+
+function copyToClipboard() {
+    navigator.clipboard.writeText(generatedSummary)
+        .then(() => {
+            showNotification('تم نسخ الملخص إلى الحافظة!', 'success');
+            closeSummaryPopup();
+        })
+        .catch(() => {
+            showNotification('فشل النسخ. حاول مرة أخرى.', 'error');
+        });
+}
+
+function sendToWhatsApp() {
+    const phoneNumber = "201204838286";
+    const encodedMessage = encodeURIComponent(generatedSummary);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+    closeSummaryPopup();
+}
+
+// ===== WINDOWS 11 NOTIFICATION SYSTEM =====
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
+        <span>${message}</span>
+    `;
+    
+    // Windows 11 style notification
+    notification.style.cssText = `
+        position: fixed;
+        top: 60px;
+        right: 20px;
+        background: var(--surface-primary);
+        border: 1px solid var(--border-primary);
+        border-radius: var(--radius-lg);
+        padding: var(--space-md) var(--space-lg);
+        box-shadow: var(--shadow-lg);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        color: var(--text-primary);
+        font-weight: 600;
+        animation: slideInRight 0.3s ease-out;
+        backdrop-filter: blur(10px);
+        max-width: 400px;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease-in';
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+// ===== DATA LOADING =====
+async function loadGames() {
+    showLoading();
+    
+    try {
+        const response = await fetch('JSON/filelist.json');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const fileNames = await response.json();
+        const jsonFiles = fileNames.map(name => `JSON/${name}`);
+        
+        const results = await Promise.all(
+            jsonFiles.map(file => 
+                fetch(file).then(res => {
+                    if (!res.ok) throw new Error(`HTTP error! status: ${res.status} for file ${file}`);
+                    return res.json();
+                })
+            )
+        );
+        
+        allGames = results.flat();
+        allGames.sort((a, b) => a.Name.localeCompare(b.Name));
+        filteredGames = [...allGames];
+        
+        renderGames();
+        updateSummary();
+        updateGamesCount();
+        
+        showNotification(`تم تحميل ${allGames.length} لعبة بنجاح!`, 'success');
+        
+    } catch (error) {
+        console.error('Error loading game data:', error);
+        document.querySelector('.games-table-container').innerHTML = `
+            <div style="text-align: center; padding: 3rem; color: var(--text-muted);">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                <h3>تعذر تحميل قائمة الألعاب</h3>
+                <p>تأكد من وجود ملفات JSON في المكان الصحيح.</p>
+                <button onclick="loadGames()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--primary-color); color: white; border: none; border-radius: var(--radius-md); cursor: pointer;">
+                    إعادة المحاولة
+                </button>
+            </div>
+        `;
+        showNotification('فشل في تحميل الألعاب', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+// ===== WINDOWS 11 WINDOW CONTROLS =====
+function setupWindowControls() {
+    // Window control buttons (for demo purposes)
+    document.querySelector('.minimize')?.addEventListener('click', () => {
+        showNotification('تم تصغير النافذة', 'info');
+    });
+
+    document.querySelector('.maximize')?.addEventListener('click', () => {
+        showNotification('تم تكبير النافذة', 'info');
+    });
+
+    document.querySelector('.close')?.addEventListener('click', () => {
+        showNotification('تم إغلاق النافذة', 'info');
+    });
+}
+
+// ===== EVENT LISTENERS =====
+document.addEventListener('DOMContentLoaded', () => {
+    setThemeIcon();
+    loadGames();
+    setupWindowControls();
+});
+
+themeToggleBtn.addEventListener('click', toggleTheme);
+searchInput.addEventListener('input', handleSearch);
+searchClear.addEventListener('click', clearSearch);
+selectAllCheckbox.addEventListener('change', handleSelectAll);
+openSummaryBtn.addEventListener('click', openSummaryPopup);
+closeBtn.addEventListener('click', closeSummaryPopup);
+copyListBtn.addEventListener('click', copyToClipboard);
+whatsappBtn.addEventListener('click', sendToWhatsApp);
+
+// Close popup when clicking outside
+popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+        closeSummaryPopup();
+    }
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popup.classList.contains('show')) {
+        closeSummaryPopup();
+    }
+    if (e.ctrlKey && e.key === 'f') {
+        e.preventDefault();
+        searchInput.focus();
+    }
+});
+
+// Add CSS for Windows 11 notifications
+const notificationStyles = `
+    @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOutRight {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
+
+const styleSheet = document.createElement('style');
+styleSheet.textContent = notificationStyles;
+document.head.appendChild(styleSheet);
