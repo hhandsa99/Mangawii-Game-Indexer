@@ -24,24 +24,51 @@ function cacheResult(gameName, url) {
   }
 }
 
-// Main function to get the game's cover image URL
-export async function getGameImageUrl(gameName) {
+// Fetch RAWG data by ID for a perfect match
+async function fetchFromRawgById(rawgId) {
+  const RAWG_API_KEY = '80f68c03ae8245a2a0ed6d365d3f5ea8';
+  if (!RAWG_API_KEY || !rawgId) return '';
+  try {
+    const url = `https://api.rawg.io/api/games/${rawgId}?key=${RAWG_API_KEY}`;
+    const res = await fetch(url);
+    if (!res.ok) return '';
+    const data = await res.json();
+    return data?.background_image || '';
+  } catch (err) {
+    console.error('RAWG fetch by ID error:', err);
+    return '';
+  }
+}
+
+// Main function: accepts either a string (name) or a JSON object with Name/rawg_id
+export async function getGameImageUrl(game) {
+  // game can be a string (name) or an object with { Name, rawg_id }
+  const gameName = typeof game === "string" ? game : game.Name;
+  const rawgId = typeof game === "object" ? game.rawg_id : undefined;
+
   // Check cache first to avoid unnecessary API calls
   try {
     const cached = localStorage.getItem(storageKey(gameName));
     if (cached) return cached;
-  } catch (_) {
-    // Caching might fail, but we can still proceed with fetching
+  } catch (_) {}
+
+  // Step 1: Try RAWG by ID if available
+  if (rawgId) {
+    const byId = await fetchFromRawgById(rawgId);
+    if (byId) {
+      cacheResult(gameName, byId);
+      return byId;
+    }
   }
 
-  // Step 1: Attempt to find a match using the RAWG API
+  // Step 2: Attempt to find a match using the RAWG API by name
   const rawgImageUrl = await fetchFromRawg(gameName);
   if (rawgImageUrl) {
     cacheResult(gameName, rawgImageUrl);
     return rawgImageUrl;
   }
 
-  // Step 2: Fallback to Google Search tool if RAWG fails
+  // Step 3: Fallback to Google Search tool if RAWG fails
   const googleImageUrl = await searchGoogleForImage(gameName);
   if (googleImageUrl) {
     cacheResult(gameName, googleImageUrl);
@@ -53,7 +80,7 @@ export async function getGameImageUrl(gameName) {
   return '';
 }
 
-// Attempts to fetch an image from the RAWG API
+// Attempts to fetch an image from the RAWG API by name search
 async function fetchFromRawg(query) {
   const RAWG_API_KEY = '80f68c03ae8245a2a0ed6d365d3f5ea8';
 
