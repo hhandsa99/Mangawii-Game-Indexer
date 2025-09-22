@@ -1,0 +1,1039 @@
+// Game data structure - this will be populated from your JSON files
+export const gameData = [
+  {
+    "Drive": "D",
+    "Name": "007 James Bond Legends",
+    "SizeGB": 8.61
+  },
+  {
+    "Drive": "D",
+    "Name": "007 James Bond Quantum of Solace",
+    "SizeGB": 7.46
+  },
+  {
+    "Drive": "D",
+    "Name": "A Plague Tale - Requiem",
+    "SizeGB": 51.72
+  },
+  {
+    "Drive": "D",
+    "Name": "A Plague Tale Innocence",
+    "SizeGB": 41.55
+  },
+  {
+    "Drive": "D",
+    "Name": "A Way Out",
+    "SizeGB": 21.11
+  },
+  {
+    "Drive": "D",
+    "Name": "Aliens Vs Predator",
+    "SizeGB": 15.24
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassin`s Creed Unity Complete Edition",
+    "SizeGB": 36.44
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassin's Creed Brotherhood",
+    "SizeGB": 8.54
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassin's Creed I",
+    "SizeGB": 7.14
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassin's Creed II",
+    "SizeGB": 6.74
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassin's Creed III",
+    "SizeGB": 16.58
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassins Creed IV Black Flag",
+    "SizeGB": 19.29
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassin's Creed Liberation",
+    "SizeGB": 2.52
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassins Creed Odyssey",
+    "SizeGB": 90.65
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassins Creed Origins",
+    "SizeGB": 69.17
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassin's Creed Revelations",
+    "SizeGB": 6.57
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassin's Creed Rogue",
+    "SizeGB": 12.71
+  },
+  {
+    "Drive": "D",
+    "Name": "Assassins Creed Syndicate",
+    "SizeGB": 41.97
+  },
+  {
+    "Drive": "D",
+    "Name": "Batman - Arkham Knight",
+    "SizeGB": 50.93
+  },
+  {
+    "Drive": "D",
+    "Name": "Batman Arkham Asylum Game of the Year Edition",
+    "SizeGB": 7.61
+  },
+  {
+    "Drive": "D",
+    "Name": "Batman Arkham City Complete Edition",
+    "SizeGB": 16.91
+  },
+  {
+    "Drive": "D",
+    "Name": "Batman Arkham Origins Complete Edition",
+    "SizeGB": 17.48
+  },
+  {
+    "Drive": "D",
+    "Name": "Battlefield 1",
+    "SizeGB": 49.76
+  },
+  {
+    "Drive": "D",
+    "Name": "Battlefield 3",
+    "SizeGB": 34.41
+  },
+  {
+    "Drive": "D",
+    "Name": "Battlefield 4",
+    "SizeGB": 28.27
+  },
+  {
+    "Drive": "D",
+    "Name": "Battlefield Bad II Company",
+    "SizeGB": 5.99
+  },
+  {
+    "Drive": "D",
+    "Name": "Battlefield Hardline",
+    "SizeGB": 37.39
+  },
+  {
+    "Drive": "D",
+    "Name": "Battlefield V",
+    "SizeGB": 50.01
+  },
+  {
+    "Drive": "D",
+    "Name": "BioShock Infinite",
+    "SizeGB": 17
+  },
+  {
+    "Drive": "D",
+    "Name": "Blur",
+    "SizeGB": 7.13
+  },
+  {
+    "Drive": "D",
+    "Name": "Burnout Paradise",
+    "SizeGB": 7.14
+  },
+  {
+    "Drive": "D",
+    "Name": "Call Of Duty Modern Warfare",
+    "SizeGB": 6.29
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty 5 World at War",
+    "SizeGB": 6.8
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty 6 Modern Warfare 2",
+    "SizeGB": 11.21
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty Advanced Warfare",
+    "SizeGB": 45.21
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty Black Ops",
+    "SizeGB": 7.86
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty Black Ops II",
+    "SizeGB": 22.21
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty Black Ops III",
+    "SizeGB": 55.49
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty Ghosts",
+    "SizeGB": 32.66
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty Infinite Warfare",
+    "SizeGB": 70.3
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty Modern Warfare",
+    "SizeGB": 93.92
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty Modern Warfare 2",
+    "SizeGB": 37.97
+  },
+  {
+    "Drive": "D",
+    "Name": "Call Of Duty Modern Warfare 3",
+    "SizeGB": 13.91
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty Modern Warfare Remastered",
+    "SizeGB": 43.33
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Duty WWII",
+    "SizeGB": 41.71
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Juarez Bound in Blood",
+    "SizeGB": 2.8
+  },
+  {
+    "Drive": "D",
+    "Name": "Call of Juarez The Cartel",
+    "SizeGB": 8.92
+  },
+  {
+    "Drive": "D",
+    "Name": "Cities Skylines",
+    "SizeGB": 15.88
+  },
+  {
+    "Drive": "D",
+    "Name": "Company of Heroes",
+    "SizeGB": 3.94
+  },
+  {
+    "Drive": "D",
+    "Name": "CRYSIS",
+    "SizeGB": 7.32
+  },
+  {
+    "Drive": "D",
+    "Name": "CRYSIS 2",
+    "SizeGB": 8.34
+  },
+  {
+    "Drive": "D",
+    "Name": "Crysis 3",
+    "SizeGB": 14.33
+  },
+  {
+    "Drive": "D",
+    "Name": "Dark Souls II Scholar of the First Sin",
+    "SizeGB": 18.01
+  },
+  {
+    "Drive": "D",
+    "Name": "Dark Souls III",
+    "SizeGB": 24.33
+  },
+  {
+    "Drive": "D",
+    "Name": "Dark Souls Prepare to Die Edition",
+    "SizeGB": 3.51
+  },
+  {
+    "Drive": "D",
+    "Name": "Darksiders 3",
+    "SizeGB": 18.71
+  },
+  {
+    "Drive": "D",
+    "Name": "Darksiders II",
+    "SizeGB": 5.46
+  },
+  {
+    "Drive": "D",
+    "Name": "Days Gone",
+    "SizeGB": 47.4
+  },
+  {
+    "Drive": "D",
+    "Name": "Dead Rising 2",
+    "SizeGB": 6.44
+  },
+  {
+    "Drive": "D",
+    "Name": "Dead Rising 3",
+    "SizeGB": 0.06
+  },
+  {
+    "Drive": "D",
+    "Name": "Dead Space",
+    "SizeGB": 7.4
+  },
+  {
+    "Drive": "D",
+    "Name": "Dead Space 3",
+    "SizeGB": 12.28
+  },
+  {
+    "Drive": "D",
+    "Name": "Detroit - Become Human",
+    "SizeGB": 59.09
+  },
+  {
+    "Drive": "D",
+    "Name": "Devil May Cry 5 Deluxe Edition",
+    "SizeGB": 37.42
+  },
+  {
+    "Drive": "D",
+    "Name": "Devil May Cry DMC",
+    "SizeGB": 10.23
+  },
+  {
+    "Drive": "D",
+    "Name": "Dishonored",
+    "SizeGB": 5.85
+  },
+  {
+    "Drive": "D",
+    "Name": "Dishonored 2",
+    "SizeGB": 40.56
+  },
+  {
+    "Drive": "D",
+    "Name": "DONT SCREAM",
+    "SizeGB": 4.04
+  },
+  {
+    "Drive": "D",
+    "Name": "Driver San Francisco",
+    "SizeGB": 4.45
+  },
+  {
+    "Drive": "D",
+    "Name": "Dying Light",
+    "SizeGB": 23.87
+  },
+  {
+    "Drive": "D",
+    "Name": "Dying Light 2 Stay Human",
+    "SizeGB": 44.72
+  },
+  {
+    "Drive": "D",
+    "Name": "F.E.A.R. 2 Project Origin Die",
+    "SizeGB": 11.39
+  },
+  {
+    "Drive": "D",
+    "Name": "F.E.A.R. 3",
+    "SizeGB": 4.15
+  },
+  {
+    "Drive": "D",
+    "Name": "Far Cry 3",
+    "SizeGB": 9.7
+  },
+  {
+    "Drive": "D",
+    "Name": "Far Cry 5",
+    "SizeGB": 28.81
+  },
+  {
+    "Drive": "D",
+    "Name": "Far Cry Primal",
+    "SizeGB": 16.43
+  },
+  {
+    "Drive": "D",
+    "Name": "FIFA 23 Patch 25 -100gb",
+    "SizeGB": 59.07
+  },
+  {
+    "Drive": "D",
+    "Name": "Ghostrunner 2",
+    "SizeGB": 67.49
+  },
+  {
+    "Drive": "D",
+    "Name": "Gotham Knights",
+    "SizeGB": 40.98
+  },
+  {
+    "Drive": "D",
+    "Name": "Hellblade Senuas Sacrifice",
+    "SizeGB": 21.51
+  },
+  {
+    "Drive": "D",
+    "Name": "HELLSEED",
+    "SizeGB": 7.67
+  },
+  {
+    "Drive": "D",
+    "Name": "High On Life",
+    "SizeGB": 49.03
+  },
+  {
+    "Drive": "D",
+    "Name": "Hitman",
+    "SizeGB": 61.32
+  },
+  {
+    "Drive": "D",
+    "Name": "Hitman 2",
+    "SizeGB": 56.25
+  },
+  {
+    "Drive": "D",
+    "Name": "Hitman Absolution",
+    "SizeGB": 23.49
+  },
+  {
+    "Drive": "D",
+    "Name": "Hollow Knight Silksong",
+    "SizeGB": 7.57
+  },
+  {
+    "Drive": "D",
+    "Name": "Horizon Zero Dawn",
+    "SizeGB": 71.07
+  },
+  {
+    "Drive": "D",
+    "Name": "Immortals of Aveum",
+    "SizeGB": 56.46
+  },
+  {
+    "Drive": "D",
+    "Name": "Insomnis",
+    "SizeGB": 0.48
+  },
+  {
+    "Drive": "D",
+    "Name": "Jump Force",
+    "SizeGB": 20.7
+  },
+  {
+    "Drive": "D",
+    "Name": "Just Cause 3",
+    "SizeGB": 60.44
+  },
+  {
+    "Drive": "D",
+    "Name": "Just Cause 4",
+    "SizeGB": 53.86
+  },
+  {
+    "Drive": "D",
+    "Name": "Left 4 Dead",
+    "SizeGB": 4.48
+  },
+  {
+    "Drive": "D",
+    "Name": "Left 4 Dead II",
+    "SizeGB": 6.2
+  },
+  {
+    "Drive": "D",
+    "Name": "Mafia 2",
+    "SizeGB": 7.44
+  },
+  {
+    "Drive": "D",
+    "Name": "Mafia II Definitive Edition  10.9GB",
+    "SizeGB": 10.93
+  },
+  {
+    "Drive": "D",
+    "Name": "Mafia III",
+    "SizeGB": 29.3
+  },
+  {
+    "Drive": "D",
+    "Name": "Martha Is Dead",
+    "SizeGB": 16.92
+  },
+  {
+    "Drive": "D",
+    "Name": "Marvels Guardians of the Galaxy",
+    "SizeGB": 67.59
+  },
+  {
+    "Drive": "D",
+    "Name": "Medal of Honor",
+    "SizeGB": 10.21
+  },
+  {
+    "Drive": "D",
+    "Name": "Medal of Honor Airborne",
+    "SizeGB": 10.41
+  },
+  {
+    "Drive": "D",
+    "Name": "Medal of Honor Allied Assault (Spearhead - Breakthrough)",
+    "SizeGB": 2.6
+  },
+  {
+    "Drive": "D",
+    "Name": "Medal of Honor Pacific Assault",
+    "SizeGB": 3.55
+  },
+  {
+    "Drive": "D",
+    "Name": "Medal of Honor Warfighter",
+    "SizeGB": 15.98
+  },
+  {
+    "Drive": "D",
+    "Name": "Metro 2033 Redux",
+    "SizeGB": 7.81
+  },
+  {
+    "Drive": "D",
+    "Name": "Metro Exodus",
+    "SizeGB": 51.18
+  },
+  {
+    "Drive": "D",
+    "Name": "Metro Last Light - Redux",
+    "SizeGB": 9.3
+  },
+  {
+    "Drive": "D",
+    "Name": "Microsoft Flight Simulator",
+    "SizeGB": 114.58
+  },
+  {
+    "Drive": "D",
+    "Name": "Middle Earth - Shadow of War DE",
+    "SizeGB": 92.55
+  },
+  {
+    "Drive": "D",
+    "Name": "Middle Earth Shadow of Mordor",
+    "SizeGB": 44.25
+  },
+  {
+    "Drive": "D",
+    "Name": "Minecraft Legends",
+    "SizeGB": 9.21
+  },
+  {
+    "Drive": "D",
+    "Name": "Mirrors Edge",
+    "SizeGB": 7.27
+  },
+  {
+    "Drive": "D",
+    "Name": "Mirrors Edge Catalyst",
+    "SizeGB": 23.3
+  },
+  {
+    "Drive": "D",
+    "Name": "Mortal Kombat XL",
+    "SizeGB": 43.35
+  },
+  {
+    "Drive": "D",
+    "Name": "NARUTO - Ultimate Ninja Storm",
+    "SizeGB": 7.54
+  },
+  {
+    "Drive": "D",
+    "Name": "NARUTO SHIPPUDEN - Ultimate Ninja STORM 2",
+    "SizeGB": 7.11
+  },
+  {
+    "Drive": "D",
+    "Name": "NBA 2K17",
+    "SizeGB": 70.03
+  },
+  {
+    "Drive": "D",
+    "Name": "NBA 2K20",
+    "SizeGB": 80.25
+  },
+  {
+    "Drive": "D",
+    "Name": "NBA 2K22",
+    "SizeGB": 109.33
+  },
+  {
+    "Drive": "D",
+    "Name": "Need for Speed Carbon",
+    "SizeGB": 6.21
+  },
+  {
+    "Drive": "D",
+    "Name": "Need for Speed Heat",
+    "SizeGB": 31.12
+  },
+  {
+    "Drive": "D",
+    "Name": "Need for Speed Hot Pursuit",
+    "SizeGB": 7.7
+  },
+  {
+    "Drive": "D",
+    "Name": "Need for Speed Most Wanted",
+    "SizeGB": 2.85
+  },
+  {
+    "Drive": "D",
+    "Name": "Need for speed Most Wanted II",
+    "SizeGB": 5.45
+  },
+  {
+    "Drive": "D",
+    "Name": "Need For Speed Payback",
+    "SizeGB": 27.38
+  },
+  {
+    "Drive": "D",
+    "Name": "Need for Speed Rivals",
+    "SizeGB": 8.84
+  },
+  {
+    "Drive": "D",
+    "Name": "Need For Speed Shift",
+    "SizeGB": 5.19
+  },
+  {
+    "Drive": "D",
+    "Name": "Need For Speed Shift II Unleashed",
+    "SizeGB": 6.58
+  },
+  {
+    "Drive": "D",
+    "Name": "Need For Speed The Run",
+    "SizeGB": 17.15
+  },
+  {
+    "Drive": "D",
+    "Name": "Need For Speed Undercover",
+    "SizeGB": 6.51
+  },
+  {
+    "Drive": "D",
+    "Name": "Neighbours Back From Hell",
+    "SizeGB": 3.63
+  },
+  {
+    "Drive": "D",
+    "Name": "NFS- Underground 2",
+    "SizeGB": 1.69
+  },
+  {
+    "Drive": "D",
+    "Name": "Outlast",
+    "SizeGB": 3.48
+  },
+  {
+    "Drive": "D",
+    "Name": "Outlast 2",
+    "SizeGB": 25.27
+  },
+  {
+    "Drive": "D",
+    "Name": "PAYDAY 2",
+    "SizeGB": 18.28
+  },
+  {
+    "Drive": "D",
+    "Name": "PC Building Sumulator 2 [FitGirl Repack]",
+    "SizeGB": 5.46
+  },
+  {
+    "Drive": "D",
+    "Name": "Prince of Persia The Forgotten Sands",
+    "SizeGB": 6.12
+  },
+  {
+    "Drive": "D",
+    "Name": "Prince Of Persia The Sands Of Time",
+    "SizeGB": 1.93
+  },
+  {
+    "Drive": "D",
+    "Name": "Prince Of Persia Warrior Within",
+    "SizeGB": 1.82
+  },
+  {
+    "Drive": "D",
+    "Name": "Prince of Prisia 4",
+    "SizeGB": 13.48
+  },
+  {
+    "Drive": "D",
+    "Name": "Prototype",
+    "SizeGB": 7.79
+  },
+  {
+    "Drive": "D",
+    "Name": "Prototype 2",
+    "SizeGB": 9.89
+  },
+  {
+    "Drive": "D",
+    "Name": "Ratchet and Clank - Rift Apart",
+    "SizeGB": 39.56
+  },
+  {
+    "Drive": "D",
+    "Name": "Red Alert 2",
+    "SizeGB": 1.23
+  },
+  {
+    "Drive": "D",
+    "Name": "Resident Evil 6",
+    "SizeGB": 13.2
+  },
+  {
+    "Drive": "D",
+    "Name": "Resident Evil 7 Biohazard",
+    "SizeGB": 22.87
+  },
+  {
+    "Drive": "D",
+    "Name": "RIDE 4",
+    "SizeGB": 37.66
+  },
+  {
+    "Drive": "D",
+    "Name": "Rise of the Tomb Raider",
+    "SizeGB": 31.29
+  },
+  {
+    "Drive": "D",
+    "Name": "Rogue Warrior",
+    "SizeGB": 4.47
+  },
+  {
+    "Drive": "D",
+    "Name": "Ryse Son of Rome",
+    "SizeGB": 25.92
+  },
+  {
+    "Drive": "D",
+    "Name": "Scorn",
+    "SizeGB": 28.1
+  },
+  {
+    "Drive": "D",
+    "Name": "Shadow OF The Tomb Raider Croft Edition",
+    "SizeGB": 38.64
+  },
+  {
+    "Drive": "D",
+    "Name": "Shank",
+    "SizeGB": 1.7
+  },
+  {
+    "Drive": "D",
+    "Name": "Shank2",
+    "SizeGB": 4.2
+  },
+  {
+    "Drive": "D",
+    "Name": "Sleeping Dogs Definitive",
+    "SizeGB": 16.64
+  },
+  {
+    "Drive": "D",
+    "Name": "Sniper Art of Victory",
+    "SizeGB": 1.88
+  },
+  {
+    "Drive": "D",
+    "Name": "Sniper Elite 2 REMASTERD",
+    "SizeGB": 12.92
+  },
+  {
+    "Drive": "D",
+    "Name": "Sniper Elite 3",
+    "SizeGB": 19.73
+  },
+  {
+    "Drive": "D",
+    "Name": "Sniper Elite 4",
+    "SizeGB": 62.35
+  },
+  {
+    "Drive": "D",
+    "Name": "Sniper Elite Nazi Zombie Army",
+    "SizeGB": 3.88
+  },
+  {
+    "Drive": "D",
+    "Name": "Sniper Elite Nazi Zombie Army 2",
+    "SizeGB": 5.12
+  },
+  {
+    "Drive": "D",
+    "Name": "Sniper Elite V2",
+    "SizeGB": 7.95
+  },
+  {
+    "Drive": "D",
+    "Name": "Sniper Ghost Warrior",
+    "SizeGB": 4.58
+  },
+  {
+    "Drive": "D",
+    "Name": "Sniper Ghost Warrior 2",
+    "SizeGB": 6.27
+  },
+  {
+    "Drive": "D",
+    "Name": "Sniper Ghost Warrior 3",
+    "SizeGB": 14.73
+  },
+  {
+    "Drive": "D",
+    "Name": "Spec Ops The Line",
+    "SizeGB": 7.34
+  },
+  {
+    "Drive": "D",
+    "Name": "SpiderMan 2",
+    "SizeGB": 111.43
+  },
+  {
+    "Drive": "D",
+    "Name": "Spider-Man Miles Morales",
+    "SizeGB": 48.26
+  },
+  {
+    "Drive": "D",
+    "Name": "Spider-Man Remastered",
+    "SizeGB": 66.66
+  },
+  {
+    "Drive": "D",
+    "Name": "Splinter Cell Black List",
+    "SizeGB": 21.09
+  },
+  {
+    "Drive": "D",
+    "Name": "TEKKEN 7",
+    "SizeGB": 57.35
+  },
+  {
+    "Drive": "D",
+    "Name": "The Elder Scrolls V - Skyrim - Anniversary Edition",
+    "SizeGB": 18.68
+  },
+  {
+    "Drive": "D",
+    "Name": "The Evil Within",
+    "SizeGB": 36.25
+  },
+  {
+    "Drive": "D",
+    "Name": "The Evil Within 2",
+    "SizeGB": 27.24
+  },
+  {
+    "Drive": "D",
+    "Name": "Thief",
+    "SizeGB": 23.59
+  },
+  {
+    "Drive": "D",
+    "Name": "Tom Clancy's Ghost Recon Wildlands",
+    "SizeGB": 65.96
+  },
+  {
+    "Drive": "D",
+    "Name": "Tom Clancys Splinter Cell Conviction",
+    "SizeGB": 6.91
+  },
+  {
+    "Drive": "D",
+    "Name": "Tom Clancy's Splinter Cell Double Agent",
+    "SizeGB": 10.65
+  },
+  {
+    "Drive": "D",
+    "Name": "Tomb Raider",
+    "SizeGB": 13.54
+  },
+  {
+    "Drive": "D",
+    "Name": "Tomb Raider Legend",
+    "SizeGB": 7.13
+  },
+  {
+    "Drive": "D",
+    "Name": "Tomb Raider Underworld",
+    "SizeGB": 7.33
+  },
+  {
+    "Drive": "D",
+    "Name": "Tropico 6",
+    "SizeGB": 24.46
+  },
+  {
+    "Drive": "D",
+    "Name": "UFO ROBOT GRENDIZER The Feast of the Wolves",
+    "SizeGB": 7.45
+  },
+  {
+    "Drive": "D",
+    "Name": "UNCHARTED Legacy of Thieves Collection",
+    "SizeGB": 100.46
+  },
+  {
+    "Drive": "D",
+    "Name": "Watch Dogs",
+    "SizeGB": 22.08
+  },
+  {
+    "Drive": "D",
+    "Name": "Watch Dogs 2",
+    "SizeGB": 22.32
+  },
+  {
+    "Drive": "D",
+    "Name": "Watch Dogs Legion",
+    "SizeGB": 70.04
+  },
+  {
+    "Drive": "D",
+    "Name": "Wheelman",
+    "SizeGB": 7.81
+  },
+  {
+    "Drive": "D",
+    "Name": "Wolfenstein II The New Colossus",
+    "SizeGB": 44.08
+  },
+  {
+    "Drive": "D",
+    "Name": "Wolfenstein The New Order",
+    "SizeGB": 43.63
+  },
+  {
+    "Drive": "D",
+    "Name": "Wolfenstein The Old Blood",
+    "SizeGB": 36.43
+  },
+  {
+    "Drive": "D",
+    "Name": "WWE 2K17",
+    "SizeGB": 47.27
+  },
+  {
+    "Drive": "D",
+    "Name": "WWE 2K18",
+    "SizeGB": 43.91
+  },
+  {
+    "Drive": "D",
+    "Name": "WWE 2K19",
+    "SizeGB": 46.7
+  },
+  {
+    "Drive": "D",
+    "Name": "WWE 2K20",
+    "SizeGB": 49.01
+  },
+  {
+    "Drive": "D",
+    "Name": "WWE 2K22",
+    "SizeGB": 48.65
+  },
+  {
+    "Drive": "D",
+    "Name": "WWE 2K23",
+    "SizeGB": 73.24
+  },
+  {
+    "Drive": "D",
+    "Name": "WWE 2K24",
+    "SizeGB": 94.55
+  },
+  {
+    "Drive": "D",
+    "Name": "WWE 2K25",
+    "SizeGB": 90.56
+  },
+  {
+    "Drive": "D",
+    "Name": "X-Men Origins - Wolverine",
+    "SizeGB": 6.79
+  },
+  {
+    "Drive": "D",
+    "Name": "Zombie Army 4 Dead War",
+    "SizeGB": 60.34
+  },
+  {
+    "Drive": "D",
+    "Name": "Zombie Army Trilogy",
+    "SizeGB": 9.18
+  }
+];
+
+// Function to load games from JSON files (for dynamic loading)
+export const loadGamesFromJSON = async () => {
+  try {
+    const base = import.meta.env.BASE_URL || '/';
+    const response = await fetch(`${base}JSON/filelist.json`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
+    const fileNames = await response.json();
+    const jsonFiles = fileNames.map(name => `${base}JSON/${name}`);
+    
+    const results = await Promise.all(
+      jsonFiles.map(file => 
+        fetch(file).then(res => {
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status} for file ${file}`);
+          return res.json();
+        })
+      )
+    );
+    
+    return results.flat();
+  } catch (error) {
+    console.error('Error loading game data:', error);
+    return gameData; // Fallback to static data
+  }
+};
