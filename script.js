@@ -1,508 +1,228 @@
 // Windows 11 Style Mangawii Game Indexer
-class MangawiiGameIndexer {
-    constructor() {
-        this.currentSection = 'dashboard';
-        this.games = [];
-        this.favorites = [];
-        this.init();
-    }
+// ===== DOM ELEMENTS =====
+const totalGamesEl = document.getElementById('totalGames');
+const totalSizeEl = document.getElementById('totalSize');
+const totalPriceEl = document.getElementById('totalPrice');
+const totalGamesCountEl = document.getElementById('totalGamesCount');
+const openSummaryBtn = document.getElementById('openSummaryPopup');
+const popup = document.getElementById('popup');
+const closeBtn = document.getElementById('closeBtn');
+const summaryTextDiv = document.getElementById('summaryText');
+const copyListBtn = document.getElementById('copyListBtn');
+const whatsappBtn = document.getElementById('whatsappBtn');
+const themeToggleBtn = document.getElementById('theme-toggle');
+const themeIcon = document.querySelector('.theme-icon');
+const searchInput = document.getElementById('searchInput');
+const searchClear = document.getElementById('searchClear');
+const selectAllCheckbox = document.getElementById('selectAll');
+const loadingOverlay = document.getElementById('loadingOverlay');
 
-    init() {
-        this.setupEventListeners();
-        this.loadSampleData();
-        this.renderDashboard();
-        this.setupWindowControls();
-    }
+// ===== STATE MANAGEMENT =====
+let allGames = [];
+let filteredGames = [];
+let selectedGames = new Set();
+let generatedSummary = '';
 
-    setupEventListeners() {
-        // Navigation
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                const section = e.currentTarget.dataset.section;
-                this.navigateToSection(section);
-            });
-        });
-
-        // Search
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            this.handleSearch(e.target.value);
-        });
-
-        // View toggle
-        document.querySelectorAll('.toggle-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                this.toggleView(e.currentTarget.dataset.view);
-            });
-        });
-
-        // Quick actions
-        document.querySelectorAll('.quick-action-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                this.handleQuickAction(e.currentTarget);
-            });
-        });
-
-        // Modal
-        document.querySelector('.modal-close').addEventListener('click', () => {
-            this.closeModal();
-        });
-
-        document.getElementById('gameModal').addEventListener('click', (e) => {
-            if (e.target.id === 'gameModal') {
-                this.closeModal();
-            }
-        });
-    }
-
-    setupWindowControls() {
-        // Window control buttons (for demo purposes)
-        document.querySelector('.minimize').addEventListener('click', () => {
-            this.showNotification('Minimize clicked');
-        });
-
-        document.querySelector('.maximize').addEventListener('click', () => {
-            this.showNotification('Maximize clicked');
-        });
-
-        document.querySelector('.close').addEventListener('click', () => {
-            this.showNotification('Close clicked');
-        });
-    }
-
-    navigateToSection(section) {
-        // Update navigation
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.classList.remove('active');
-        });
-        document.querySelector(`[data-section="${section}"]`).classList.add('active');
-
-        // Update content
-        document.querySelectorAll('.content-section').forEach(section => {
-            section.classList.remove('active');
-        });
-        document.getElementById(section).classList.add('active');
-
-        this.currentSection = section;
-
-        // Load section-specific content
-        switch (section) {
-            case 'dashboard':
-                this.renderDashboard();
-                break;
-            case 'games':
-                this.renderGames();
-                break;
-            case 'library':
-                this.renderLibrary();
-                break;
-            case 'favorites':
-                this.renderFavorites();
-                break;
-            case 'settings':
-                this.renderSettings();
-                break;
-        }
-    }
-
-    loadSampleData() {
-        this.games = [
-            {
-                id: 1,
-                title: 'Cyberpunk 2077',
-                genre: 'RPG',
-                icon: 'fas fa-robot',
-                lastPlayed: '2 hours ago',
-                playTime: '45h',
-                rating: 4.5,
-                isFavorite: true
-            },
-            {
-                id: 2,
-                title: 'The Witcher 3',
-                genre: 'RPG',
-                icon: 'fas fa-sword',
-                lastPlayed: '1 day ago',
-                playTime: '120h',
-                rating: 5.0,
-                isFavorite: true
-            },
-            {
-                id: 3,
-                title: 'Minecraft',
-                genre: 'Sandbox',
-                icon: 'fas fa-cube',
-                lastPlayed: '3 hours ago',
-                playTime: '200h',
-                rating: 4.8,
-                isFavorite: false
-            },
-            {
-                id: 4,
-                title: 'Among Us',
-                genre: 'Party',
-                icon: 'fas fa-users',
-                lastPlayed: '5 minutes ago',
-                playTime: '15h',
-                rating: 4.2,
-                isFavorite: false
-            },
-            {
-                id: 5,
-                title: 'Valorant',
-                genre: 'FPS',
-                icon: 'fas fa-crosshairs',
-                lastPlayed: '30 minutes ago',
-                playTime: '80h',
-                rating: 4.6,
-                isFavorite: true
-            },
-            {
-                id: 6,
-                title: 'League of Legends',
-                genre: 'MOBA',
-                icon: 'fas fa-trophy',
-                lastPlayed: '1 hour ago',
-                playTime: '300h',
-                rating: 4.4,
-                isFavorite: false
-            }
-        ];
-
-        this.favorites = this.games.filter(game => game.isFavorite);
-    }
-
-    renderDashboard() {
-        this.renderRecentGames();
-        this.updateStats();
-    }
-
-    renderRecentGames() {
-        const recentGamesContainer = document.getElementById('recentGames');
-        const recentGames = this.games.slice(0, 4);
-
-        recentGamesContainer.innerHTML = recentGames.map(game => `
-            <div class="game-item" onclick="gameIndexer.openGameModal(${game.id})">
-                <div class="game-icon">
-                    <i class="${game.icon}"></i>
-                </div>
-                <div class="game-info">
-                    <h4>${game.title}</h4>
-                    <p>Last played: ${game.lastPlayed}</p>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    updateStats() {
-        // Update stats cards with real data
-        const totalGames = this.games.length;
-        const totalPlayTime = this.games.reduce((sum, game) => {
-            const hours = parseInt(game.playTime.replace('h', ''));
-            return sum + hours;
-        }, 0);
-        const totalFavorites = this.favorites.length;
-        const totalAchievements = Math.floor(Math.random() * 200) + 100; // Mock data
-
-        // Update the stat numbers (you'd need to add IDs to the stat elements)
-        console.log('Stats updated:', { totalGames, totalPlayTime, totalFavorites, totalAchievements });
-    }
-
-    renderGames() {
-        const gamesContainer = document.getElementById('gamesContainer');
-        
-        gamesContainer.innerHTML = this.games.map(game => `
-            <div class="game-card" onclick="gameIndexer.openGameModal(${game.id})">
-                <div class="game-card-image">
-                    <i class="${game.icon}"></i>
-                </div>
-                <div class="game-card-title">${game.title}</div>
-                <div class="game-card-genre">${game.genre}</div>
-            </div>
-        `).join('');
-    }
-
-    renderLibrary() {
-        const librarySection = document.getElementById('library');
-        librarySection.innerHTML = `
-            <div class="content-card">
-                <div class="card-header">
-                    <h3>Library Management</h3>
-                </div>
-                <p>Library management features coming soon...</p>
-            </div>
-        `;
-    }
-
-    renderFavorites() {
-        const favoritesSection = document.getElementById('favorites');
-        
-        favoritesSection.innerHTML = `
-            <div class="content-card">
-                <div class="card-header">
-                    <h3>Your Favorite Games</h3>
-                </div>
-                <div class="games-container">
-                    ${this.favorites.map(game => `
-                        <div class="game-card" onclick="gameIndexer.openGameModal(${game.id})">
-                            <div class="game-card-image">
-                                <i class="${game.icon}"></i>
-                            </div>
-                            <div class="game-card-title">${game.title}</div>
-                            <div class="game-card-genre">${game.genre}</div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-    }
-
-    renderSettings() {
-        const settingsSection = document.getElementById('settings');
-        settingsSection.innerHTML = `
-            <div class="content-card">
-                <div class="card-header">
-                    <h3>Application Settings</h3>
-                </div>
-                <div class="settings-content">
-                    <div class="setting-item">
-                        <label>Theme</label>
-                        <select>
-                            <option>Light</option>
-                            <option>Dark</option>
-                            <option>System</option>
-                        </select>
-                    </div>
-                    <div class="setting-item">
-                        <label>Language</label>
-                        <select>
-                            <option>English</option>
-                            <option>Spanish</option>
-                            <option>French</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    handleSearch(query) {
-        if (this.currentSection === 'games') {
-            const filteredGames = this.games.filter(game => 
-                game.title.toLowerCase().includes(query.toLowerCase()) ||
-                game.genre.toLowerCase().includes(query.toLowerCase())
-            );
-            
-            const gamesContainer = document.getElementById('gamesContainer');
-            gamesContainer.innerHTML = filteredGames.map(game => `
-                <div class="game-card" onclick="gameIndexer.openGameModal(${game.id})">
-                    <div class="game-card-image">
-                        <i class="${game.icon}"></i>
-                    </div>
-                    <div class="game-card-title">${game.title}</div>
-                    <div class="game-card-genre">${game.genre}</div>
-                </div>
-            `).join('');
-        }
-    }
-
-    toggleView(view) {
-        document.querySelectorAll('.toggle-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        document.querySelector(`[data-view="${view}"]`).classList.add('active');
-
-        const gamesContainer = document.getElementById('gamesContainer');
-        if (view === 'list') {
-            gamesContainer.style.gridTemplateColumns = '1fr';
-            gamesContainer.classList.add('list-view');
-        } else {
-            gamesContainer.style.gridTemplateColumns = 'repeat(auto-fill, minmax(200px, 1fr))';
-            gamesContainer.classList.remove('list-view');
-        }
-    }
-
-    handleQuickAction(button) {
-        const action = button.querySelector('span').textContent;
-        
-        switch (action) {
-            case 'Add Game':
-                this.showNotification('Add Game feature coming soon!');
-                break;
-            case 'Import Library':
-                this.showNotification('Import Library feature coming soon!');
-                break;
-            case 'Share Library':
-                this.showNotification('Share Library feature coming soon!');
-                break;
-        }
-    }
-
-    openGameModal(gameId) {
-        const game = this.games.find(g => g.id === gameId);
-        if (!game) return;
-
-        document.getElementById('modalTitle').textContent = game.title;
-        document.getElementById('modalBody').innerHTML = `
-            <div class="game-details">
-                <div class="game-detail-item">
-                    <strong>Genre:</strong> ${game.genre}
-                </div>
-                <div class="game-detail-item">
-                    <strong>Last Played:</strong> ${game.lastPlayed}
-                </div>
-                <div class="game-detail-item">
-                    <strong>Play Time:</strong> ${game.playTime}
-                </div>
-                <div class="game-detail-item">
-                    <strong>Rating:</strong> ${game.rating}/5.0
-                </div>
-                <div class="game-detail-item">
-                    <strong>Favorite:</strong> ${game.isFavorite ? 'Yes' : 'No'}
-                </div>
-            </div>
-            <div class="modal-actions">
-                <button class="btn-primary" onclick="gameIndexer.launchGame(${game.id})">
-                    <i class="fas fa-play"></i>
-                    Launch Game
-                </button>
-                <button class="btn-secondary" onclick="gameIndexer.toggleFavorite(${game.id})">
-                    <i class="fas fa-heart"></i>
-                    ${game.isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
-                </button>
-            </div>
-        `;
-
-        document.getElementById('gameModal').classList.add('active');
-    }
-
-    closeModal() {
-        document.getElementById('gameModal').classList.remove('active');
-    }
-
-    launchGame(gameId) {
-        const game = this.games.find(g => g.id === gameId);
-        this.showNotification(`Launching ${game.title}...`);
-        this.closeModal();
-    }
-
-    toggleFavorite(gameId) {
-        const game = this.games.find(g => g.id === gameId);
-        game.isFavorite = !game.isFavorite;
-        
-        if (game.isFavorite) {
-            this.favorites.push(game);
-        } else {
-            this.favorites = this.favorites.filter(f => f.id !== gameId);
-        }
-
-        this.showNotification(`${game.title} ${game.isFavorite ? 'added to' : 'removed from'} favorites`);
-        this.closeModal();
-        
-        // Refresh current section
-        this.navigateToSection(this.currentSection);
-    }
-
-    showNotification(message) {
-        // Create a Windows 11 style notification
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--surface-primary);
-            border: 1px solid var(--border-primary);
-            border-radius: var(--radius-lg);
-            padding: 16px 20px;
-            box-shadow: var(--shadow-lg);
-            z-index: 1001;
-            animation: slideIn 0.3s ease-out;
-        `;
-        notification.textContent = message;
-
-        document.body.appendChild(notification);
-
-        setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease-in';
-            setTimeout(() => {
-                document.body.removeChild(notification);
-            }, 300);
-        }, 3000);
-    }
+// ===== WINDOWS 11 THEME MANAGEMENT =====
+function setThemeIcon() {
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+    themeIcon.className = isDark ? 'fas fa-moon theme-icon' : 'fas fa-sun theme-icon';
+    themeIcon.style.color = isDark ? '#fbbf24' : '#f59e0b';
 }
 
-// Add CSS for notifications
-const notificationStyles = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
+function toggleTheme() {
+    const body = document.body;
+    const isDark = body.getAttribute('data-theme') === 'dark';
+    body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    setThemeIcon();
+    
+    // Windows 11 style animation
+    themeIcon.style.transform = 'rotate(360deg)';
+    setTimeout(() => {
+        themeIcon.style.transform = 'rotate(0deg)';
+    }, 300);
+    
+    // Show Windows 11 style notification
+    showNotification(`تم التبديل إلى الوضع ${isDark ? 'الفاتح' : 'الداكن'}`, 'success');
+}
+
+// ===== WINDOWS 11 LOADING MANAGEMENT =====
+function showLoading() {
+    loadingOverlay.style.display = 'flex';
+}
+
+function hideLoading() {
+    loadingOverlay.style.display = 'none';
+}
+
+// ===== SEARCH FUNCTIONALITY =====
+function handleSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+    searchClear.style.display = query ? 'flex' : 'none';
+    
+    if (!query) {
+        filteredGames = [...allGames];
+    } else {
+        filteredGames = allGames.filter(game =>
+            game.Name.toLowerCase().includes(query)
+        );
+    }
+    
+    renderGames();
+    updateSummary();
+    updateGamesCount();
+}
+
+function clearSearch() {
+    searchInput.value = '';
+    searchClear.style.display = 'none';
+    handleSearch();
+}
+
+// ===== GAME RENDERING =====
+function renderGames() {
+    const tableBody = document.querySelector('#gameList tbody');
+    tableBody.innerHTML = '';
+
+    if (filteredGames.length === 0) {
+        const emptyRow = document.createElement('tr');
+        emptyRow.innerHTML = `
+            <td colspan="3" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                لا توجد ألعاب مطابقة للبحث
+            </td>
+        `;
+        tableBody.appendChild(emptyRow);
+        return;
+    }
+
+    // Group games by first letter
+    const groupedGames = filteredGames.reduce((groups, game) => {
+        const letter = game.Name[0].toUpperCase();
+        if (!groups[letter]) groups[letter] = [];
+        groups[letter].push(game);
+        return groups;
+    }, {});
+
+    // Render grouped games
+    for (const letter of Object.keys(groupedGames).sort()) {
+        // Letter separator
+        const separatorRow = document.createElement('tr');
+        separatorRow.className = 'letter-separator';
+        separatorRow.innerHTML = `<td colspan="3">${letter}</td>`;
+        tableBody.appendChild(separatorRow);
+
+        // Games in this letter group
+        groupedGames[letter].forEach(game => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="checkbox-col">
+                    <input type="checkbox" class="game-checkbox" 
+                           data-name="${game.Name}" 
+                           ${selectedGames.has(game.Name) ? 'checked' : ''}>
+                </td>
+                <td class="name-col">${game.Name}</td>
+                <td class="size-col">${game.SizeGB} GB</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Add event listeners to checkboxes
+    tableBody.querySelectorAll('.game-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', handleGameSelection);
+    });
+
+    updateSelectAllState();
+}
+
+function handleGameSelection(event) {
+    const gameName = event.target.dataset.name;
+    if (event.target.checked) {
+        selectedGames.add(gameName);
+    } else {
+        selectedGames.delete(gameName);
+    }
+    updateSummary();
+    updateSelectAllState();
+}
+
+function handleSelectAll(event) {
+    const isChecked = event.target.checked;
+    filteredGames.forEach(game => {
+        if (isChecked) {
+            selectedGames.add(game.Name);
+        } else {
+            selectedGames.delete(game.Name);
         }
-        to {
-            transform: translateX(0);
-            opacity: 1;
+    });
+    renderGames();
+    updateSummary();
+}
+
+function updateSelectAllState() {
+    const visibleGames = filteredGames.length;
+    const selectedVisibleGames = filteredGames.filter(game => 
+        selectedGames.has(game.Name)
+    ).length;
+    
+    selectAllCheckbox.checked = visibleGames > 0 && selectedVisibleGames === visibleGames;
+    selectAllCheckbox.indeterminate = selectedVisibleGames > 0 && selectedVisibleGames < visibleGames;
+}
+
+// ===== SUMMARY MANAGEMENT =====
+function updateSummary() {
+    const selected = allGames.filter(game => selectedGames.has(game.Name));
+    let totalSize = selected.reduce((sum, game) => sum + parseFloat(game.SizeGB), 0);
+    
+    let totalPrice = totalSize;
+    if (totalSize > 100) {
+        totalPrice /= 2;
+    }
+    totalPrice = Math.round(totalPrice / 5) * 5;
+    if (selected.length > 0 && totalPrice < 20) {
+        totalPrice = 20;
+    }
+
+    // Update UI with Windows 11 style animation
+    animateValue(totalGamesEl, parseInt(totalGamesEl.textContent) || 0, selected.length, 500);
+    animateValue(totalSizeEl, parseFloat(totalSizeEl.textContent) || 0, totalSize, 500);
+    animateValue(totalPriceEl, parseFloat(totalPriceEl.textContent) || 0, totalPrice, 500);
+
+    // Generate summary text
+    let summaryText = '';
+    selected.forEach(game => {
+        summaryText += `${game.Name} | ${game.SizeGB} GB | Drive: ${game.Drive}\n`;
+    });
+
+    summaryText += `\nالألعاب المحددة: ${selected.length}\n`;
+    summaryText += `الحجم الكلي: ${totalSize.toFixed(2)} جيجا\n`;
+    summaryText += `السعر: ${totalPrice.toFixed(2)} جنيه`;
+    generatedSummary = summaryText;
+}
+
+function updateGamesCount() {
+    animateValue(totalGamesCountEl, parseInt(totalGamesCountEl.textContent) || 0, filteredGames.length, 300);
+}
+
+function animateValue(element, start, end, duration) {
+    const startTime = performance.now();
+    const isFloat = element.id === 'totalSize' || element.id === 'totalPrice';
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const current = start + (end - start) * progress;
+        
+        element.textContent = isFloat ? current.toFixed(2) : Math.round(current);
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
         }
     }
+    
+    requestAnimationFrame(update);
+}
 
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-    }
-
-    .game-details {
-        margin-bottom: 20px;
-    }
-
-    .game-detail-item {
-        margin-bottom: 8px;
-        color: var(--text-secondary);
-    }
-
-    .modal-actions {
-        display: flex;
-        gap: 12px;
-        margin-top: 20px;
-    }
-
-    .settings-content {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .setting-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .setting-item label {
-        font-weight: 500;
-        color: var(--text-primary);
-    }
-
-    .setting-item select {
-        padding: 8px 12px;
-        border: 1px solid var(--border-primary);
-        border-radius: var(--radius-md);
-        background-color: var(--background-secondary);
-        color: var(--text-primary);
-    }
-`;
-
-// Add notification styles to the page
-const styleSheet = document.createElement('style');
-styleSheet.textContent = notificationStyles;
-document.head.appendChild(styleSheet);
-
-// Initialize the application
-let gameIndexer;
-document.addEventListener('DOMContentLoaded', () => {
-    gameIndexer = new MangawiiGameIndexer();
-});
+// ===== WINDOWS 11 POPUP MANAGEMENT =====
+function openSummaryP
