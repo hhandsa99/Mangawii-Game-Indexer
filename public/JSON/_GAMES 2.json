@@ -157,13 +157,13 @@
     },
     {
         "Drive":  "E",
-        "Name":  "Fifa 23",
+        "Name":  "Fifa 23 (Itch)",
         "SizeGB":  51.54,
         "rawg_id":  777111
     },
     {
         "Drive":  "E",
-        "Name":  "FIFA 23-25",
+        "Name":  "FIFA 2005",
         "SizeGB":  103.32,
         "rawg_id":  35971
     },
@@ -599,5 +599,4 @@
         "SizeGB":  2.98,
         "rawg_id":  40433
     }
-
 ]
