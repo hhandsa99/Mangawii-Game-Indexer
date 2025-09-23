@@ -1,0 +1,20 @@
+{
+  "overrides": {
+    "Fifa 23 (Itch)": {
+      "name": "Fifa 23",
+      "image": "https://en.wikipedia.org/wiki/FIFA_23#/media/File:FIFA_23_Cover.jpg"
+    },
+    "FIFA 2005": {
+      "name": "FIFA 23 - 2025",
+      "image": "https://en.wikipedia.org/wiki/FIFA_23#/media/File:FIFA_23_Cover.jpg"
+    },
+	    "eFootball 2022": {
+      "name": "PES 21 - 2025",
+    },
+  "_comments": {
+    "usage": "Use the exact original game title as the key (case-sensitive)",
+    "name": "Override the display name (supports Arabic text)",
+    "image": "Override the image URL (can be absolute URL or relative path)",
+    "note": "Only games listed in this file will be overridden"
+  }
+}
