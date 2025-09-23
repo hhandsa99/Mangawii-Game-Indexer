@@ -199,13 +199,13 @@
     },
     {
         "Drive":  "D",
-        "Name":  "Call of Duty  Black Ops",
+        "Name":  "Call of Duty  Black Ops 2",
         "SizeGB":  22.21,
         "rawg_id":  865
     },
     {
         "Drive":  "D",
-        "Name":  "Call of Duty  Black Ops",
+        "Name":  "Call of Duty  Black Ops 3",
         "SizeGB":  55.49,
         "rawg_id":  865
     },
@@ -265,7 +265,7 @@
     },
     {
         "Drive":  "D",
-        "Name":  "Call of Duty  Modern Warfare 2",
+        "Name":  "Call of Duty  Modern Warfare II",
         "SizeGB":  37.97,
         "rawg_id":  4527
     },
@@ -1211,4 +1211,5 @@
         "SizeGB":  9.18,
         "rawg_id":  3416
     }
+
 ]
