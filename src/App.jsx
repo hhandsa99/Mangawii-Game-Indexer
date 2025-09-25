@@ -22,9 +22,24 @@ function App() {
   const [showSidebarHint, setShowSidebarHint] = useState(true);
   const [gridDensity, setGridDensity] = useState('cozy'); // 'compact' | 'cozy' | 'comfortable'
   const [densityManual, setDensityManual] = useState(false); // user override
+  const [whatsAppNumber, setWhatsAppNumber] = useState('201204838286');
 
   // Load games on component mount
   useEffect(() => {
+    // Load WhatsApp phone number from public/whatsapp.json so it works on GitHub Pages
+    (async () => {
+      try {
+        const url = `${import.meta.env.BASE_URL}whatsapp.json`;
+        const res = await fetch(url, { cache: 'no-cache' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.phoneNumber) {
+            const digits = String(data.phoneNumber).replace(/[^\d]/g, '');
+            if (digits) setWhatsAppNumber(digits);
+          }
+        }
+      } catch (_) {}
+    })();
     const loadGames = async () => {
       setIsLoading(true);
       try {
@@ -163,7 +178,7 @@ function App() {
 
   // Send to WhatsApp
   const sendToWhatsApp = () => {
-    const phoneNumber = "201204838286";
+    const phoneNumber = whatsAppNumber || "201204838286";
     const encodedMessage = encodeURIComponent(generateSummaryText());
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
