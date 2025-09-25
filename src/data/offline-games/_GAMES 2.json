@@ -1,602 +1,492 @@
 [
     {
         "Drive":  "E",
-        "Name":  "Age of Empires III  Definitive Edition",
-        "SizeGB":  11.65,
-        "rawg_id":  499264
+        "Name":  "Age of Empires III Definitive Edition",
+        "SizeGB":  11.65
     },
     {
         "Drive":  "E",
         "Name":  "AO Tennis 2",
-        "SizeGB":  15,
-        "rawg_id":  403043
+        "SizeGB":  15
     },
     {
         "Drive":  "E",
-        "Name":  "Beyond  Two Souls",
-        "SizeGB":  43.27,
-        "rawg_id":  3028
+        "Name":  "Beyond Two Souls",
+        "SizeGB":  43.27
     },
     {
         "Drive":  "E",
-        "Name":  "Bright Memory  Infinite",
-        "SizeGB":  12.11,
-        "rawg_id":  430464
+        "Name":  "Bright Memory Infinite",
+        "SizeGB":  12.11
     },
     {
         "Drive":  "E",
-        "Name":  "Captain Tsubasa  Rise of New Champions",
-        "SizeGB":  38.51,
-        "rawg_id":  471034
+        "Name":  "Captain Tsubasa Rise of New Champions",
+        "SizeGB":  38.51
     },
     {
         "Drive":  "E",
-        "Name":  "Command & Conquer  Red Alert 3",
-        "SizeGB":  14.25,
-        "rawg_id":  19345
+        "Name":  "Command \u0026 Conquer Red Alert 3",
+        "SizeGB":  14.25
     },
     {
         "Drive":  "E",
         "Name":  "Control",
-        "SizeGB":  33.52,
-        "rawg_id":  58812
+        "SizeGB":  33.52
     },
     {
         "Drive":  "E",
-        "Name":  "Crash Bandicoot 4  It's About Time",
-        "SizeGB":  23.25,
-        "rawg_id":  457729
+        "Name":  "Crash Bandicoot 4 It\u0027s About Time",
+        "SizeGB":  23.25
     },
     {
         "Drive":  "E",
         "Name":  "Death Stranding",
-        "SizeGB":  51.4,
-        "rawg_id":  50738
+        "SizeGB":  51.4
     },
     {
         "Drive":  "E",
         "Name":  "Deathloop",
-        "SizeGB":  29.9,
-        "rawg_id":  326251
+        "SizeGB":  29.9
     },
     {
         "Drive":  "E",
-        "Name":  "Disney'¢Pixar Toy Story 3  The Video Game",
-        "SizeGB":  3.63,
-        "rawg_id":  9770
+        "Name":  "Disney\u0027¢Pixar Toy Story 3 The Video Game",
+        "SizeGB":  3.63
     },
     {
         "Drive":  "E",
         "Name":  "DOOM (2016)",
-        "SizeGB":  62.47,
-        "rawg_id":  2454
+        "SizeGB":  62.47
     },
     {
         "Drive":  "E",
         "Name":  "DOOM Eternal",
-        "SizeGB":  40.75,
-        "rawg_id":  58777
+        "SizeGB":  40.75
     },
     {
         "Drive":  "E",
-        "Name":  "Dragon Ball Xenoverse",
-        "SizeGB":  10.2,
-        "rawg_id":  3419
+        "Name":  "DRAGON BALL XENOVERSE",
+        "SizeGB":  10.2
     },
     {
         "Drive":  "E",
-        "Name":  "Dragon Ball Xenoverse 2",
-        "SizeGB":  17.59,
-        "rawg_id":  939
-    },
-    {
-        "Drive":  "E",
-        "Name":  "eFootball 2022",
-        "SizeGB":  56.51,
-        "rawg_id":  545029
-    },
-    {
-        "Drive":  "E",
-        "Name":  "Elden Ring",
-        "SizeGB":  48.37,
-        "rawg_id":  326243
+        "Name":  "DRAGON BALL XENOVERSE 2",
+        "SizeGB":  17.59
     },
     {
         "Drive":  "E",
         "Name":  "Euro Truck Simulator 2",
-        "SizeGB":  33.71,
-        "rawg_id":  9609
-    },
-    {
-        "Drive":  "E",
-        "Name":  "F.E.A.R. 2  Project Origin",
-        "SizeGB":  11.39,
-        "rawg_id":  5564
+        "SizeGB":  33.71
     },
     {
         "Drive":  "E",
         "Name":  "Far Cry 6",
-        "SizeGB":  76.87,
-        "rawg_id":  463723
+        "SizeGB":  76.87
     },
     {
         "Drive":  "E",
         "Name":  "FIFA 08",
-        "SizeGB":  2.75,
-        "rawg_id":  38091
+        "SizeGB":  2.75
     },
     {
         "Drive":  "E",
         "Name":  "FIFA 09",
-        "SizeGB":  4.75,
-        "rawg_id":  38703
+        "SizeGB":  4.75
     },
     {
         "Drive":  "E",
         "Name":  "FIFA 13",
-        "SizeGB":  7.91,
-        "rawg_id":  41462
+        "SizeGB":  7.91
     },
     {
         "Drive":  "E",
         "Name":  "FIFA 14",
-        "SizeGB":  8.59,
-        "rawg_id":  5783
+        "SizeGB":  8.59
     },
     {
         "Drive":  "E",
         "Name":  "FIFA 18",
-        "SizeGB":  37.56,
-        "rawg_id":  28126
+        "SizeGB":  37.56
     },
     {
         "Drive":  "E",
         "Name":  "FIFA 19",
-        "SizeGB":  33.84,
-        "rawg_id":  58732
+        "SizeGB":  33.84
     },
     {
         "Drive":  "E",
-        "Name":  "Fifa 23 (Itch)",
-        "SizeGB":  51.54,
-        "rawg_id":  777111
+        "Name":  "FIFA 23",
+        "SizeGB":  51.54
     },
     {
         "Drive":  "E",
-        "Name":  "FIFA 2005",
-        "SizeGB":  103.32,
-        "rawg_id":  35971
+        "Name":  "FIFA 23 - Patch 2025",
+        "SizeGB":  103.32
     },
     {
         "Drive":  "E",
         "Name":  "Football Manager 2023",
-        "SizeGB":  5.04,
-        "rawg_id":  872266
+        "SizeGB":  5.04
     },
     {
         "Drive":  "E",
         "Name":  "Forza Horizon 4",
-        "SizeGB":  93.28,
-        "rawg_id":  58753
+        "SizeGB":  93.28
     },
     {
         "Drive":  "E",
         "Name":  "Forza Horizon 5",
-        "SizeGB":  101.37,
-        "rawg_id":  622492
+        "SizeGB":  101.37
     },
     {
         "Drive":  "E",
         "Name":  "Ghostrunner",
-        "SizeGB":  21.35,
-        "rawg_id":  366850
+        "SizeGB":  21.35
     },
     {
         "Drive":  "E",
         "Name":  "God of War I",
-        "SizeGB":  64.29,
-        "rawg_id":  29179
+        "SizeGB":  64.29
     },
     {
         "Drive":  "E",
         "Name":  "Hogwarts Legacy",
-        "SizeGB":  72.94,
-        "rawg_id":  906547
+        "SizeGB":  72.94
     },
     {
         "Drive":  "E",
         "Name":  "Injustice 2",
-        "SizeGB":  49.7,
-        "rawg_id":  38
+        "SizeGB":  49.7
     },
     {
         "Drive":  "E",
         "Name":  "Kung Fu Panda",
-        "SizeGB":  4.02,
-        "rawg_id":  25398
+        "SizeGB":  4.02
     },
     {
         "Drive":  "E",
-        "Name":  "Kung Fu Panda  Showdown of Legendary Legends",
-        "SizeGB":  4.09,
-        "rawg_id":  23754
+        "Name":  "Kung Fu Panda Showdown of Legendary Legends",
+        "SizeGB":  4.09
     },
     {
         "Drive":  "E",
-        "Name":  "Lies Of P",
-        "SizeGB":  35.37,
-        "rawg_id":  605674
+        "Name":  "Lies of P",
+        "SizeGB":  35.37
     },
     {
         "Drive":  "E",
         "Name":  "Little Big Adventure - Enhanced Edition",
-        "SizeGB":  21.32,
-        "rawg_id":  20767
+        "SizeGB":  21.32
     },
     {
         "Drive":  "E",
         "Name":  "Little Nightmares",
-        "SizeGB":  6.3,
-        "rawg_id":  41
+        "SizeGB":  6.3
     },
     {
         "Drive":  "E",
         "Name":  "MADiSON",
-        "SizeGB":  8.1,
-        "rawg_id":  663740
+        "SizeGB":  8.1
     },
     {
         "Drive":  "E",
-        "Name":  "Mafia  Definitive Edition",
-        "SizeGB":  27.98,
-        "rawg_id":  442854
+        "Name":  "Mafia Definitive Edition",
+        "SizeGB":  27.98
     },
     {
         "Drive":  "E",
-        "Name":  "Marvel's Avengers",
-        "SizeGB":  133.39,
-        "rawg_id":  58859
+        "Name":  "Marvel\u0027s Avengers",
+        "SizeGB":  133.39
     },
     {
         "Drive":  "E",
-        "Name":  "Mass Effect  Andromeda",
-        "SizeGB":  51.35,
-        "rawg_id":  137
+        "Name":  "Mass Effect Andromeda",
+        "SizeGB":  51.35
     },
     {
         "Drive":  "E",
-        "Name":  "Max Payne 3  The Complete Edition",
-        "SizeGB":  32.45,
-        "rawg_id":  255823
+        "Name":  "Max Payne 3 The Complete Edition",
+        "SizeGB":  32.45
     },
     {
         "Drive":  "E",
-        "Name":  "Metal Gear Solid V  The Phantom Pain",
-        "SizeGB":  28.81,
-        "rawg_id":  3192
+        "Name":  "Metal Gear Solid V The Phantom Pain",
+        "SizeGB":  28.81
     },
     {
         "Drive":  "E",
         "Name":  "Mortal Kombat 11",
-        "SizeGB":  107.3,
-        "rawg_id":  274480
+        "SizeGB":  107.3
     },
     {
         "Drive":  "E",
-        "Name":  "NARUTO SHIPPUDEN  Ultimate Ninja STORM 3 Full Burst",
-        "SizeGB":  7.14,
-        "rawg_id":  11264
+        "Name":  "NARUTO SHIPPUDEN Ultimate Ninja STORM 3 Full Burst",
+        "SizeGB":  7.14
     },
     {
         "Drive":  "E",
-        "Name":  "NARUTO SHIPPUDEN  Ultimate Ninja STORM 4",
-        "SizeGB":  40.49,
-        "rawg_id":  2828
+        "Name":  "NARUTO SHIPPUDEN Ultimate Ninja STORM 4",
+        "SizeGB":  40.49
     },
     {
         "Drive":  "E",
-        "Name":  "NARUTO SHIPPUDEN  Ultimate Ninja STORM Revolution",
-        "SizeGB":  7.53,
-        "rawg_id":  3590
+        "Name":  "NARUTO SHIPPUDEN Ultimate Ninja STORM Revolution",
+        "SizeGB":  7.53
     },
     {
         "Drive":  "E",
-        "Name":  "NARUTO TO BORUTO  SHINOBI STRIKER",
-        "SizeGB":  18.32,
-        "rawg_id":  59098
+        "Name":  "NARUTO TO BORUTO SHINOBI STRIKER",
+        "SizeGB":  18.32
     },
     {
         "Drive":  "E",
-        "Name":  "Naruto x Boruto  Ultimate Ninja Storm Connections",
-        "SizeGB":  29.36,
-        "rawg_id":  934440
+        "Name":  "Naruto x Boruto Ultimate Ninja Storm Connections",
+        "SizeGB":  29.36
     },
     {
         "Drive":  "E",
         "Name":  "NBA 2K21",
-        "SizeGB":  93.88,
-        "rawg_id":  452647
+        "SizeGB":  93.88
     },
     {
         "Drive":  "E",
         "Name":  "One Piece Odyssey",
-        "SizeGB":  29.46,
-        "rawg_id":  761343
+        "SizeGB":  29.46
     },
     {
         "Drive":  "E",
         "Name":  "PC Building Simulator 2",
-        "SizeGB":  28.2,
-        "rawg_id":  857635
+        "SizeGB":  28.2
     },
     {
         "Drive":  "E",
-        "Name":  "Pro Evolution Soccer 2015",
-        "SizeGB":  52.85,
-        "rawg_id":  3515
-    },
-    {
-        "Drive":  "E",
-        "Name":  "Pro Evolution Soccer 2011",
-        "SizeGB":  28.86,
-        "rawg_id":  40201
-    },
-    {
-        "Drive":  "E",
-        "Name":  "Pro Evolution Soccer 2011",
-        "SizeGB":  23.03,
-        "rawg_id":  40201
-    },
-    {
-        "Drive":  "E",
-        "Name":  "Poopy Playtime Chapter 3  A Blue Lost",
-        "SizeGB":  36.53,
-        "rawg_id":  790819
+        "Name":  "Poopy Playtime Chapter 3 A Blue Lost",
+        "SizeGB":  36.53
     },
     {
         "Drive":  "E",
         "Name":  "Poppy Playtime",
-        "SizeGB":  5.81,
-        "rawg_id":  672365
+        "SizeGB":  5.81
     },
     {
         "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2009",
-        "SizeGB":  7.49,
-        "rawg_id":  25854
+        "SizeGB":  7.49
     },
     {
         "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2010",
-        "SizeGB":  8.42,
-        "rawg_id":  26174
+        "SizeGB":  8.42
     },
     {
         "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2011",
-        "SizeGB":  7.98,
-        "rawg_id":  40201
+        "SizeGB":  7.98
     },
     {
         "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2012",
-        "SizeGB":  6.14,
-        "rawg_id":  40887
+        "SizeGB":  6.14
     },
     {
         "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2013",
-        "SizeGB":  5.69,
-        "rawg_id":  24227
+        "SizeGB":  5.69
     },
     {
         "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2014",
-        "SizeGB":  6.13,
-        "rawg_id":  42120
+        "SizeGB":  6.13
     },
     {
         "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2015",
-        "SizeGB":  8.09,
-        "rawg_id":  3515
+        "SizeGB":  8.09
     },
     {
         "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2016",
-        "SizeGB":  7.64,
-        "rawg_id":  43358
+        "SizeGB":  7.64
     },
     {
         "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2017",
-        "SizeGB":  6.07,
-        "rawg_id":  1347
+        "SizeGB":  6.07
+    },
+    {
+        "Drive":  "E",
+        "Name":  "Pro Evolution Soccer 2017 - Patch 2025",
+        "SizeGB":  52.85
+    },
+    {
+        "Drive":  "E",
+        "Name":  "Pro Evolution Soccer 2018",
+        "SizeGB":  28.86
+    },
+    {
+        "Drive":  "E",
+        "Name":  "Pro Evolution Soccer 2019",
+        "SizeGB":  23.03
+    },
+    {
+        "Drive":  "E",
+        "Name":  "Pro Evolution Soccer 2021 - Patch 2025",
+        "SizeGB":  56.51
     },
     {
         "Drive":  "E",
         "Name":  "Pro Evolution Soccer 6",
-        "SizeGB":  1.06,
-        "rawg_id":  37378
+        "SizeGB":  1.06
     },
     {
         "Drive":  "E",
         "Name":  "Quantum Break",
-        "SizeGB":  67.66,
-        "rawg_id":  6617
+        "SizeGB":  67.66
     },
     {
         "Drive":  "E",
         "Name":  "Rayman Origins",
-        "SizeGB":  2.34,
-        "rawg_id":  4361
+        "SizeGB":  2.34
     },
     {
         "Drive":  "E",
         "Name":  "Resident Evil 2",
-        "SizeGB":  23.84,
-        "rawg_id":  58813
+        "SizeGB":  23.84
     },
     {
         "Drive":  "E",
-        "Name":  "Resident evil 3 - Demake",
-        "SizeGB":  22.46,
-        "rawg_id":  696078
+        "Name":  "Resident Evil 3 Remake",
+        "SizeGB":  22.46
     },
     {
         "Drive":  "E",
         "Name":  "Returnal",
-        "SizeGB":  58.76,
-        "rawg_id":  452639
+        "SizeGB":  58.76
     },
     {
         "Drive":  "E",
         "Name":  "Road Redemption",
-        "SizeGB":  6,
-        "rawg_id":  9540
+        "SizeGB":  6
     },
     {
         "Drive":  "E",
-        "Name":  "RoboCop  Rogue City",
-        "SizeGB":  39.44,
-        "rawg_id":  631942
+        "Name":  "RoboCop Rogue City",
+        "SizeGB":  39.44
     },
     {
         "Drive":  "E",
-        "Name":  "Samurai Jack  Battle Through Time",
-        "SizeGB":  4.16,
-        "rawg_id":  415180
+        "Name":  "Samurai Jack Battle Through Time",
+        "SizeGB":  4.16
     },
     {
         "Drive":  "E",
-        "Name":  "Sekiro  Shadows Die Twice",
-        "SizeGB":  15.61,
-        "rawg_id":  50734
+        "Name":  "Sekiro Shadows Die Twice",
+        "SizeGB":  15.61
     },
     {
         "Drive":  "E",
-        "Name":  "Sherlock Holmes  Chapter One",
-        "SizeGB":  26.93,
-        "rawg_id":  447825
+        "Name":  "Sherlock Holmes Chapter One",
+        "SizeGB":  26.93
     },
     {
         "Drive":  "E",
-        "Name":  "Sifu",
-        "SizeGB":  20.15,
-        "rawg_id":  564757
+        "Name":  "SIFU",
+        "SizeGB":  20.15
     },
     {
         "Drive":  "E",
         "Name":  "Sonic Adventure",
-        "SizeGB":  1.82,
-        "rawg_id":  343595
+        "SizeGB":  1.82
     },
     {
         "Drive":  "E",
         "Name":  "Sonic Forces",
-        "SizeGB":  17.17,
-        "rawg_id":  27943
-    },
-    {
-        "Drive":  "E",
-        "Name":  "Spider-Man  Shattered Dimensions",
-        "SizeGB":  13.45,
-        "rawg_id":  26472
-    },
-    {
-        "Drive":  "E",
-        "Name":  "Spider-Man  Web of Shadows",
-        "SizeGB":  6.61,
-        "rawg_id":  24687
+        "SizeGB":  17.17
     },
     {
         "Drive":  "E",
         "Name":  "Spider-Man 3",
-        "SizeGB":  5.58,
-        "rawg_id":  25142
+        "SizeGB":  5.58
     },
     {
         "Drive":  "E",
-        "Name":  "SpongeBob SquarePants  The Cosmic Shake",
-        "SizeGB":  7.91,
-        "rawg_id":  836443
+        "Name":  "Spider-Man Shattered Dimensions",
+        "SizeGB":  13.45
+    },
+    {
+        "Drive":  "E",
+        "Name":  "Spider-Man Web of Shadows",
+        "SizeGB":  6.61
+    },
+    {
+        "Drive":  "E",
+        "Name":  "SpongeBob SquarePants The Cosmic Shake",
+        "SizeGB":  7.91
     },
     {
         "Drive":  "E",
         "Name":  "Stray",
-        "SizeGB":  6.46,
-        "rawg_id":  452638
+        "SizeGB":  6.46
     },
     {
         "Drive":  "E",
         "Name":  "Streets of Rage 4",
-        "SizeGB":  4.75,
-        "rawg_id":  284664
+        "SizeGB":  4.75
     },
     {
         "Drive":  "E",
         "Name":  "Tekken 8",
-        "SizeGB":  87.2,
-        "rawg_id":  850705
+        "SizeGB":  87.2
     },
     {
         "Drive":  "E",
         "Name":  "The Amazing Spider-Man",
-        "SizeGB":  7.89,
-        "rawg_id":  957
+        "SizeGB":  7.89
     },
     {
         "Drive":  "E",
         "Name":  "The Amazing Spider-Man 2",
-        "SizeGB":  8.05,
-        "rawg_id":  902
+        "SizeGB":  8.05
     },
     {
         "Drive":  "E",
-        "Name":  "The Dark Pictures Anthology  House of Ashes",
-        "SizeGB":  47.46,
-        "rawg_id":  514896
+        "Name":  "The Dark Pictures Anthology House of Ashes",
+        "SizeGB":  47.46
     },
     {
         "Drive":  "E",
-        "Name":  "The Dark Pictures Anthology  Little Hope",
-        "SizeGB":  56.02,
-        "rawg_id":  369158
+        "Name":  "The Dark Pictures Anthology Little Hope",
+        "SizeGB":  56.02
     },
     {
         "Drive":  "E",
-        "Name":  "The Dark Pictures Anthology  Man of Medan",
-        "SizeGB":  62.9,
-        "rawg_id":  339961
+        "Name":  "The Dark Pictures Anthology Man of Medan",
+        "SizeGB":  62.9
     },
     {
         "Drive":  "E",
-        "Name":  "THE HOUSE OF THE DEAD  Remake",
-        "SizeGB":  7.17,
-        "rawg_id":  586056
+        "Name":  "THE HOUSE OF THE DEAD Remake",
+        "SizeGB":  7.17
     },
     {
         "Drive":  "E",
         "Name":  "The Sims 4",
-        "SizeGB":  47.81,
-        "rawg_id":  42187
+        "SizeGB":  47.81
     },
     {
         "Drive":  "E",
-        "Name":  "TRANSFORMERS  Rise of the Dark Spark",
-        "SizeGB":  8.91,
-        "rawg_id":  3658
+        "Name":  "TRANSFORMERS Rise of the Dark Spark",
+        "SizeGB":  8.91
     },
     {
         "Drive":  "E",
         "Name":  "Ultimate Marvel vs. Capcom 3",
-        "SizeGB":  3.62,
-        "rawg_id":  713
+        "SizeGB":  3.62
     },
     {
         "Drive":  "E",
         "Name":  "Virtua Tennis 4",
-        "SizeGB":  2.98,
-        "rawg_id":  40433
+        "SizeGB":  2.98
     }
 ]

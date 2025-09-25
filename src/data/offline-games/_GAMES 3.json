@@ -1,404 +1,327 @@
 [
     {
         "Drive":  "F",
-        "Name":  "A Quiet Place  The Road Ahead",
-        "SizeGB":  37.55,
-        "rawg_id":  989330
+        "Name":  "A Quiet Place The Road Ahead",
+        "SizeGB":  37.55
     },
     {
         "Drive":  "F",
         "Name":  "Alan Wake 2",
-        "SizeGB":  110.3,
-        "rawg_id":  580972
+        "SizeGB":  110.3
     },
     {
         "Drive":  "F",
         "Name":  "Alan Wake Remastered",
-        "SizeGB":  36.36,
-        "rawg_id":  654591
+        "SizeGB":  36.36
     },
     {
         "Drive":  "F",
-        "Name":  "Assassin's Creed Mirage",
-        "SizeGB":  41.25,
-        "rawg_id":  845261
+        "Name":  "Assassin\u0027s Creed Mirage",
+        "SizeGB":  41.25
     },
     {
         "Drive":  "F",
-        "Name":  "Assassin's Creed Valhalla",
-        "SizeGB":  158.79,
-        "rawg_id":  437059
+        "Name":  "Assassin\u0027s Creed Valhalla",
+        "SizeGB":  158.79
     },
     {
         "Drive":  "F",
-        "Name":  "Assassin's Creed Chronicles  China",
-        "SizeGB":  3.16,
-        "rawg_id":  20180
+        "Name":  "Assassin\u0027s Creed Chronicles China",
+        "SizeGB":  3.16
     },
     {
         "Drive":  "F",
         "Name":  "Atomic Heart",
-        "SizeGB":  79.91,
-        "rawg_id":  50576
+        "SizeGB":  79.91
     },
     {
         "Drive":  "F",
         "Name":  "Attack on Titan 2",
-        "SizeGB":  24.38,
-        "rawg_id":  51320
+        "SizeGB":  24.38
     },
     {
         "Drive":  "F",
-        "Name":  "Baldur's Gate III",
-        "SizeGB":  150.28,
-        "rawg_id":  324997
+        "Name":  "Baldur\u0027s Gate III",
+        "SizeGB":  150.28
     },
     {
         "Drive":  "F",
-        "Name":  "Biomutant",
-        "SizeGB":  25.2,
-        "rawg_id":  45775
+        "Name":  "BIOMUTANT",
+        "SizeGB":  25.2
     },
     {
         "Drive":  "F",
         "Name":  "Blair Witch",
-        "SizeGB":  13.25,
-        "rawg_id":  326235
-    },
-    {
-        "Drive":  "F",
-        "Name":  "Call of Duty  Black Ops Cold War",
-        "SizeGB":  85.24,
-        "rawg_id":  481910
+        "SizeGB":  13.25
     },
     {
         "Drive":  "F",
         "Name":  "Chariot",
-        "SizeGB":  0.86,
-        "rawg_id":  2838
+        "SizeGB":  0.86
     },
     {
         "Drive":  "F",
         "Name":  "Dead Island 2",
-        "SizeGB":  45.91,
-        "rawg_id":  42857
+        "SizeGB":  45.91
     },
     {
         "Drive":  "F",
-        "Name":  "Devil May Cry 4  Special Edition",
-        "SizeGB":  24.71,
-        "rawg_id":  13466
+        "Name":  "Devil May Cry 4 Special Edition",
+        "SizeGB":  24.71
     },
     {
         "Drive":  "F",
-        "Name":  "Disney Epic Mickey  Rebrushed",
-        "SizeGB":  23.73,
-        "rawg_id":  983530
+        "Name":  "Disney Epic Mickey Rebrushed",
+        "SizeGB":  23.73
     },
     {
         "Drive":  "F",
-        "Name":  "DRAGON BALL  Sparking! ZERO",
-        "SizeGB":  27.9,
-        "rawg_id":  974379
+        "Name":  "DRAGON BALL Sparking! ZERO",
+        "SizeGB":  27.9
     },
     {
         "Drive":  "F",
-        "Name":  "Dragon Ball Z  Kakarot",
-        "SizeGB":  44.85,
-        "rawg_id":  327258
+        "Name":  "Dragon Ball Z Kakarot",
+        "SizeGB":  44.85
     },
     {
         "Drive":  "F",
-        "Name":  "Elden Ring",
-        "SizeGB":  69,
-        "rawg_id":  326243
+        "Name":  "ELDEN RING",
+        "SizeGB":  69
     },
     {
         "Drive":  "F",
-        "Name":  "Enotria  The Last Song",
-        "SizeGB":  13.34,
-        "rawg_id":  978868
+        "Name":  "Enotria The Last Song",
+        "SizeGB":  13.34
     },
     {
         "Drive":  "F",
         "Name":  "Evil West",
-        "SizeGB":  33.26,
-        "rawg_id":  530497
+        "SizeGB":  33.26
     },
     {
         "Drive":  "F",
         "Name":  "Far Cry 4",
-        "SizeGB":  26.69,
-        "rawg_id":  3497
+        "SizeGB":  26.69
     },
     {
         "Drive":  "F",
         "Name":  "Farlight 84",
-        "SizeGB":  40.31,
-        "rawg_id":  959953
+        "SizeGB":  40.31
     },
     {
         "Drive":  "F",
         "Name":  "Final Fantasy VII",
-        "SizeGB":  83.42,
-        "rawg_id":  259801
+        "SizeGB":  83.42
     },
     {
         "Drive":  "F",
         "Name":  "Forspoken",
-        "SizeGB":  129.97,
-        "rawg_id":  452636
+        "SizeGB":  129.97
     },
     {
         "Drive":  "F",
-        "Name":  "Ghost of Tsushima - Iki Island",
-        "SizeGB":  53.97,
-        "rawg_id":  799253
+        "Name":  "Ghost of Tsushima",
+        "SizeGB":  53.97
     },
     {
         "Drive":  "F",
-        "Name":  "Ghostwire  Tokyo",
-        "SizeGB":  16.82,
-        "rawg_id":  326248
+        "Name":  "Ghostwire Tokyo",
+        "SizeGB":  16.82
     },
     {
         "Drive":  "F",
-        "Name":  "God of War  RagnarÃ¶k",
-        "SizeGB":  175.8,
-        "rawg_id":  494384
+        "Name":  "God of War RagnarÃ¶k",
+        "SizeGB":  175.8
     },
     {
         "Drive":  "F",
-        "Name":  "Half-Life  Alyx",
-        "SizeGB":  67.94,
-        "rawg_id":  392019
+        "Name":  "Half-Life Alyx",
+        "SizeGB":  67.94
     },
     {
         "Drive":  "F",
         "Name":  "Harold Halibut",
-        "SizeGB":  51.34,
-        "rawg_id":  58774
+        "SizeGB":  51.34
     },
     {
         "Drive":  "F",
-        "Name":  "HITMAN  Sniper Assassin",
-        "SizeGB":  76.15,
-        "rawg_id":  58726
+        "Name":  "HITMAN World of Assassination",
+        "SizeGB":  76.15
     },
     {
         "Drive":  "F",
-        "Name":  "Horizon Forbidden West Complete Edition",
-        "SizeGB":  124.88,
-        "rawg_id":  966906
+        "Name":  "Horizon Forbidden West",
+        "SizeGB":  124.88
     },
     {
         "Drive":  "F",
         "Name":  "House Flipper",
-        "SizeGB":  3.76,
-        "rawg_id":  9459
+        "SizeGB":  3.76
     },
     {
         "Drive":  "F",
         "Name":  "Indiana Jones and the Great Circle",
-        "SizeGB":  120.62,
-        "rawg_id":  975393
+        "SizeGB":  120.62
     },
     {
         "Drive":  "F",
         "Name":  "It Takes Two",
-        "SizeGB":  43.53,
-        "rawg_id":  455597
+        "SizeGB":  43.53
     },
     {
         "Drive":  "F",
-        "Name":  "Kena  Bridge of Spirits",
-        "SizeGB":  20.24,
-        "rawg_id":  452635
+        "Name":  "Kena Bridge of Spirits",
+        "SizeGB":  20.24
     },
     {
         "Drive":  "F",
-        "Name":  "Liar's Bar",
-        "SizeGB":  4.02,
-        "rawg_id":  989987
+        "Name":  "Liar\u0027s Bar",
+        "SizeGB":  4.02
     },
     {
         "Drive":  "F",
-        "Name":  "mario",
-        "SizeGB":  9.54,
-        "rawg_id":  164830
+        "Name":  "Mario",
+        "SizeGB":  9.54
     },
     {
         "Drive":  "F",
         "Name":  "Moncage",
-        "SizeGB":  1.16,
-        "rawg_id":  690708
+        "SizeGB":  1.16
     },
     {
         "Drive":  "F",
-        "Name":  "MY HERO ONE'S JUSTICE 2",
-        "SizeGB":  8.38,
-        "rawg_id":  407566
+        "Name":  "MY HERO ONE\u0027S JUSTICE 2",
+        "SizeGB":  8.38
     },
     {
         "Drive":  "F",
-        "Name":  "Naruto x Boruto  Ultimate Ninja Storm Connections",
-        "SizeGB":  29.91,
-        "rawg_id":  934440
+        "Name":  "Naruto x Boruto Ultimate Ninja Storm Connections",
+        "SizeGB":  29.91
     },
     {
         "Drive":  "F",
         "Name":  "NIER",
-        "SizeGB":  26.96,
-        "rawg_id":  5621
+        "SizeGB":  26.96
     },
     {
         "Drive":  "F",
-        "Name":  "ONE PIECE  PIRATE WARRIORS 4",
-        "SizeGB":  21.81,
-        "rawg_id":  406002
+        "Name":  "ONE PIECE PIRATE WARRIORS 4",
+        "SizeGB":  21.81
     },
     {
         "Drive":  "F",
         "Name":  "Only Up",
-        "SizeGB":  4.95,
-        "rawg_id":  361153
-    },
-    {
-        "Drive":  "F",
-        "Name":  "Outlast",
-        "SizeGB":  3.65,
-        "rawg_id":  3790
+        "SizeGB":  4.95
     },
     {
         "Drive":  "F",
         "Name":  "Overwatch",
-        "SizeGB":  40.68,
-        "rawg_id":  22508
+        "SizeGB":  40.68
     },
     {
         "Drive":  "F",
-        "Name":  "Prince of Persia  The Lost Crown",
-        "SizeGB":  7.07,
-        "rawg_id":  962011
+        "Name":  "Prince of Persia The Lost Crown",
+        "SizeGB":  7.07
     },
     {
         "Drive":  "F",
         "Name":  "Red Dead Redemption",
-        "SizeGB":  9.57,
-        "rawg_id":  4544
+        "SizeGB":  9.57
     },
     {
         "Drive":  "F",
         "Name":  "Red Dead Redemption 2",
-        "SizeGB":  119.27,
-        "rawg_id":  28
-    },
-    {
-        "Drive":  "F",
-        "Name":  "Resident Evil  Village",
-        "SizeGB":  36.9,
-        "rawg_id":  452649
+        "SizeGB":  119.27
     },
     {
         "Drive":  "F",
         "Name":  "Resident Evil 4",
-        "SizeGB":  57.79,
-        "rawg_id":  795632
+        "SizeGB":  57.79
     },
     {
         "Drive":  "F",
         "Name":  "Resident Evil 6",
-        "SizeGB":  12.48,
-        "rawg_id":  2623
+        "SizeGB":  12.48
     },
     {
         "Drive":  "F",
-        "Name":  "S.T.A.L.K.E.R. 2  Heart of Chornobyl",
-        "SizeGB":  154.7,
-        "rawg_id":  58386
+        "Name":  "Resident Evil Village",
+        "SizeGB":  36.9
     },
     {
         "Drive":  "F",
-        "Name":  "Senua's Saga  Hellblade II",
-        "SizeGB":  49.44,
-        "rawg_id":  398401
+        "Name":  "S.T.A.L.K.E.R. 2 Heart of Chornobyl",
+        "SizeGB":  154.7
+    },
+    {
+        "Drive":  "F",
+        "Name":  "Senua\u0027s Saga Hellblade II",
+        "SizeGB":  49.44
     },
     {
         "Drive":  "F",
         "Name":  "Silent Hill 2 (2001)",
-        "SizeGB":  34.75,
-        "rawg_id":  29642
+        "SizeGB":  34.75
     },
     {
         "Drive":  "F",
         "Name":  "South of Midnight",
-        "SizeGB":  60.11,
-        "rawg_id":  962986
+        "SizeGB":  60.11
     },
     {
         "Drive":  "F",
         "Name":  "Split Fiction",
-        "SizeGB":  87.82,
-        "rawg_id":  994603
+        "SizeGB":  87.82
     },
     {
         "Drive":  "F",
         "Name":  "Starfield",
-        "SizeGB":  116.49,
-        "rawg_id":  58779
+        "SizeGB":  116.49
     },
     {
         "Drive":  "F",
-        "Name":  "Suicide Squad  Kill The Justice League",
-        "SizeGB":  97.53,
-        "rawg_id":  457728
+        "Name":  "Suicide Squad Kill The Justice League",
+        "SizeGB":  97.53
     },
     {
         "Drive":  "F",
         "Name":  "The Callisto Protocol",
-        "SizeGB":  75.83,
-        "rawg_id":  529698
+        "SizeGB":  75.83
     },
     {
         "Drive":  "F",
-        "Name":  "The Expanse  A Telltale Series",
-        "SizeGB":  5.15,
-        "rawg_id":  704793
+        "Name":  "The Expanse A Telltale Series",
+        "SizeGB":  5.15
     },
     {
         "Drive":  "F",
-        "Name":  "The Last Of Us",
-        "SizeGB":  68.66,
-        "rawg_id":  3990
+        "Name":  "The Last of Us",
+        "SizeGB":  68.66
     },
     {
         "Drive":  "F",
         "Name":  "The Last of Us Part II",
-        "SizeGB":  115.8,
-        "rawg_id":  51325
+        "SizeGB":  115.8
     },
     {
         "Drive":  "F",
-        "Name":  "The Lord of the Rings  Gollum",
-        "SizeGB":  44.74,
-        "rawg_id":  438620
+        "Name":  "The Lord of the Rings Gollum",
+        "SizeGB":  44.74
     },
     {
         "Drive":  "F",
-        "Name":  "Unknown 9  Awakening",
-        "SizeGB":  34.55,
-        "rawg_id":  485219
+        "Name":  "Unknown 9 Awakening",
+        "SizeGB":  34.55
     },
     {
         "Drive":  "F",
-        "Name":  "Until Dawn (2024 Remake)",
-        "SizeGB":  59.17,
-        "rawg_id":  976005
+        "Name":  "Until Dawn Remake 2024",
+        "SizeGB":  59.17
     },
     {
         "Drive":  "F",
-        "Name":  "Virtua Fighter 5 R.E.V.O.",
-        "SizeGB":  21.51,
-        "rawg_id":  996798
+        "Name":  "Virtua Fighter 5 R.E.V.O",
+        "SizeGB":  21.51
     }
 ]
