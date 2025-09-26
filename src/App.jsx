@@ -8,6 +8,8 @@ import LoadingSpinner from './components/LoadingSpinner';
 import SummaryModal from './components/SummaryModal';
 import { loadGamesFromJSON } from './data/games';
 import WelcomeTour from './components/WelcomeTour';
+import { getGameImageUrl, getFallbackImageUrl, preloadImages, getCacheVersion } from './utils/imageProvider';
+import { Gamepad2 } from 'lucide-react';
 
 function App() {
   const [games, setGames] = useState([]);
@@ -27,6 +29,10 @@ function App() {
   const [showSearchBar, setShowSearchBar] = useState(true);
   const [showWelcomeTour, setShowWelcomeTour] = useState(false);
   const scrollStateRef = React.useRef({ lastY: 0, ticking: false });
+  const [showPreloader, setShowPreloader] = useState(true);
+  const [preloadProgress, setPreloadProgress] = useState(0);
+  const [preloadVersion, setPreloadVersion] = useState(0);
+  const [preloaderStep, setPreloaderStep] = useState(0); // derived from progress
 
   // Load games on component mount
   useEffect(() => {
@@ -68,6 +74,64 @@ function App() {
     loadGames();
   }, []);
 
+  // Preload all cover images at startup with a progress overlay
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      // If this app version already preloaded before, hide overlay immediately
+      let version = '1';
+      try { version = await getCacheVersion(); } catch (_) {}
+      const flagKey = `coversPreloaded:${version}`;
+      try {
+        if (localStorage.getItem(flagKey) === '1') {
+          if (!cancelled) setShowPreloader(false);
+          return;
+        }
+      } catch (_) {}
+
+      // Otherwise, wait for games to load, then preload and hide
+      if (isLoading || games.length === 0) {
+        // Keep overlay visible until games are ready
+        return;
+      }
+
+      try {
+        const fallback = await getFallbackImageUrl();
+        const urlsSet = new Set();
+        if (fallback) urlsSet.add(fallback);
+        for (const g of games) {
+          const u = await getGameImageUrl(g);
+          if (u) urlsSet.add(u);
+        }
+        const urls = Array.from(urlsSet);
+        await preloadImages(urls, (p) => {
+          if (!cancelled) setPreloadProgress(p);
+        });
+        try { localStorage.setItem(flagKey, '1'); } catch (_) {}
+      } finally {
+        if (!cancelled) {
+          setShowPreloader(false);
+          setPreloadVersion(v => v + 1);
+        }
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [isLoading, games]);
+
+  // Derive preloader step from progress thresholds
+  useEffect(() => {
+    const p = preloadProgress;
+    if (p < 0.35) {
+      setPreloaderStep(0); // Loading
+    } else if (p < 0.55) {
+      setPreloaderStep(1); // Title
+    } else if (p < 0.80) {
+      setPreloaderStep(2); // Count + Icon
+    } else {
+      setPreloaderStep(0); // Loading again
+    }
+  }, [preloadProgress]);
+
   // Persist hamburger hint dismissal across sessions
   useEffect(() => {
     try {
@@ -94,6 +158,18 @@ function App() {
     window.addEventListener('resize', apply);
     return () => window.removeEventListener('resize', apply);
   }, [densityManual]);
+
+  // Ensure dark mode class is applied globally so portaled components also receive dark styles
+  useEffect(() => {
+    try {
+      const root = document.documentElement;
+      if (isDarkMode) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+    } catch (_) {}
+  }, [isDarkMode]);
 
   // Hide SearchBar on scroll down, show on slight scroll up
   useEffect(() => {
@@ -292,14 +368,14 @@ function App() {
             <div className="flex items-center gap-2 justify-center sm:justify-start">
               <button
                 onClick={() => setActiveSection('offline')}
-                className={`px-3 py-2 rounded-md text-sm font-bold border transition-colors ${activeSection === 'offline' ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-800 border-gray-300 dark:bg-neutral-900 dark:text-gray-100 dark:border-neutral-700'}`}
+                className={`px-3 py-2 rounded-md text-sm font-bold border transition-colors ${activeSection === 'offline' ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-800 border-gray-300 dark:bg-neutral-900 dark:text-gray-100 dark:border-neutral-700'} ${activeSection === 'online' ? 'glow-pulse' : ''}`}
                 aria-pressed={activeSection === 'offline'}
               >
                 الألعاب أوفلاين
               </button>
               <button
                 onClick={() => setActiveSection('online')}
-                className={`px-3 py-2 rounded-md text-sm font-bold border transition-colors ${activeSection === 'online' ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-800 border-gray-300 dark:bg-neutral-900 dark:text-gray-100 dark:border-neutral-700'}`}
+                className={`px-3 py-2 rounded-md text-sm font-bold border transition-colors ${activeSection === 'online' ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-800 border-gray-300 dark:bg-neutral-900 dark:text-gray-100 dark:border-neutral-700'} ${activeSection === 'offline' ? 'glow-pulse' : ''}`}
                 aria-pressed={activeSection === 'online'}
               >
                 الألعاب أونلاين
@@ -324,6 +400,7 @@ function App() {
                 totalGames={games.length}
                 layoutMode={layoutMode}
                 gridDensity={gridDensity}
+                preloadVersion={preloadVersion}
               />
             )}
           </motion.div>
@@ -332,6 +409,7 @@ function App() {
         <SummaryBar
           stats={summaryStats}
           onOpenModal={() => setShowSummaryModal(true)}
+          isDarkMode={isDarkMode}
         />
 
         <AnimatePresence>
@@ -345,6 +423,89 @@ function App() {
               onCopy={copyToClipboard}
               onWhatsApp={sendToWhatsApp}
             />
+          )}
+        </AnimatePresence>
+
+        {/* Startup preloader overlay */}
+        <AnimatePresence>
+          {showPreloader && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100]"
+            >
+              {/* Background splash image (cover, responsive) */}
+              <div className="absolute inset-0 overflow-hidden">
+                <img
+                  src={`${import.meta.env.BASE_URL}images/Splash%20Screen.webp`}
+                  alt="Splash Background"
+                  decoding="async"
+                  loading="eager"
+                  fetchpriority="high"
+                  className="w-full h-full object-cover object-center select-none pointer-events-none"
+                  draggable={false}
+                />
+                {/* Dim overlay (~90% opacity) */}
+                <div className="absolute inset-0 bg-black/90" aria-hidden="true" />
+              </div>
+
+              {/* Foreground content */}
+              <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-center px-6">
+                <AnimatePresence mode="wait">
+                  {preloaderStep === 0 && (
+                    <motion.div
+                      key="step-loading"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.6, ease: 'easeInOut' }}
+                      className="text-2xl font-extrabold text-gray-900 dark:text-gray-100 mb-4"
+                    >
+                      Loading
+                    </motion.div>
+                  )}
+                  {preloaderStep === 1 && (
+                    <motion.div
+                      key="step-title"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.6, ease: 'easeInOut' }}
+                      className="text-2xl font-extrabold leading-tight mb-4"
+                    >
+                      <span className="block sm:inline text-gradient">Technical Store</span>
+                      <span className="mx-2 text-gray-400 dark:text-gray-500 hidden sm:inline">|</span>
+                      <span className="block sm:inline text-gray-900 dark:text-gray-100">قسم الألعاب</span>
+                    </motion.div>
+                  )}
+                  {preloaderStep === 2 && (
+                    <motion.div
+                      key="step-count"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.6, ease: 'easeInOut' }}
+                      className="text-lg sm:text-xl font-bold mb-4 flex items-center justify-center gap-2"
+                    >
+                      <Gamepad2
+                        className={`h-5 w-5 ${preloadProgress < 0.55 ? 'text-gray-400 dark:text-gray-500' : 'text-accent-600 dark:text-accent-400'}`}
+                      />
+                      <span className="text-gray-900 dark:text-gray-100">{games.length} لعبة متاحة</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+                <div className="w-64 h-3 bg-gray-200 dark:bg-neutral-800 rounded-full overflow-hidden mx-auto shadow-inner">
+                  <div
+                    className="h-full bg-primary-600 transition-[width] duration-200"
+                    style={{ width: `${Math.round(preloadProgress * 100)}%` }}
+                  />
+                </div>
+                <div className="mt-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                  {Math.round(preloadProgress * 100)}%
+                </div>
+              </div>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>

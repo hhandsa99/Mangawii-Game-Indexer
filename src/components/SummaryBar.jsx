@@ -1,16 +1,23 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { ShoppingCart, HardDrive, Tag, CheckCircle } from 'lucide-react';
 
-const SummaryBar = ({ stats, onOpenModal }) => {
+const SummaryBar = ({ stats, onOpenModal, isDarkMode = false }) => {
   const { selectedCount, totalSize, totalPrice } = stats;
 
-  return (
+  const bar = (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.3 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, delay: 0.2 }}
       className="fixed bottom-0 left-0 right-0 z-40 glass-effect border-t border-gray-200 dark:border-gray-800"
+      style={{
+        // Provide extra padding for devices with a home indicator and during zoom changes
+        paddingBottom: 'max(env(safe-area-inset-bottom), 0px)',
+        // Stabilize compositing on some mobile browsers
+        backfaceVisibility: 'hidden'
+      }}
     >
       <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-4 max-w-7xl">
         {/* Mobile Layout */}
@@ -122,6 +129,12 @@ const SummaryBar = ({ stats, onOpenModal }) => {
         </div>
       </div>
     </motion.div>
+  );
+
+  // Render via portal to detach from any transformed ancestors
+  return createPortal(
+    <div className={isDarkMode ? 'dark' : ''}>{bar}</div>,
+    document.body
   );
 };
 

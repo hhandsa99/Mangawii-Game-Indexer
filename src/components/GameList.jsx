@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ImageOff, Gamepad2, SquareCheckBig } from 'lucide-react';
-import { getGameImageUrl, getFallbackImageUrl } from '../utils/imageProvider';
+import { getGameImageUrl, getFallbackImageUrl, getCachedImageUrlByName } from '../utils/imageProvider';
 
-const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGames, layoutMode = 'grid', gridDensity = 'cozy' }) => {
+const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGames, layoutMode = 'grid', gridDensity = 'cozy', preloadVersion = 0 }) => {
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [imageMap, setImageMap] = useState({});
   const [lightbox, setLightbox] = useState({ open: false, src: '', title: '' });
@@ -18,21 +18,16 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
     setSelectAllIndeterminate(visibleSelectedCount > 0 && visibleSelectedCount < games.length);
   }, [games, selectedGames]);
 
-  // Load thumbnails progressively for current games list
+  // Seed from session cache so reload/view switches show instantly; lazily resolve missing via IO
   React.useEffect(() => {
-    let isMounted = true;
-    // Reset image map so items will show skeletons
-    setImageMap({});
-    (async () => {
-      for (const g of games) {
-        getGameImageUrl(g).then((url) => {
-          if (!isMounted) return;
-          setImageMap(prev => ({ ...prev, [g.Name]: url }));
-        });
-      }
-    })();
-    return () => { isMounted = false; };
-  }, [games]);
+    const initial = {};
+    for (const g of games) {
+      const u = getCachedImageUrlByName(g.Name);
+      if (u) initial[g.Name] = u;
+    }
+    setImageMap(initial);
+    setLoadedMap({});
+  }, [games, preloadVersion]);
 
   // Resolve fallback image that can have any extension
   React.useEffect(() => {
@@ -220,11 +215,38 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
             </div>
           ))}
         </div>
+        {/* Mobile spacer to account for fixed SummaryBar height */}
+        <div className="h-40 sm:h-0" aria-hidden="true" />
       </motion.div>
     );
   }
 
   // GRID layout (new design)
+  // Lazily resolve an image URL when a card enters the viewport
+  const LazyImage = ({ name }) => {
+    const ref = React.useRef(null);
+    React.useEffect(() => {
+      const el = ref.current;
+      if (!el) return;
+      if (imageMap[name] !== undefined) return; // already requested/resolved
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Mark as requested to avoid duplicate work
+            setImageMap(prev => (prev[name] === undefined ? { ...prev, [name]: '' } : prev));
+            getGameImageUrl({ Name: name }).then((url) => {
+              setImageMap(prev => ({ ...prev, [name]: url }));
+            });
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: '200px' });
+      observer.observe(el);
+      return () => observer.disconnect();
+    }, [name, imageMap]);
+    return <div ref={ref} className="absolute inset-0" aria-hidden="true" />;
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -294,15 +316,17 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
             return (
               <motion.button
                 key={`${game.Name}-${game.Drive || 'D'}-${game.SizeGB}-${index}`}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.25, delay: (index % 12) * 0.02 }}
+                transition={{ duration: 0.2, delay: (index % 12) * 0.01 }}
                 onClick={() => onGameSelection(game.Name, !selected)}
-                className={`text-left rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-md hover:shadow-xl hover:-translate-y-1 transition-transform duration-200 border border-gray-200 dark:border-neutral-800 relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${selected ? 'ring-2 ring-green-500 ring-offset-0' : ''}`}
+                className={`text-left rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-transform duration-150 border border-gray-200 dark:border-neutral-800 relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${selected ? 'ring-2 ring-green-500 ring-offset-0' : ''}`}
                 aria-pressed={selected}
               >
                 {/* Full-bleed image with bottom overlay (title + size) */}
                 <div className="relative w-full aspect-[3/4] bg-gray-200 dark:bg-neutral-800 overflow-hidden">
+                  {/* Trigger lazy resolution of image URL when in view */}
+                  <LazyImage name={game.Name} />
                   {imageMap[game.Name] === undefined ? (
                     <div className="w-full h-full skeleton" />
                   ) : (
@@ -332,7 +356,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                             width={300}
                             height={400}
                             draggable={false}
-                            className={`w-full h-full object-cover transition-[filter,transform,opacity] duration-500 ease-out select-none ${isLoaded ? 'blur-0 scale-100 opacity-100' : 'blur-sm scale-105 opacity-90'} group-hover:scale-[1.02]`}
+                            className={`w-full h-full object-cover transition-opacity duration-500 ease-out select-none ${isLoaded ? 'opacity-100' : 'opacity-90'}`}
                             onLoad={() => {
                               setLoadedMap(prev => ({ ...prev, [game.Name]: true }));
                             }}
@@ -354,18 +378,19 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                       </span>
                     </div>
                   )}
-                  {/* Smoothing gradient above overlay */}
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 sm:h-16 bg-gradient-to-t from-black/60 to-transparent" />
+                  {/* Smoothing gradient above overlay (lighter in light mode) */}
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 sm:h-16 bg-gradient-to-t from-black/20 dark:from-black/60 to-transparent" />
                   {/* Bottom overlay with title and meta */}
                   <div className="absolute inset-x-0 bottom-0">
-                    <div className="bg-black/75 backdrop-blur-md px-3 sm:px-3.5 py-2 sm:py-2.5">
+                    {/* Light translucent white in light mode; dark translucent black in dark mode */}
+                    <div className="bg-white/70 dark:bg-black/75 backdrop-blur-md px-3 sm:px-3.5 py-2 sm:py-2.5">
                       <div
-                        className={`text-[15px] sm:text-base font-extrabold leading-snug whitespace-normal break-words ${selected ? 'text-green-600 dark:text-green-400' : 'text-white'}`}
+                        className={`text-[15px] sm:text-base font-extrabold leading-snug whitespace-normal break-words ${selected ? 'text-green-600 dark:text-green-400' : 'text-gray-900 dark:text-white'}`}
                         title={game.Name}
                       >
                         {game.Name}
                       </div>
-                      <div className="mt-1.5 flex items-center gap-2 text-[11px] sm:text-xs text-gray-100">
+                      <div className="mt-1.5 flex items-center gap-2 text-[11px] sm:text-xs text-gray-700 dark:text-gray-100">
                         {/* Size pill */}
                         <span className="inline-block font-semibold px-2 py-0.5 rounded-md bg-primary-600 text-white border border-primary-700">
                           {Number(game.SizeGB).toFixed(2)} GB
@@ -392,6 +417,8 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
           </div>
         ))}
       </div>
+      {/* Mobile spacer to account for fixed SummaryBar height */}
+      <div className="h-40 sm:h-0" aria-hidden="true" />
       {/* Lightbox */}
       <AnimatePresence>
         {lightbox.open && (
