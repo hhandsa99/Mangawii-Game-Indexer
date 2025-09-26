@@ -8,7 +8,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import SummaryModal from './components/SummaryModal';
 import { loadGamesFromJSON } from './data/games';
 import WelcomeTour from './components/WelcomeTour';
-import { getGameImageUrl, getFallbackImageUrl, preloadImages, getCacheVersion } from './utils/imageProvider';
+import { getCacheVersion } from './utils/imageProvider';
 import { Gamepad2 } from 'lucide-react';
 
 function App() {
@@ -74,49 +74,59 @@ function App() {
     loadGames();
   }, []);
 
-  // Preload all cover images at startup with a progress overlay
+  // Lightweight startup preloader: do NOT preload every cover image.
+  // Show a quick progress animation and hide once games are loaded.
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      // If this app version already preloaded before, hide overlay immediately
       let version = '1';
       try { version = await getCacheVersion(); } catch (_) {}
       const flagKey = `coversPreloaded:${version}`;
-      try {
-        if (localStorage.getItem(flagKey) === '1') {
-          if (!cancelled) setShowPreloader(false);
-          return;
-        }
-      } catch (_) {}
-
-      // Otherwise, wait for games to load, then preload and hide
-      if (isLoading || games.length === 0) {
-        // Keep overlay visible until games are ready
-        return;
-      }
-
-      try {
-        const fallback = await getFallbackImageUrl();
-        const urlsSet = new Set();
-        if (fallback) urlsSet.add(fallback);
-        for (const g of games) {
-          const u = await getGameImageUrl(g);
-          if (u) urlsSet.add(u);
-        }
-        const urls = Array.from(urlsSet);
-        await preloadImages(urls, (p) => {
-          if (!cancelled) setPreloadProgress(p);
-        });
-        try { localStorage.setItem(flagKey, '1'); } catch (_) {}
-      } finally {
+      const hide = () => {
         if (!cancelled) {
           setShowPreloader(false);
           setPreloadVersion(v => v + 1);
         }
+      };
+      try {
+        if (localStorage.getItem(flagKey) === '1') {
+          // Already warmed once for this version; hide quickly.
+          if (!cancelled) setPreloadProgress(1);
+          setTimeout(hide, 200);
+          return;
+        }
+      } catch (_) {}
+
+      // Wait until games are loaded, then immediately hide without heavy preloads.
+      if (isLoading || games.length === 0) {
+        return;
       }
+      try {
+        // Mark as preloaded to avoid showing the overlay again for this version.
+        localStorage.setItem(flagKey, '1');
+      } catch (_) {}
+      if (!cancelled) setPreloadProgress(1);
+      setTimeout(hide, 200);
     })();
     return () => { cancelled = true; };
   }, [isLoading, games]);
+
+  // Drive a smooth, quick progress animation while the preloader is visible.
+  useEffect(() => {
+    if (!showPreloader) return;
+    let rafId = 0;
+    let startTs = 0;
+    const duration = 800; // ms to reach ~90%
+    const tick = (ts) => {
+      if (!startTs) startTs = ts;
+      const elapsed = ts - startTs;
+      const target = Math.min(0.9, elapsed / duration);
+      setPreloadProgress(target);
+      rafId = window.requestAnimationFrame(tick);
+    };
+    rafId = window.requestAnimationFrame(tick);
+    return () => { if (rafId) window.cancelAnimationFrame(rafId); };
+  }, [showPreloader]);
 
   // Derive preloader step from progress thresholds
   useEffect(() => {

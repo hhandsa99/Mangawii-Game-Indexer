@@ -74,10 +74,10 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
     return Object.keys(groups).sort().map(l => [l, groups[l]]);
   }, [sortedForGrid]);
 
-  // Determine top-priority items (first few above-the-fold items)
+  // Determine top-priority items (only the first above-the-fold item)
   const priorityNames = React.useMemo(() => {
-    // Choose first 8 items overall as priority
-    const N = 8;
+    // Choose only the first item overall as priority to keep LCP fast
+    const N = 1;
     return new Set(sortedForGrid.slice(0, N).map(g => g.Name));
   }, [sortedForGrid]);
 
