@@ -7,7 +7,8 @@
 export async function getFallbackImageUrl() {
   const base = `${import.meta.env.BASE_URL || '/'}covers/`;
   const names = ['fallback', 'Fallback', 'cover', 'Cover', 'default', 'Default'];
-  const exts = ['jpg', 'png', 'webp', 'jpeg', 'avif'];
+  // Prefer modern formats first to reduce failed probes on GitHub Pages
+  const exts = ['webp', 'jpg', 'jpeg', 'png', 'avif'];
   const candidates = [];
   for (const n of names) {
     for (const e of exts) candidates.push(`${n}.${e}`);
@@ -47,7 +48,8 @@ function buildNameCandidates(name) {
 async function tryLocalCover(gameName) {
   const base = `${import.meta.env.BASE_URL || '/'}covers/`;
   const names = buildNameCandidates(gameName);
-  const exts = ['jpg', 'png', 'webp', 'jpeg', 'avif'];
+  // Prefer webp first since the repo stores covers primarily as .webp
+  const exts = ['webp', 'jpg', 'jpeg', 'png', 'avif'];
   for (const n of names) {
     for (const ext of exts) {
       const url = `${base}${n}.${ext}`;
@@ -63,7 +65,8 @@ function imageExists(url) {
     const img = new Image();
     img.onload = () => resolve(true);
     img.onerror = () => resolve(false);
-    img.src = url;
+    // Encode to ensure spaces and special chars are safe on GitHub Pages
+    img.src = encodeURI(url);
   });
 }
 
