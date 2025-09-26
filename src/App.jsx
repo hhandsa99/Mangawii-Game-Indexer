@@ -381,14 +381,14 @@ function App() {
                 className={`px-3 py-2 rounded-md text-sm font-bold border transition-colors ${activeSection === 'offline' ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-800 border-gray-300 dark:bg-neutral-900 dark:text-gray-100 dark:border-neutral-700'} ${activeSection === 'online' ? 'glow-pulse' : ''}`}
                 aria-pressed={activeSection === 'offline'}
               >
-                الألعاب أوفلاين
+                العاب أوفلاين
               </button>
               <button
                 onClick={() => setActiveSection('online')}
                 className={`px-3 py-2 rounded-md text-sm font-bold border transition-colors ${activeSection === 'online' ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-800 border-gray-300 dark:bg-neutral-900 dark:text-gray-100 dark:border-neutral-700'} ${activeSection === 'offline' ? 'glow-pulse' : ''}`}
                 aria-pressed={activeSection === 'online'}
               >
-                الألعاب أونلاين
+                العاب أونلاين
               </button>
               <button
                 onClick={() => setActiveSection('all')}
