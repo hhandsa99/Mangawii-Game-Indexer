@@ -1,0 +1,355 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Header from './components/Header';
+import SearchBar from './components/SearchBar';
+import GameList from './components/GameList';
+import SummaryBar from './components/SummaryBar';
+import LoadingSpinner from './components/LoadingSpinner';
+import SummaryModal from './components/SummaryModal';
+import { loadGamesFromJSON } from './data/games';
+import WelcomeTour from './components/WelcomeTour';
+
+function App() {
+  const [games, setGames] = useState([]);
+  const [filteredGames, setFilteredGames] = useState([]);
+  const [selectedGames, setSelectedGames] = useState(new Set());
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [showSummaryModal, setShowSummaryModal] = useState(false);
+  const [layoutMode, setLayoutMode] = useState('grid'); // 'grid' | 'list'
+  const [activeSection, setActiveSection] = useState('offline'); // 'offline' | 'online' | 'all'
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showSidebarHint, setShowSidebarHint] = useState(true);
+  const [gridDensity, setGridDensity] = useState('cozy'); // 'compact' | 'cozy' | 'comfortable'
+  const [densityManual, setDensityManual] = useState(false); // user override
+  const [whatsAppNumber, setWhatsAppNumber] = useState('201204838286');
+  const [showSearchBar, setShowSearchBar] = useState(true);
+  const [showWelcomeTour, setShowWelcomeTour] = useState(false);
+  const scrollStateRef = React.useRef({ lastY: 0, ticking: false });
+
+  // Load games on component mount
+  useEffect(() => {
+    // Restore hamburger hint dismissed state from localStorage
+    try {
+      const dismissed = localStorage.getItem('sidebarHintDismissed');
+      if (dismissed === '1') setShowSidebarHint(false);
+      const tourDone = localStorage.getItem('welcomeTourDone');
+      if (tourDone !== '1') setShowWelcomeTour(true);
+    } catch (_) {}
+    // Load WhatsApp phone number from public/whatsapp.json so it works on GitHub Pages
+    (async () => {
+      try {
+        const url = `${import.meta.env.BASE_URL}whatsapp.json`;
+        const res = await fetch(url, { cache: 'no-cache' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.phoneNumber) {
+            const digits = String(data.phoneNumber).replace(/[^\d]/g, '');
+            if (digits) setWhatsAppNumber(digits);
+          }
+        }
+      } catch (_) {}
+    })();
+    const loadGames = async () => {
+      setIsLoading(true);
+      try {
+        const gameData = await loadGamesFromJSON();
+        const sortedGames = gameData.sort((a, b) => a.Name.localeCompare(b.Name));
+        setGames(sortedGames);
+        setFilteredGames(sortedGames);
+      } catch (error) {
+        console.error('Failed to load games:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadGames();
+  }, []);
+
+  // Persist hamburger hint dismissal across sessions
+  useEffect(() => {
+    try {
+      if (!showSidebarHint) {
+        localStorage.setItem('sidebarHintDismissed', '1');
+      }
+    } catch (_) {}
+  }, [showSidebarHint]);
+
+  // Responsive logic for grid density (auto unless user manually changes)
+  useEffect(() => {
+    if (densityManual) return; // don't override manual choice
+    const apply = () => {
+      const w = window.innerWidth;
+      if (w < 480) {
+        setGridDensity('compact');
+      } else if (w < 1200) {
+        setGridDensity('cozy');
+      } else {
+        setGridDensity('comfortable');
+      }
+    };
+    apply();
+    window.addEventListener('resize', apply);
+    return () => window.removeEventListener('resize', apply);
+  }, [densityManual]);
+
+  // Hide SearchBar on scroll down, show on slight scroll up
+  useEffect(() => {
+    const onScroll = () => {
+      const { ticking, lastY } = scrollStateRef.current;
+      const currentY = window.scrollY || window.pageYOffset || 0;
+      if (ticking) return;
+      scrollStateRef.current.ticking = true;
+      window.requestAnimationFrame(() => {
+        const delta = currentY - lastY;
+        // Hide when scrolling down more than threshold and away from top
+        if (delta > 8 && currentY > 100) {
+          setShowSearchBar(false);
+        }
+        // Show when scrolling up slightly
+        if (delta < -5) {
+          setShowSearchBar(true);
+        }
+        // Always show near the very top
+        if (currentY < 80) {
+          setShowSearchBar(true);
+        }
+        scrollStateRef.current.lastY = currentY;
+        scrollStateRef.current.ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Filter games based on search query and active section
+  useEffect(() => {
+    let base = games;
+    if (activeSection !== 'all') {
+      base = base.filter(g => (g.__section || 'offline') === activeSection);
+    }
+    if (!searchQuery.trim()) {
+      setFilteredGames(base);
+    } else {
+      const filtered = base.filter(game =>
+        game.Name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredGames(filtered);
+    }
+  }, [searchQuery, games, activeSection]);
+
+  // Calculate summary statistics
+  const summaryStats = useMemo(() => {
+    const selected = games.filter(game => selectedGames.has(game.Name));
+    const totalSize = selected.reduce((sum, game) => sum + parseFloat(game.SizeGB), 0);
+    
+    let totalPrice = totalSize;
+    if (totalSize > 100) {
+      totalPrice /= 2;
+    }
+    totalPrice = Math.round(totalPrice / 5) * 5;
+    if (selected.length > 0 && totalPrice < 20) {
+      totalPrice = 20;
+    }
+
+    return {
+      selectedCount: selected.length,
+      totalSize: totalSize.toFixed(2),
+      totalPrice: totalPrice.toFixed(2),
+      selectedGames: selected
+    };
+  }, [selectedGames, games]);
+
+  // Handle game selection
+  const handleGameSelection = (gameName, isSelected) => {
+    const newSelected = new Set(selectedGames);
+    if (isSelected) {
+      newSelected.add(gameName);
+    } else {
+      newSelected.delete(gameName);
+    }
+    setSelectedGames(newSelected);
+  };
+
+  // Handle select all
+  const handleSelectAll = (isSelected) => {
+    if (isSelected) {
+      const allGameNames = new Set(filteredGames.map(game => game.Name));
+      setSelectedGames(allGameNames);
+    } else {
+      setSelectedGames(new Set());
+    }
+  };
+
+  // Toggle selection by name (used in modal checklist)
+  const applySelectionFromModal = (namesArray) => {
+    const next = new Set(namesArray);
+    setSelectedGames(next);
+  };
+
+  // Handle search
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  // Generate summary text
+  const generateSummaryText = () => {
+    const { selectedGames } = summaryStats;
+    let summaryText = '';
+    selectedGames.forEach(game => {
+      summaryText += `${game.Name} | ${game.SizeGB} GB | Drive: ${game.Drive}\n`;
+    });
+
+    summaryText += `\nالألعاب المحددة: ${summaryStats.selectedCount}\n`;
+    summaryText += `الحجم الكلي: ${summaryStats.totalSize} جيجا\n`;
+    summaryText += `السعر: ${summaryStats.totalPrice} جنيه`;
+    
+    return summaryText;
+  };
+
+  // Copy to clipboard
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(generateSummaryText());
+      // You could add a toast notification here
+      setShowSummaryModal(false);
+    } catch (error) {
+      console.error('Failed to copy to clipboard:', error);
+    }
+  };
+
+  // Send to WhatsApp
+  const sendToWhatsApp = () => {
+    const phoneNumber = whatsAppNumber || "201204838286";
+    const encodedMessage = encodeURIComponent(generateSummaryText());
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+    setShowSummaryModal(false);
+  };
+
+  return (
+    <div className={`min-h-screen transition-colors duration-300 ${
+      isDarkMode ? 'dark bg-neutral-900' : 'bg-gray-50'
+    }`}>
+      {/* Dark mode class for Tailwind */}
+      <div className={isDarkMode ? 'dark' : ''}>
+        <WelcomeTour
+          open={showWelcomeTour}
+          onClose={(reason) => {
+            if (reason === 'done') {
+              try { localStorage.setItem('welcomeTourDone', '1'); } catch (_) {}
+            }
+            setShowWelcomeTour(false);
+          }}
+        />
+        <Header 
+          isDarkMode={isDarkMode} 
+          onToggleDarkMode={toggleDarkMode}
+          totalGames={games.length}
+          isSidebarOpen={isSidebarOpen}
+          onToggleSidebar={() => {
+            setIsSidebarOpen(s => !s);
+            setShowSidebarHint(false);
+          }}
+          layoutMode={layoutMode}
+          onChangeLayout={(mode) => {
+            setLayoutMode(mode);
+            setIsSidebarOpen(false);
+            setShowSidebarHint(false);
+          }}
+          showSidebarHint={showSidebarHint}
+          gridDensity={gridDensity}
+          onChangeDensity={(val) => { setDensityManual(true); setGridDensity(val); }}
+        />
+        
+        <main className="px-3 sm:px-6 py-6 sm:py-8 pb-24 sm:pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6 sm:space-y-8"
+          >
+            {/* Sticky search bar that hides on scroll down and shows on slight scroll up */}
+            <motion.div
+              className="sticky top-24 sm:top-28 z-40"
+              initial={{ y: 0, opacity: 1 }}
+              animate={{ y: showSearchBar ? 0 : -72, opacity: showSearchBar ? 1 : 0 }}
+              transition={{ duration: 0.25 }}
+            >
+              <SearchBar 
+                onSearch={handleSearch}
+                searchQuery={searchQuery}
+              />
+            </motion.div>
+            {/* Section toggle (replaces layout toggle): Offline / Online / All */}
+            <div className="flex items-center gap-2 justify-center sm:justify-start">
+              <button
+                onClick={() => setActiveSection('offline')}
+                className={`px-3 py-2 rounded-md text-sm font-bold border transition-colors ${activeSection === 'offline' ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-800 border-gray-300 dark:bg-neutral-900 dark:text-gray-100 dark:border-neutral-700'}`}
+                aria-pressed={activeSection === 'offline'}
+              >
+                الألعاب أوفلاين
+              </button>
+              <button
+                onClick={() => setActiveSection('online')}
+                className={`px-3 py-2 rounded-md text-sm font-bold border transition-colors ${activeSection === 'online' ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-800 border-gray-300 dark:bg-neutral-900 dark:text-gray-100 dark:border-neutral-700'}`}
+                aria-pressed={activeSection === 'online'}
+              >
+                الألعاب أونلاين
+              </button>
+              <button
+                onClick={() => setActiveSection('all')}
+                className={`px-3 py-2 rounded-md text-sm font-bold border transition-colors ${activeSection === 'all' ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-800 border-gray-300 dark:bg-neutral-900 dark:text-gray-100 dark:border-neutral-700'}`}
+                aria-pressed={activeSection === 'all'}
+              >
+                الكل
+              </button>
+            </div>
+            
+            {isLoading ? (
+              <LoadingSpinner />
+            ) : (
+              <GameList
+                games={filteredGames}
+                selectedGames={selectedGames}
+                onGameSelection={handleGameSelection}
+                onSelectAll={handleSelectAll}
+                totalGames={games.length}
+                layoutMode={layoutMode}
+                gridDensity={gridDensity}
+              />
+            )}
+          </motion.div>
+        </main>
+
+        <SummaryBar
+          stats={summaryStats}
+          onOpenModal={() => setShowSummaryModal(true)}
+        />
+
+        <AnimatePresence>
+          {showSummaryModal && (
+            <SummaryModal
+              summaryText={generateSummaryText()}
+              stats={summaryStats}
+              selectedList={summaryStats.selectedGames}
+              onApplySelection={applySelectionFromModal}
+              onClose={() => setShowSummaryModal(false)}
+              onCopy={copyToClipboard}
+              onWhatsApp={sendToWhatsApp}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
+
+export default App;
