@@ -16,7 +16,6 @@ A modern, responsive game indexer built with React, featuring a beautiful UI/UX 
 
 Made with ❤️ by Mangawii
 
-
 ## 📘 دليل التحديث (عربي)
 
 > هذا الدليل يوضح أماكن التعديل السريعة في المشروع لتحديث قائمة الألعاب، صور الغلاف، ورقم الواتساب.
