@@ -83,7 +83,7 @@ export default function FloatingSummary({
                   </div>
                   <div>
                     <div className="text-xs" style={{ color: PALETTE.textSecondary }}>الحجم</div>
-                    <div style={{ color: PALETTE.textPrimary }}>{Number(totalSize).toFixed(1)} GB</div>
+                    <div style={{ color: PALETTE.textPrimary }}>{Number(totalSize).toFixed(1)} جيجا</div>
                   </div>
                 </div>
 
@@ -94,7 +94,7 @@ export default function FloatingSummary({
                   </div>
                   <div>
                     <div className="text-xs" style={{ color: PALETTE.textSecondary }}>السعر</div>
-                    <div style={{ color: '#FFFFFF' }}>{Number(totalPrice).toFixed(0)} جنيه</div>
+                    <div style={{ color: PALETTE.textPrimary }}>{Number(totalPrice).toFixed(0)} جنيه</div>
                   </div>
                 </div>
               </div>

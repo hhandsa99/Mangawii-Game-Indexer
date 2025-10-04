@@ -3,6 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Copy, MessageCircle, Package, HardDrive, Banknote } from 'lucide-react';
 
 const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection, onClose, onCopy, onWhatsApp, isDark = true }) => {
+  const PALETTE = React.useMemo(() => ({
+    textPrimary: isDark ? '#E5E7EB' : '#0f172a',
+    // Use the same dark color for secondary text in light mode so sizes are readable
+    textSecondary: isDark ? '#9AA1AD' : '#0f172a',
+    surface: isDark ? '#1E2128' : '#f8fafc'
+  }), [isDark]);
   const [localSelection, setLocalSelection] = React.useState(() => selectedList.map(g => g.Name));
   const initialNames = React.useMemo(() => selectedList.map(g => g.Name), [selectedList]);
   const hasChanges = React.useMemo(() => {
@@ -136,7 +142,7 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
                 </div>
                 <div>
                   <div className={`text-xs ${isDark ? 'text-[#9AA1AD]' : 'text-gray-500'}`}>الحجم</div>
-                  <div className={`text-base sm:text-lg font-bold ${isDark ? 'text-gray-200' : 'text-gray-900'}`}>{derived.totalSize} GB</div>
+                  <div className={`text-base sm:text-lg font-bold ${isDark ? 'text-gray-200' : 'text-gray-900'}`}>{derived.totalSize} جيجا</div>
                 </div>
               </div>
 
@@ -183,13 +189,13 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
                               />
                             </div>
                             {/* Middle: title */}
-                            <div className="order-2 flex-1 text-right font-extrabold text-sm sm:text-base whitespace-normal break-words" title={g.Name} style={{ color: selected ? '#039be4' : '#E5E7EB' }}>
+                            <div className="order-2 flex-1 text-right font-extrabold text-sm sm:text-base whitespace-normal break-words" title={g.Name} style={{ color: selected ? '#039be4' : PALETTE.textPrimary }}>
                               {g.Name}
                             </div>
                             {/* Left: size | status */}
                             <div className="order-3 shrink-0 flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap">
-                              <span style={{ color: '#9AA1AD' }}>{size} GB</span>
-                              <span className="mx-1" style={{ color: '#9AA1AD' }}>|</span>
+                              <span style={{ color: PALETTE.textSecondary }}>{size} جيجا</span>
+                              <span className="mx-1" style={{ color: PALETTE.textSecondary }}>|</span>
                               {status === 'online' ? (
                                 <span className="font-extrabold" style={{ color: '#22c55e' }}>Online</span>
                               ) : (
