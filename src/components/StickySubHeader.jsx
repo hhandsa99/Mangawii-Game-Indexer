@@ -45,7 +45,7 @@ export default function StickySubHeader({ section, onChangeSection, count, isDar
               <div className="relative flex items-center px-3 h-10 flex-shrink-0">
                 <button
                   onClick={() => setIsFilterDropdownOpen(v => !v)}
-                  className="flex items-center gap-2 text-white bg-transparent border-0 p-0 m-0"
+                  className={`flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-800'} bg-transparent border-0 p-0 m-0`}
                   aria-haspopup="true"
                   aria-expanded={isFilterDropdownOpen}
                   aria-label="تحديد القسم"
