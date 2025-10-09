@@ -1,0 +1,66 @@
+[
+    {
+        "Name":  "Apex Legends",
+        "Size":  80.5,
+        "Location":  "common",
+        "id":  {
+
+               }
+    },
+    {
+        "Name":  "Counter-Strike Global Offensive",
+        "Size":  58.4,
+        "Location":  "common",
+        "id":  {
+
+               }
+    },
+    {
+        "Name":  "Delta Force",
+        "Size":  105.61,
+        "Location":  "common",
+        "id":  {
+
+               }
+    },
+    {
+        "Name":  "eFootball",
+        "Size":  49.7,
+        "Location":  "common",
+        "id":  {
+
+               }
+    },
+    {
+        "Name":  "MarvelRivals",
+        "Size":  85.24,
+        "Location":  "common",
+        "id":  {
+
+               }
+    },
+    {
+        "Name":  "Once Human",
+        "Size":  66,
+        "Location":  "common",
+        "id":  {
+
+               }
+    },
+    {
+        "Name":  "Paladins",
+        "Size":  31.2,
+        "Location":  "common",
+        "id":  {
+
+               }
+    },
+    {
+        "Name":  "PUBG",
+        "Size":  39.94,
+        "Location":  "common",
+        "id":  {
+
+               }
+    }
+]

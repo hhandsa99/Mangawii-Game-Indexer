@@ -1,17 +1,26 @@
 [
     {
-        "Drive":  "F",
         "Name":  "FallGuys",
-        "SizeGB":  7.24
+        "Size":  7.5,
+        "Location":  "Epic Games",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "F",
         "Name":  "Fortnite",
-        "SizeGB":  84.21
+        "Size":  85.29,
+        "Location":  "Epic Games",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "F",
         "Name":  "rocketleague",
-        "SizeGB":  35.59
+        "Size":  35.59,
+        "Location":  "Epic Games",
+        "id":  {
+
+               }
     }
 ]

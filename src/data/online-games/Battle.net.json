@@ -1,12 +1,18 @@
 [
     {
-        "Drive":  "F",
         "Name":  "Call of Duty",
-        "SizeGB":  242.29
+        "Size":  242.29,
+        "Location":  "Battle.net",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "F",
         "Name":  "Overwatch",
-        "SizeGB":  65.77
+        "Size":  65.77,
+        "Location":  "Battle.net",
+        "id":  {
+
+               }
     }
 ]

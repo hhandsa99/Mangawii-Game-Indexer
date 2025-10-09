@@ -1,12 +1,18 @@
 [
     {
-        "Drive":  "F",
         "Name":  "League of Legends",
-        "SizeGB":  32.48
+        "Size":  32.64,
+        "Location":  "Riot Games",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "F",
         "Name":  "VALORANT",
-        "SizeGB":  52.03
+        "Size":  52.03,
+        "Location":  "Riot Games",
+        "id":  {
+
+               }
     }
 ]
