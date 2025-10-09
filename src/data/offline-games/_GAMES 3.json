@@ -1,322 +1,398 @@
 [
     {
-        "Drive":  "F",
         "Name":  "A Quiet Place The Road Ahead",
-        "SizeGB":  37.55
+        "Size":  37.55,
+        "Location":  "_GAMES 3",
+        "id":  "5e83d67a"
     },
     {
-        "Drive":  "F",
         "Name":  "Alan Wake 2",
-        "SizeGB":  110.3
+        "Size":  110.3,
+        "Location":  "_GAMES 3",
+        "id":  "2736cf28"
     },
     {
-        "Drive":  "F",
         "Name":  "Alan Wake Remastered",
-        "SizeGB":  36.36
+        "Size":  36.36,
+        "Location":  "_GAMES 3",
+        "id":  "49cc5d69"
     },
     {
-        "Drive":  "F",
         "Name":  "Assassin\u0027s Creed Chronicles China",
-        "SizeGB":  3.16
+        "Size":  3.16,
+        "Location":  "_GAMES 3",
+        "id":  "d3640546"
     },
     {
-        "Drive":  "F",
         "Name":  "Assassin\u0027s Creed Mirage",
-        "SizeGB":  41.25
+        "Size":  41.25,
+        "Location":  "_GAMES 3",
+        "id":  "567d6dc8"
     },
     {
-        "Drive":  "F",
         "Name":  "Assassin\u0027s Creed Valhalla",
-        "SizeGB":  158.79
+        "Size":  158.5,
+        "Location":  "_GAMES 3",
+        "id":  "7bbc0609"
     },
     {
-        "Drive":  "F",
         "Name":  "Atomic Heart",
-        "SizeGB":  79.91
+        "Size":  79.91,
+        "Location":  "_GAMES 3",
+        "id":  "f536f0d3"
     },
     {
-        "Drive":  "F",
         "Name":  "Attack on Titan 2",
-        "SizeGB":  24.37
+        "Size":  24.37,
+        "Location":  "_GAMES 3",
+        "id":  "46f5c0c3"
     },
     {
-        "Drive":  "F",
         "Name":  "Baldur\u0027s Gate III",
-        "SizeGB":  150.28
+        "Size":  150.28,
+        "Location":  "_GAMES 3",
+        "id":  "00f0e6e8"
     },
     {
-        "Drive":  "F",
         "Name":  "BIOMUTANT",
-        "SizeGB":  25.2
+        "Size":  25.2,
+        "Location":  "_GAMES 3",
+        "id":  "78168b4c"
     },
     {
-        "Drive":  "F",
         "Name":  "Blair Witch",
-        "SizeGB":  13.25
+        "Size":  13.25,
+        "Location":  "_GAMES 3",
+        "id":  "a832429c"
     },
     {
-        "Drive":  "F",
+        "Name":  "Call of Duty Black Ops 6 Campaign - 2024",
+        "Size":  48.08,
+        "Location":  "_GAMES 3",
+        "id":  "d0b0f8fe"
+    },
+    {
+        "Name":  "Call of Duty Modern Warfare 3 - 2023",
+        "Size":  48,
+        "Location":  "_GAMES 3",
+        "id":  "0c046e99"
+    },
+    {
         "Name":  "Chariot",
-        "SizeGB":  0.86
+        "Size":  0.86,
+        "Location":  "_GAMES 3",
+        "id":  "bea191f6"
     },
     {
-        "Drive":  "F",
         "Name":  "Dead Island 2",
-        "SizeGB":  45.91
+        "Size":  45.91,
+        "Location":  "_GAMES 3",
+        "id":  "c84fbdcf"
     },
     {
-        "Drive":  "F",
         "Name":  "Devil May Cry 4 Special Edition",
-        "SizeGB":  24.71
+        "Size":  24.71,
+        "Location":  "_GAMES 3",
+        "id":  "d4820676"
     },
     {
-        "Drive":  "F",
         "Name":  "Disney Epic Mickey Rebrushed",
-        "SizeGB":  23.73
+        "Size":  23.73,
+        "Location":  "_GAMES 3",
+        "id":  "25f94881"
     },
     {
-        "Drive":  "F",
-        "Name":  "DRAGON BALL Sparking! ZERO",
-        "SizeGB":  27.9
+        "Name":  "DRAGON BALL Sparking ZERO",
+        "Size":  27.9,
+        "Location":  "_GAMES 3",
+        "id":  "b0ea4ed2"
     },
     {
-        "Drive":  "F",
         "Name":  "Dragon Ball Z Kakarot",
-        "SizeGB":  44.85
+        "Size":  44.85,
+        "Location":  "_GAMES 3",
+        "id":  "95664a65"
     },
     {
-        "Drive":  "F",
         "Name":  "ELDEN RING",
-        "SizeGB":  69
+        "Size":  69,
+        "Location":  "_GAMES 3",
+        "id":  "d67fc6c0"
     },
     {
-        "Drive":  "F",
         "Name":  "Enotria The Last Song",
-        "SizeGB":  13.34
+        "Size":  13.34,
+        "Location":  "_GAMES 3",
+        "id":  "b906fdee"
     },
     {
-        "Drive":  "F",
         "Name":  "Evil West",
-        "SizeGB":  33.26
+        "Size":  33.26,
+        "Location":  "_GAMES 3",
+        "id":  "2bd6932d"
     },
     {
-        "Drive":  "F",
         "Name":  "Far Cry 4",
-        "SizeGB":  26.69
+        "Size":  26.69,
+        "Location":  "_GAMES 3",
+        "id":  "a8d21829"
     },
     {
-        "Drive":  "F",
         "Name":  "Farlight 84",
-        "SizeGB":  40.31
+        "Size":  40.31,
+        "Location":  "_GAMES 3",
+        "id":  "61206f41"
     },
     {
-        "Drive":  "F",
         "Name":  "Final Fantasy VII",
-        "SizeGB":  83.42
+        "Size":  83.42,
+        "Location":  "_GAMES 3",
+        "id":  "8aeb5a1a"
     },
     {
-        "Drive":  "F",
         "Name":  "Forspoken",
-        "SizeGB":  129.97
+        "Size":  129.97,
+        "Location":  "_GAMES 3",
+        "id":  "a9d7241c"
     },
     {
-        "Drive":  "F",
         "Name":  "Ghost of Tsushima",
-        "SizeGB":  53.97
+        "Size":  53.97,
+        "Location":  "_GAMES 3",
+        "id":  "39c0a169"
     },
     {
-        "Drive":  "F",
         "Name":  "Ghostwire Tokyo",
-        "SizeGB":  16.82
+        "Size":  16.82,
+        "Location":  "_GAMES 3",
+        "id":  "fedfdb42"
     },
     {
-        "Drive":  "F",
         "Name":  "God of War Ragnarok",
-        "SizeGB":  175.8
+        "Size":  175.8,
+        "Location":  "_GAMES 3",
+        "id":  "de18f33d"
     },
     {
-        "Drive":  "F",
         "Name":  "Half-Life Alyx",
-        "SizeGB":  67.94
+        "Size":  67.94,
+        "Location":  "_GAMES 3",
+        "id":  "0f976aa9"
     },
     {
-        "Drive":  "F",
         "Name":  "Harold Halibut",
-        "SizeGB":  51.34
+        "Size":  51.34,
+        "Location":  "_GAMES 3",
+        "id":  "81c829d3"
     },
     {
-        "Drive":  "F",
         "Name":  "HITMAN World of Assassination",
-        "SizeGB":  76.15
+        "Size":  76.15,
+        "Location":  "_GAMES 3",
+        "id":  "40785d83"
     },
     {
-        "Drive":  "F",
         "Name":  "Horizon Forbidden West",
-        "SizeGB":  124.88
+        "Size":  124.88,
+        "Location":  "_GAMES 3",
+        "id":  "9ac31c51"
     },
     {
-        "Drive":  "F",
         "Name":  "House Flipper",
-        "SizeGB":  3.76
+        "Size":  3.76,
+        "Location":  "_GAMES 3",
+        "id":  "308d9eda"
     },
     {
-        "Drive":  "F",
         "Name":  "Indiana Jones and the Great Circle",
-        "SizeGB":  120.62
+        "Size":  120.62,
+        "Location":  "_GAMES 3",
+        "id":  "c865bde4"
     },
     {
-        "Drive":  "F",
         "Name":  "It Takes Two",
-        "SizeGB":  43.53
+        "Size":  43.53,
+        "Location":  "_GAMES 3",
+        "id":  "73c233b6"
     },
     {
-        "Drive":  "F",
         "Name":  "Kena Bridge of Spirits",
-        "SizeGB":  20.24
+        "Size":  20.24,
+        "Location":  "_GAMES 3",
+        "id":  "dd9d4577"
     },
     {
-        "Drive":  "F",
         "Name":  "Liar\u0027s Bar",
-        "SizeGB":  4.02
+        "Size":  4.02,
+        "Location":  "_GAMES 3",
+        "id":  "b0ebf514"
     },
     {
-        "Drive":  "F",
         "Name":  "Mario",
-        "SizeGB":  9.54
+        "Size":  9.54,
+        "Location":  "_GAMES 3",
+        "id":  "ff1e3e40"
     },
     {
-        "Drive":  "F",
+        "Name":  "Metal Gear Solid Snake Eater",
+        "Size":  83.86,
+        "Location":  "_GAMES 3",
+        "id":  "91e98d3d"
+    },
+    {
         "Name":  "Moncage",
-        "SizeGB":  1.16
+        "Size":  1.16,
+        "Location":  "_GAMES 3",
+        "id":  "6b179bdd"
     },
     {
-        "Drive":  "F",
         "Name":  "MY HERO ONE\u0027S JUSTICE 2",
-        "SizeGB":  8.38
+        "Size":  8.38,
+        "Location":  "_GAMES 3",
+        "id":  "abfedb76"
     },
     {
-        "Drive":  "F",
         "Name":  "Naruto x Boruto Ultimate Ninja Storm Connections",
-        "SizeGB":  29.91
+        "Size":  29.91,
+        "Location":  "_GAMES 3",
+        "id":  "edf3a5f2"
     },
     {
-        "Drive":  "F",
         "Name":  "ONE PIECE PIRATE WARRIORS 4",
-        "SizeGB":  21.81
+        "Size":  21.81,
+        "Location":  "_GAMES 3",
+        "id":  "dd790a1a"
     },
     {
-        "Drive":  "F",
         "Name":  "Only Up",
-        "SizeGB":  4.95
+        "Size":  4.95,
+        "Location":  "_GAMES 3",
+        "id":  "bb72301c"
     },
     {
-        "Drive":  "F",
         "Name":  "Overwatch",
-        "SizeGB":  40.68
+        "Size":  40.68,
+        "Location":  "_GAMES 3",
+        "id":  "2d723b97"
     },
     {
-        "Drive":  "F",
         "Name":  "Prince of Persia The Lost Crown",
-        "SizeGB":  7.07
+        "Size":  7.07,
+        "Location":  "_GAMES 3",
+        "id":  "7e881f79"
     },
     {
-        "Drive":  "F",
         "Name":  "Red Dead Redemption",
-        "SizeGB":  9.57
+        "Size":  9.57,
+        "Location":  "_GAMES 3",
+        "id":  "53f83016"
     },
     {
-        "Drive":  "F",
         "Name":  "Red Dead Redemption 2",
-        "SizeGB":  119.27
+        "Size":  119.27,
+        "Location":  "_GAMES 3",
+        "id":  "59fb0dd7"
     },
     {
-        "Drive":  "F",
         "Name":  "Resident Evil 4",
-        "SizeGB":  57.79
+        "Size":  57.79,
+        "Location":  "_GAMES 3",
+        "id":  "ac71c1b7"
     },
     {
-        "Drive":  "F",
         "Name":  "Resident Evil 6",
-        "SizeGB":  12.48
+        "Size":  12.48,
+        "Location":  "_GAMES 3",
+        "id":  "632df08c"
     },
     {
-        "Drive":  "F",
         "Name":  "Resident Evil Village",
-        "SizeGB":  36.9
+        "Size":  36.9,
+        "Location":  "_GAMES 3",
+        "id":  "6bc6ca40"
     },
     {
-        "Drive":  "F",
         "Name":  "S.T.A.L.K.E.R. 2 Heart of Chornobyl",
-        "SizeGB":  154.7
+        "Size":  154.7,
+        "Location":  "_GAMES 3",
+        "id":  "baf1794b"
     },
     {
-        "Drive":  "F",
         "Name":  "Senua\u0027s Saga Hellblade II",
-        "SizeGB":  49.44
+        "Size":  49.44,
+        "Location":  "_GAMES 3",
+        "id":  "e3c68952"
     },
     {
-        "Drive":  "F",
-        "Name":  "Silent Hill 2 (2001)",
-        "SizeGB":  34.75
-    },
-    {
-        "Drive":  "F",
         "Name":  "South of Midnight",
-        "SizeGB":  60.11
+        "Size":  60.11,
+        "Location":  "_GAMES 3",
+        "id":  "c5d75637"
     },
     {
-        "Drive":  "F",
         "Name":  "Split Fiction",
-        "SizeGB":  87.82
+        "Size":  87.82,
+        "Location":  "_GAMES 3",
+        "id":  "8a0c6682"
     },
     {
-        "Drive":  "F",
         "Name":  "Starfield",
-        "SizeGB":  116.49
+        "Size":  116.49,
+        "Location":  "_GAMES 3",
+        "id":  "cb922cbd"
     },
     {
-        "Drive":  "F",
         "Name":  "Suicide Squad Kill The Justice League",
-        "SizeGB":  97.53
+        "Size":  97.53,
+        "Location":  "_GAMES 3",
+        "id":  "fa54ba0e"
     },
     {
-        "Drive":  "F",
         "Name":  "The Callisto Protocol",
-        "SizeGB":  75.83
+        "Size":  75.83,
+        "Location":  "_GAMES 3",
+        "id":  "c071e940"
     },
     {
-        "Drive":  "F",
         "Name":  "The Expanse A Telltale Series",
-        "SizeGB":  5.15
+        "Size":  5.15,
+        "Location":  "_GAMES 3",
+        "id":  "3f9ae4a0"
     },
     {
-        "Drive":  "F",
         "Name":  "The Last of Us",
-        "SizeGB":  68.66
+        "Size":  68.66,
+        "Location":  "_GAMES 3",
+        "id":  "110ef3a8"
     },
     {
-        "Drive":  "F",
         "Name":  "The Last of Us Part II",
-        "SizeGB":  115.8
+        "Size":  115.8,
+        "Location":  "_GAMES 3",
+        "id":  "d0dd51cd"
     },
     {
-        "Drive":  "F",
         "Name":  "The Lord of the Rings Gollum",
-        "SizeGB":  44.74
+        "Size":  44.74,
+        "Location":  "_GAMES 3",
+        "id":  "dd13ca67"
     },
     {
-        "Drive":  "F",
         "Name":  "Unknown 9 Awakening",
-        "SizeGB":  34.55
+        "Size":  34.55,
+        "Location":  "_GAMES 3",
+        "id":  "b48bdd79"
     },
     {
-        "Drive":  "F",
         "Name":  "Until Dawn Remake 2024",
-        "SizeGB":  59.17
+        "Size":  59.17,
+        "Location":  "_GAMES 3",
+        "id":  "ac1f2729"
     },
     {
-        "Drive":  "F",
         "Name":  "Virtua Fighter 5 R.E.V.O",
-        "SizeGB":  21.51
+        "Size":  21.51,
+        "Location":  "_GAMES 3",
+        "id":  "4c6b092e"
     }
 ]

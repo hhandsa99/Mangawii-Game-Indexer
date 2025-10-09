@@ -1,492 +1,810 @@
 [
     {
-        "Drive":  "E",
         "Name":  "Age of Empires III Definitive Edition",
-        "SizeGB":  11.65
+        "Size":  11.65,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "AO Tennis 2",
-        "SizeGB":  15
+        "Size":  15,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Beyond Two Souls",
-        "SizeGB":  43.27
+        "Size":  43.27,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Bright Memory Infinite",
-        "SizeGB":  12.11
+        "Size":  12.11,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Captain Tsubasa Rise of New Champions",
-        "SizeGB":  38.51
+        "Size":  38.51,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Control",
-        "SizeGB":  33.52
+        "Size":  33.52,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Crash Bandicoot 4 It\u0027s About Time",
-        "SizeGB":  23.25
+        "Size":  23.25,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Death Stranding",
-        "SizeGB":  51.4
+        "Size":  51.4,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Deathloop",
-        "SizeGB":  29.9
+        "Size":  29.9,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "DOOM (2016)",
-        "SizeGB":  62.47
+        "Size":  62.46,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "DOOM Eternal",
-        "SizeGB":  40.75
+        "Size":  40.75,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "DRAGON BALL XENOVERSE",
-        "SizeGB":  10.2
+        "Size":  10.2,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "DRAGON BALL XENOVERSE 2",
-        "SizeGB":  17.59
+        "Size":  17.59,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Euro Truck Simulator 2",
-        "SizeGB":  33.71
+        "Size":  33.71,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Far Cry 6",
-        "SizeGB":  76.87
+        "Size":  76.87,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "FIFA 08",
-        "SizeGB":  2.75
+        "Size":  2.75,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "FIFA 09",
-        "SizeGB":  4.75
+        "Size":  4.75,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "FIFA 13",
-        "SizeGB":  7.91
+        "Size":  7.91,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "FIFA 14",
-        "SizeGB":  8.59
+        "Size":  8.59,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "FIFA 18",
-        "SizeGB":  37.56
+        "Size":  37.56,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "FIFA 19",
-        "SizeGB":  33.84
+        "Size":  33.84,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "FIFA 23",
-        "SizeGB":  51.54
+        "Size":  51.55,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "FIFA 23 - Patch 2025",
-        "SizeGB":  103.32
+        "Size":  103.32,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Football Manager 2023",
-        "SizeGB":  5.04
+        "Size":  5.04,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Forza Horizon 4",
-        "SizeGB":  93.28
+        "Size":  93.28,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Forza Horizon 5",
-        "SizeGB":  101.37
+        "Size":  101.37,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Ghostrunner",
-        "SizeGB":  21.35
+        "Size":  21.35,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "God of War I",
-        "SizeGB":  64.29
+        "Size":  64.29,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Hogwarts Legacy",
-        "SizeGB":  72.94
+        "Size":  72.94,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Injustice 2",
-        "SizeGB":  49.7
+        "Size":  49.7,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Kung Fu Panda",
-        "SizeGB":  4.02
+        "Size":  4.02,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Kung Fu Panda Showdown of Legendary Legends",
-        "SizeGB":  4.09
+        "Size":  4.09,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Lies of P",
-        "SizeGB":  35.37
+        "Size":  35.37,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Little Big Adventure - Enhanced Edition",
-        "SizeGB":  21.32
+        "Size":  21.32,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Little Nightmares",
-        "SizeGB":  6.3
+        "Size":  6.3,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
+        "Name":  "Little Nightmares II Enhanced Edition",
+        "Size":  21.33,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
+    },
+    {
         "Name":  "MADiSON",
-        "SizeGB":  8.1
+        "Size":  8.1,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Mafia Definitive Edition",
-        "SizeGB":  27.98
+        "Size":  27.98,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
-        "Name":  "Marvel\u0027s Avengers",
-        "SizeGB":  133.39
+        "Name":  "Marvel\u0027s Avengers",
+        "Size":  133.39,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Mass Effect Andromeda",
-        "SizeGB":  51.35
+        "Size":  51.35,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Max Payne 3 The Complete Edition",
-        "SizeGB":  32.45
+        "Size":  32.45,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Metal Gear Solid V The Phantom Pain",
-        "SizeGB":  28.81
+        "Size":  28.81,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Mortal Kombat 11",
-        "SizeGB":  107.3
+        "Size":  107.3,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "NARUTO SHIPPUDEN Ultimate Ninja STORM 3 Full Burst",
-        "SizeGB":  7.14
+        "Size":  7.14,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "NARUTO SHIPPUDEN Ultimate Ninja STORM 4",
-        "SizeGB":  40.49
+        "Size":  40.49,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "NARUTO SHIPPUDEN Ultimate Ninja STORM Revolution",
-        "SizeGB":  7.53
+        "Size":  7.53,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "NARUTO TO BORUTO SHINOBI STRIKER",
-        "SizeGB":  18.32
+        "Size":  18.32,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Naruto x Boruto Ultimate Ninja Storm Connections",
-        "SizeGB":  29.36
+        "Size":  29.36,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "NBA 2K21",
-        "SizeGB":  93.88
+        "Size":  93.88,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "One Piece Odyssey",
-        "SizeGB":  29.46
+        "Size":  29.46,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "PC Building Simulator 2",
-        "SizeGB":  28.2
+        "Size":  28.2,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Poopy Playtime Chapter 3 A Blue Lost",
-        "SizeGB":  36.53
+        "Size":  36.53,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Poppy Playtime",
-        "SizeGB":  5.81
+        "Size":  5.81,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2009",
-        "SizeGB":  7.49
+        "Size":  7.49,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2010",
-        "SizeGB":  8.42
+        "Size":  8.42,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2011",
-        "SizeGB":  7.98
+        "Size":  7.98,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2012",
-        "SizeGB":  6.14
+        "Size":  6.14,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2013",
-        "SizeGB":  5.69
+        "Size":  5.69,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2014",
-        "SizeGB":  6.13
+        "Size":  6.13,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2015",
-        "SizeGB":  8.09
+        "Size":  8.09,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2016",
-        "SizeGB":  7.64
+        "Size":  7.64,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2017",
-        "SizeGB":  6.07
+        "Size":  6.07,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2017 - Patch 2025",
-        "SizeGB":  52.85
+        "Size":  52.85,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2018",
-        "SizeGB":  28.86
+        "Size":  28.86,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2019",
-        "SizeGB":  23.03
+        "Size":  23.03,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 2021 - Patch 2025",
-        "SizeGB":  56.51
+        "Size":  56.51,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Pro Evolution Soccer 6",
-        "SizeGB":  1.06
+        "Size":  1.06,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Quantum Break",
-        "SizeGB":  67.66
+        "Size":  67.66,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Rayman Origins",
-        "SizeGB":  2.34
+        "Size":  2.33,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Red Alert 3",
-        "SizeGB":  14.25
+        "Size":  14.25,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Resident Evil 2",
-        "SizeGB":  23.84
+        "Size":  23.84,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Resident Evil 3 Remake",
-        "SizeGB":  22.46
+        "Size":  22.46,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Returnal",
-        "SizeGB":  58.76
+        "Size":  58.76,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Road Redemption",
-        "SizeGB":  6
+        "Size":  6,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "RoboCop Rogue City",
-        "SizeGB":  39.44
+        "Size":  39.44,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Samurai Jack Battle Through Time",
-        "SizeGB":  4.16
+        "Size":  4.16,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Sekiro Shadows Die Twice",
-        "SizeGB":  15.61
+        "Size":  15.61,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Sherlock Holmes Chapter One",
-        "SizeGB":  26.93
+        "Size":  26.93,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "SIFU",
-        "SizeGB":  20.15
+        "Size":  20.15,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Sonic Adventure",
-        "SizeGB":  1.82
+        "Size":  1.82,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Sonic Forces",
-        "SizeGB":  17.17
+        "Size":  17.17,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Spider-Man 3",
-        "SizeGB":  5.58
+        "Size":  5.58,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Spider-Man Shattered Dimensions",
-        "SizeGB":  13.45
+        "Size":  13.45,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Spider-Man Web of Shadows",
-        "SizeGB":  6.61
+        "Size":  6.61,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "SpongeBob SquarePants The Cosmic Shake",
-        "SizeGB":  7.91
+        "Size":  7.91,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
+        "Name":  "Star Wars Jedi Fallen Order",
+        "Size":  50.33,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
+    },
+    {
+        "Name":  "STAR WARS Jedi Survivor",
+        "Size":  120.1,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
+    },
+    {
         "Name":  "Stray",
-        "SizeGB":  6.46
+        "Size":  6.46,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Streets of Rage 4",
-        "SizeGB":  4.75
+        "Size":  4.75,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Tekken 8",
-        "SizeGB":  87.2
+        "Size":  87.2,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "The Amazing Spider-Man",
-        "SizeGB":  7.89
+        "Size":  7.89,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "The Amazing Spider-Man 2",
-        "SizeGB":  8.05
+        "Size":  8.05,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "The Dark Pictures Anthology House of Ashes",
-        "SizeGB":  47.46
+        "Size":  47.46,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "The Dark Pictures Anthology Little Hope",
-        "SizeGB":  56.02
+        "Size":  56.02,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "The Dark Pictures Anthology Man of Medan",
-        "SizeGB":  62.9
+        "Size":  62.9,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "THE HOUSE OF THE DEAD Remake",
-        "SizeGB":  7.17
+        "Size":  7.17,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "The Sims 4",
-        "SizeGB":  47.81
+        "Size":  47.81,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Toy Story 3 The Video Game",
-        "SizeGB":  3.63
+        "Size":  3.63,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "TRANSFORMERS Rise of the Dark Spark",
-        "SizeGB":  8.91
+        "Size":  8.91,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Ultimate Marvel vs. Capcom 3",
-        "SizeGB":  3.62
+        "Size":  3.62,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     },
     {
-        "Drive":  "E",
         "Name":  "Virtua Tennis 4",
-        "SizeGB":  2.98
+        "Size":  2.98,
+        "Location":  "_GAMES 2",
+        "id":  {
+
+               }
     }
 ]
