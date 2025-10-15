@@ -3,6 +3,77 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ImageOff, Gamepad2, SquareCheckBig } from 'lucide-react';
 import { getGameImageUrl, getCachedImageUrlByName } from '../utils/imageProvider';
 
+// GameImage component handles the image loading and display logic
+const GameImage = ({ name, imageMap, loadedMap, setLoadedMap, priorityNames }) => {
+  if (imageMap[name] === undefined) {
+    return <div className="w-full h-full skeleton" />;
+  }
+
+  const preferred = imageMap[name];
+  if (!preferred) {
+    return <div className="w-full h-full skeleton" />;
+  }
+
+  const safe = encodeURI(preferred);
+  const isPriority = priorityNames.has(name);
+  const isLoaded = !!loadedMap[name];
+
+  return (
+    <>
+      {/* LQIP placeholder (blurred gradient) */}
+      <div
+        className={`absolute inset-0 transition-opacity duration-500 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
+        aria-hidden="true"
+      >
+        <div className="w-full h-full bg-gradient-to-br from-gray-300 via-gray-200 to-gray-300 dark:from-neutral-800 dark:via-neutral-700 dark:to-neutral-800 animate-pulse" />
+      </div>
+      <img
+        src={safe}
+        alt={name}
+        loading={isPriority ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchpriority={isPriority ? 'high' : 'low'}
+        sizes="(min-width:1280px) 16.66vw, (min-width:1024px) 20vw, (min-width:768px) 25vw, (min-width:640px) 33.33vw, 50vw"
+        width={300}
+        height={400}
+        draggable={false}
+        className={`w-full h-full object-cover transition-opacity duration-500 ease-out select-none transition-transform duration-300 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] will-change-transform group-hover:scale-[1.03] ${isLoaded ? 'opacity-100' : 'opacity-90'}`}
+        onLoad={() => {
+          setLoadedMap(prev => ({ ...prev, [name]: true }));
+        }}
+        onError={() => {
+          // keep skeleton by not marking as loaded and not swapping to fallback
+        }}
+      />
+    </>
+  );
+};
+
+// Lazily resolve an image URL when a card enters the viewport
+const LazyImage = ({ name, imageMap, setImageMap }) => {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (imageMap[name] !== undefined) return; // already requested/resolved
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Mark as requested to avoid duplicate work
+          setImageMap(prev => (prev[name] === undefined ? { ...prev, [name]: '' } : prev));
+          getGameImageUrl({ Name: name }).then((url) => {
+            setImageMap(prev => ({ ...prev, [name]: url }));
+          });
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '200px' });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [name, imageMap, setImageMap]);
+  return <div ref={ref} className="absolute inset-0" aria-hidden="true" />;
+};
+
 const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGames, layoutMode = 'grid', gridDensity = 'cozy', preloadVersion = 0, onAboveFoldReady, onLoadProgress, onCardContext }) => {
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [imageMap, setImageMap] = useState({});
@@ -74,6 +145,54 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
     const N = 1; // first item only
     return new Set(sortedForGrid.slice(0, N).map(g => g.Name));
   }, [sortedForGrid]);
+
+  // Track per-letter section positions to drive the floating right-side indicator
+  const sectionRefs = React.useRef({});
+  const [activeLetter, setActiveLetter] = React.useState(groupedForGrid[0]?.[0] || '');
+  const [indicatorItems, setIndicatorItems] = React.useState([]); // [{letter, top}]
+  React.useEffect(() => {
+    // Reset when groups change
+    sectionRefs.current = {};
+    setActiveLetter(groupedForGrid[0]?.[0] || '');
+  }, [groupedForGrid]);
+  React.useEffect(() => {
+    const onScroll = () => {
+      const vh = window.innerHeight || 0;
+      const centerY = vh / 2;
+      const pad = 20; // spacing from section bounds
+      const visible = [];
+      for (const [letter] of groupedForGrid) {
+        const el = sectionRefs.current[letter];
+        if (!el) continue;
+        const r = el.getBoundingClientRect();
+        if (r.bottom <= 0 || r.top >= vh) continue; // not visible at all
+        const topBound = r.top;
+        const bottomBound = r.bottom;
+        // Distance metric for picking the primary section (closest bound to center)
+        const distToBounds = Math.min(Math.abs(centerY - topBound), Math.abs(centerY - bottomBound));
+        visible.push({ letter, topBound, bottomBound, dist: distToBounds });
+      }
+      // Sort by closeness to center and pick primary section
+      visible.sort((a, b) => a.dist - b.dist);
+      const primary = visible[0];
+      const out = [];
+      if (primary) {
+        setActiveLetter(primary.letter);
+        out.push({ letter: primary.letter, top: primary.topBound + pad });
+        out.push({ letter: primary.letter, top: primary.bottomBound - pad });
+      }
+      setIndicatorItems(out);
+    };
+    const onScrollRaf = () => requestAnimationFrame(onScroll);
+    window.addEventListener('scroll', onScrollRaf, { passive: true });
+    window.addEventListener('resize', onScrollRaf);
+    // Initial position after mount
+    onScrollRaf();
+    return () => {
+      window.removeEventListener('scroll', onScrollRaf);
+      window.removeEventListener('resize', onScrollRaf);
+    };
+  }, [groupedForGrid, activeLetter]);
 
   // Eagerly resolve and start loading the first 24 images so they load behind the overlay
   React.useEffect(() => {
@@ -262,78 +381,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
   }
 
   // GRID layout (new design)
-  // Lazily resolve an image URL when a card enters the viewport
-  const LazyImage = ({ name }) => {
-    const ref = React.useRef(null);
-    React.useEffect(() => {
-      const el = ref.current;
-      if (!el) return;
-      if (imageMap[name] !== undefined) return; // already requested/resolved
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Mark as requested to avoid duplicate work
-            setImageMap(prev => (prev[name] === undefined ? { ...prev, [name]: '' } : prev));
-            getGameImageUrl({ Name: name }).then((url) => {
-              setImageMap(prev => ({ ...prev, [name]: url }));
-            });
-            observer.disconnect();
-          }
-        });
-      }, { rootMargin: '200px' });
-      observer.observe(el);
-      return () => observer.disconnect();
-    }, [name, imageMap]);
-    return <div ref={ref} className="absolute inset-0" aria-hidden="true" />;
-  };
-
-  // Track per-letter section positions to drive the floating right-side indicator
-  const sectionRefs = React.useRef({});
-  const [activeLetter, setActiveLetter] = React.useState(groupedForGrid[0]?.[0] || '');
-  const [indicatorItems, setIndicatorItems] = React.useState([]); // [{letter, top}]
-  React.useEffect(() => {
-    // Reset when groups change
-    sectionRefs.current = {};
-    setActiveLetter(groupedForGrid[0]?.[0] || '');
-  }, [groupedForGrid]);
-  React.useEffect(() => {
-    const onScroll = () => {
-      const vh = window.innerHeight || 0;
-      const centerY = vh / 2;
-      const pad = 20; // spacing from section bounds
-      const visible = [];
-      for (const [letter] of groupedForGrid) {
-        const el = sectionRefs.current[letter];
-        if (!el) continue;
-        const r = el.getBoundingClientRect();
-        if (r.bottom <= 0 || r.top >= vh) continue; // not visible at all
-        const topBound = r.top;
-        const bottomBound = r.bottom;
-        // Distance metric for picking the primary section (closest bound to center)
-        const distToBounds = Math.min(Math.abs(centerY - topBound), Math.abs(centerY - bottomBound));
-        visible.push({ letter, topBound, bottomBound, dist: distToBounds });
-      }
-      // Sort by closeness to center and pick primary section
-      visible.sort((a, b) => a.dist - b.dist);
-      const primary = visible[0];
-      const out = [];
-      if (primary) {
-        setActiveLetter(primary.letter);
-        out.push({ letter: primary.letter, top: primary.topBound + pad });
-        out.push({ letter: primary.letter, top: primary.bottomBound - pad });
-      }
-      setIndicatorItems(out);
-    };
-    const onScrollRaf = () => requestAnimationFrame(onScroll);
-    window.addEventListener('scroll', onScrollRaf, { passive: true });
-    window.addEventListener('resize', onScrollRaf);
-    // Initial position after mount
-    onScrollRaf();
-    return () => {
-      window.removeEventListener('scroll', onScrollRaf);
-      window.removeEventListener('resize', onScrollRaf);
-    };
-  }, [groupedForGrid, activeLetter]);
+  // Hooks for section indicator are declared earlier to guarantee stable hook order.
 
   return (
     <motion.div
@@ -422,48 +470,14 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                     aria-hidden="true"
                   />
                   {/* Trigger lazy resolution of image URL when in view */}
-                  <LazyImage name={game.Name} />
-                  {imageMap[game.Name] === undefined ? (
-                    <div className="w-full h-full skeleton" />
-                  ) : (
-                    (() => {
-                      const preferred = imageMap[game.Name];
-                      const chosen = preferred; // no fallback
-                      if (!chosen) return <div className="w-full h-full skeleton" />;
-                      const safe = encodeURI(chosen);
-                      const isPriority = priorityNames.has(game.Name);
-                      const isLoaded = !!loadedMap[game.Name];
-                      return (
-                        <>
-                          {/* LQIP placeholder (blurred gradient) */}
-                          <div
-                            className={`absolute inset-0 transition-opacity duration-500 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
-                            aria-hidden="true"
-                          >
-                            <div className="w-full h-full bg-gradient-to-br from-gray-300 via-gray-200 to-gray-300 dark:from-neutral-800 dark:via-neutral-700 dark:to-neutral-800 animate-pulse" />
-                          </div>
-                          <img
-                            src={safe}
-                            alt={game.Name}
-                            loading={isPriority ? 'eager' : 'lazy'}
-                            decoding="async"
-                            fetchpriority={isPriority ? 'high' : 'low'}
-                            sizes="(min-width:1280px) 16.66vw, (min-width:1024px) 20vw, (min-width:768px) 25vw, (min-width:640px) 33.33vw, 50vw"
-                            width={300}
-                            height={400}
-                            draggable={false}
-                            className={`w-full h-full object-cover transition-opacity duration-500 ease-out select-none transition-transform duration-300 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] will-change-transform group-hover:scale-[1.03] ${isLoaded ? 'opacity-100' : 'opacity-90'}`}
-                            onLoad={() => {
-                              setLoadedMap(prev => ({ ...prev, [game.Name]: true }));
-                            }}
-                            onError={() => {
-                              // keep skeleton by not marking as loaded and not swapping to fallback
-                            }}
-                          />
-                        </>
-                      );
-                    })()
-                  )}
+                  <LazyImage name={game.Name} imageMap={imageMap} setImageMap={setImageMap} />
+                  <GameImage 
+                    name={game.Name}
+                    imageMap={imageMap}
+                    loadedMap={loadedMap}
+                    setLoadedMap={setLoadedMap}
+                    priorityNames={priorityNames}
+                  />
                   {/* Selected overlay: cover image with a big check and text */}
                   {selected && (
                     <div className="absolute inset-0 z-30 bg-black/60 grid place-items-center">

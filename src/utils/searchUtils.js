@@ -1,14 +1,16 @@
 // Fuzzy search helpers: normalization, initials, Damerau-Levenshtein with early exit
 
-// Normalize: lowercase, remove accents/diacritics, trim, collapse spaces, keep letters/numbers
+// Normalize: lowercase, remove diacritics carefully (preserving Arabic letters), trim, collapse spaces
 export function normalize(str) {
   if (!str) return '';
-  // NFD to strip diacritics, then remove non letters/numbers/space
+  // Keep Arabic letters, Latin letters, numbers, and spaces
+  // Remove only Arabic diacritics (tashkeel) but keep the letters
   return String(str)
     .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^\p{Letter}\p{Number}\s]/gu, ' ')
+    // Remove Arabic diacritics only (tashkeel)
+    .replace(/[\u064B-\u065F\u0670]/g, '')
+    // Keep Arabic letters, Latin letters, numbers, spaces
+    .replace(/[^\p{Letter}\p{Number}\s\u0600-\u06FF]/gu, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -21,7 +23,8 @@ export function getInitials(str) {
 }
 
 // Damerau–Levenshtein distance with a cutoff (maxDistance)
-export function damerauLevenshtein(a, b, maxDistance = 2) {
+// Default maxDistance reduced to 1 to make fuzzy matching stricter.
+export function damerauLevenshtein(a, b, maxDistance = 1) {
   if (Math.abs(a.length - b.length) > maxDistance) return maxDistance + 1;
   const da = {};
   const max = a.length + b.length;
@@ -60,9 +63,13 @@ export function damerauLevenshtein(a, b, maxDistance = 2) {
 
 export function fuzzyTokenMatch(queryToken, targetToken) {
   if (!queryToken || !targetToken) return false;
-  if (targetToken.includes(queryToken)) return true; // substring
-  const dist = damerauLevenshtein(queryToken, targetToken, 2);
-  return dist <= 2;
+  // Direct substring match is still accepted
+  if (targetToken.includes(queryToken)) return true;
+  // Don't apply fuzzy matching for very short tokens (likely noise)
+  if (queryToken.length <= 2) return false;
+  // Use a stricter distance cutoff (1)
+  const dist = damerauLevenshtein(queryToken, targetToken, 1);
+  return dist <= 1;
 }
 
 export function buildAliases() {
@@ -85,17 +92,20 @@ export function matchGameName(name, rawQuery, aliases = buildAliases()) {
   const n = normalize(name);
   if (!n) return false;
 
+  // Handle Arabic text: straight contains check first (more accurate for Arabic)
+  if (n.includes(q0) || q0.includes(n)) return true;
+
   // Apply alias expansion if whole query matches an alias
   let expandedQuery = q0;
   const alias = aliases.get(q0);
   if (alias) expandedQuery = normalize(alias);
 
-  // Fast path: direct substring of full name
-  if (n.includes(expandedQuery)) return true;
+  // For non-Arabic: try direct substring match with expanded query
+  if (!/[\u0600-\u06FF]/.test(expandedQuery) && n.includes(expandedQuery)) return true;
 
-  // Initials match: e.g., pes -> pro evolution soccer
+  // Initials match: e.g., pes -> pro evolution soccer (only for Latin text)
   const initials = getInitials(n);
-  if (initials && initials.includes(expandedQuery)) return true;
+  if (!/[\u0600-\u06FF]/.test(expandedQuery) && initials && initials.includes(expandedQuery)) return true;
 
   // Token-based fuzzy matching: each query token must match some target token fuzzily
   const qTokens = expandedQuery.split(' ');
