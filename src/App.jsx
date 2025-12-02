@@ -4,6 +4,7 @@ import DualHeader from './components/DualHeader';
 import GameList from './components/GameList';
 import LoadingSpinner from './components/LoadingSpinner';
 import SummaryModal from './components/SummaryModal';
+import InfoCards from './components/InfoCards';
 // Removed SummaryBar in favor of new FloatingSummary
 import FloatingSummary from './components/FloatingSummary';
 import { loadGamesFromJSON } from './data/games';
@@ -522,6 +523,8 @@ function App() {
         </AnimatePresence>
         
   <main className="py-6 sm:py-8 pb-24 sm:pb-20" style={{ paddingTop: subheaderOffset + 8 }}>
+          {/* Info cards at top of page */}
+          <InfoCards isDark={isDarkMode} />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -17,7 +17,7 @@ export default function GridGameCard({
       type="button"
       onClick={onClick}
       aria-pressed={selected}
-      className={`text-left rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-transform duration-150 border border-gray-200 dark:border-neutral-800 relative group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${selected ? 'scale-[1.02] shadow-lg border-2 border-green-500' : ''}`} 
+      className={`text-left rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-transform duration-150 border border-gray-200 dark:border-neutral-800 relative group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${selected ? 'shadow-lg' : ''}`}
     >
       {/* Image area (3:4) */}
       <div className="relative z-0 w-full aspect-[3/4] bg-gray-200 dark:bg-neutral-800 overflow-hidden rounded-xl">
@@ -37,24 +37,22 @@ export default function GridGameCard({
         {/* Selected bubble */}
         {selected && (
           <div className="absolute top-2 right-2">
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-500 text-white shadow">
-              <Check className="h-4 w-4" />
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-500 text-white shadow">
+              <Check className="h-4 w-4 text-white" />
             </span>
           </div>
         )}
 
         {/* Selected overlay to match site effect */}
         {selected && (
-          <div aria-hidden className="absolute inset-0 pointer-events-none rounded-xl" style={{ background: 'linear-gradient(180deg, rgba(3,155,85,0.06), rgba(3,155,85,0.04))' }} />
+          <div aria-hidden className="absolute inset-0 pointer-events-none rounded-xl bg-primary-500/85" style={{ zIndex: 30 }} />
         )}
 
         {/* Bottom text block (no pills) */}
         <div className="absolute inset-x-0 bottom-0 z-20 p-3 sm:p-3.5">
           <div className="flex flex-col items-start gap-1.5 w-full">
             <div
-              className={`text-[15px] sm:text-base font-extrabold leading-snug whitespace-normal break-words ${
-                selected ? 'text-green-600 dark:text-green-400' : 'text-white'
-              }`}
+              className={`text-[15px] sm:text-base font-extrabold leading-snug whitespace-normal break-words text-white`}
               dir="rtl"
             >
               {title}

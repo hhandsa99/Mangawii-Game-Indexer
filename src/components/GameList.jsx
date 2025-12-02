@@ -454,7 +454,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                 transition={{ duration: 0.2, delay: (index % 12) * 0.01 }}
                 onClick={() => onGameSelection(gid, !selected)}
                 onContextMenu={(e) => onCardContext && onCardContext(game.Name, e)}
-                className={`text-left rounded-xl overflow-hidden bg-transparent dark:bg-transparent relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 w-full xl:w-[220.5px] flex flex-col`}
+                className={`text-left rounded-xl overflow-hidden bg-transparent dark:bg-transparent relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 w-full xl:w-[220.5px] flex flex-col ${selected ? 'shadow-lg' : ''}`}
                 aria-pressed={selected}
               >
                 {/* Image (3:4) with ambient glow on hover */}
@@ -480,10 +480,10 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                   />
                   {/* Selected overlay: cover image with a big check and text */}
                   {selected && (
-                    <div className="absolute inset-0 z-30 bg-black/60 grid place-items-center">
+                    <div className="absolute inset-0 grid place-items-center bg-primary-500/85 z-40">
                       <div className="flex flex-col items-center gap-2 text-white">
-                        <Check className="w-10 h-10 sm:w-12 sm:h-12" />
-                        <div className="text-sm sm:text-base font-extrabold">تم التحديد</div>
+                        <Check className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
+                        <div className="text-sm sm:text-base font-extrabold text-white">تم التحديد</div>
                       </div>
                     </div>
                   )}
