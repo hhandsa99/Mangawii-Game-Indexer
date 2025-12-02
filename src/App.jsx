@@ -356,25 +356,51 @@ function App() {
       return `الألعاب المحددة: 0\nالحجم الكلي: 0 جيجا\nالسعر: 0 جنيه`;
     }
 
-    // Sort by name for consistent order
-    const arr = selectedArr.slice().sort((a, b) => String(a.Name).localeCompare(String(b.Name)));
+    // Helper: parse numeric size from various possible fields and formats
+    const parseSize = (game) => {
+      const raw = game.Size ?? game.size ?? game.SizeGB ?? game.sizeGB ?? game.SizeInGB ?? '';
+      if (raw == null) return 0;
+      if (typeof raw === 'number') return raw;
+      // try to extract numeric part from string like '15gb' or '15 GB'
+      const match = String(raw).replace(',', '.').match(/[-+]?\d*\.?\d+/);
+      return match ? parseFloat(match[0]) : 0;
+    };
+
+    const formatSize = (n) => {
+      if (n == null || isNaN(n)) return '0 GB';
+      const rounded = Math.round(n * 100) / 100;
+      if (Math.abs(rounded - Math.round(rounded)) < 1e-9) return `${Math.round(rounded)} GB`;
+      return `${rounded.toFixed(2).replace(/\.00$/, '')} GB`;
+    };
+
+    // Group selected games by location. Map 'common' -> 'Steam' for exported text.
+    const groups = new Map();
+    for (const g of selectedArr) {
+      const rawLoc = (g.Location ?? g.location ?? g.__folder ?? g.folder ?? 'Unknown');
+      let loc = String(rawLoc ?? 'Unknown').trim();
+      if (loc.toLowerCase() === 'common') loc = 'Steam';
+      if (!groups.has(loc)) groups.set(loc, []);
+      groups.get(loc).push(g);
+    }
+
+    // Sort locations alphabetically and games by name
+    const sortedLocations = Array.from(groups.keys()).sort((a, b) => String(a).localeCompare(String(b)));
     const lines = [];
-    for (const game of arr) {
-      // Use exact size from JSON (prefer Size, then SizeGB) without rounding
-      const rawSize = (game.Size ?? game.size ?? game.SizeGB ?? game.sizeGB);
-      const sizeTxt = `${rawSize ?? 0}gb`;
-      const locationTxt = game.Location ?? game.location ?? 'Unknown';
-      const gid = game.Id ?? game.id ?? '';
-      lines.push(`${game.Name}`);
-      lines.push(`Size: ${sizeTxt}`);
-      lines.push(`Location: ${locationTxt}`);
-      lines.push(`id ${gid}`);
+    for (const loc of sortedLocations) {
+      const list = groups.get(loc).slice().sort((a, b) => String(a.Name).localeCompare(String(b.Name)));
+      lines.push(`📂 ${loc}`);
+      for (const g of list) {
+        const sizeNum = parseSize(g);
+        lines.push(`• ${g.Name} — ${formatSize(sizeNum)}`);
+      }
       lines.push('');
     }
-    // Totals block
-    lines.push(`الألعاب المحددة: ${summaryStats.selectedCount}`);
-    lines.push(`الحجم الكلي: ${summaryStats.totalSize} جيجا`);
-    lines.push(`السعر: ${summaryStats.totalPrice} جنيه`);
+
+    // Separator and totals (Arabic labels with simple emojis)
+    lines.push('———————————————');
+    lines.push(`🟦 الالعاب المحددة: ${summaryStats.selectedCount}`);
+    lines.push(`🟩 الحجم الكلي: ${summaryStats.totalSize} جيجا`);
+    lines.push(`💵 السعر: ${summaryStats.totalPrice} جنيه`);
     return lines.join('\n');
   };
 
