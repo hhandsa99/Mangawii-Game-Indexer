@@ -1,18 +1,12 @@
 [
     {
         "Name":  "Call of Duty",
-        "Size":  242.29,
-        "Location":  "Battle.net",
-        "id":  {
-
-               }
+        "Size":  240.3,
+        "Location":  "Battle.net"
     },
     {
         "Name":  "Overwatch",
-        "Size":  65.77,
-        "Location":  "Battle.net",
-        "id":  {
-
-               }
+        "Size":  66.11,
+        "Location":  "Battle.net"
     }
 ]

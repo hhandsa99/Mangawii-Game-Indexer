@@ -1,26 +1,17 @@
 [
     {
         "Name":  "FallGuys",
-        "Size":  7.5,
-        "Location":  "Epic Games",
-        "id":  {
-
-               }
+        "Size":  7.76,
+        "Location":  "Epic Games"
     },
     {
         "Name":  "Fortnite",
-        "Size":  85.29,
-        "Location":  "Epic Games",
-        "id":  {
-
-               }
+        "Size":  87.36,
+        "Location":  "Epic Games"
     },
     {
         "Name":  "rocketleague",
-        "Size":  35.59,
-        "Location":  "Epic Games",
-        "id":  {
-
-               }
+        "Size":  35.93,
+        "Location":  "Epic Games"
     }
 ]

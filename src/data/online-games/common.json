@@ -1,66 +1,52 @@
 [
     {
         "Name":  "Apex Legends",
-        "Size":  80.5,
-        "Location":  "common",
-        "id":  {
-
-               }
+        "Size":  87.59,
+        "Location":  "common"
+    },
+    {
+        "Name":  "Battlefield 6",
+        "Size":  70.3,
+        "Location":  "common"
     },
     {
         "Name":  "Counter-Strike Global Offensive",
-        "Size":  58.4,
-        "Location":  "common",
-        "id":  {
-
-               }
+        "Size":  60.51,
+        "Location":  "common"
     },
     {
         "Name":  "Delta Force",
-        "Size":  105.61,
-        "Location":  "common",
-        "id":  {
-
-               }
+        "Size":  144.24,
+        "Location":  "common"
     },
     {
         "Name":  "eFootball",
-        "Size":  49.7,
-        "Location":  "common",
-        "id":  {
-
-               }
+        "Size":  50.87,
+        "Location":  "common"
     },
     {
         "Name":  "MarvelRivals",
-        "Size":  85.24,
-        "Location":  "common",
-        "id":  {
-
-               }
+        "Size":  110.51,
+        "Location":  "common"
     },
     {
         "Name":  "Once Human",
         "Size":  66,
-        "Location":  "common",
-        "id":  {
-
-               }
+        "Location":  "common"
     },
     {
         "Name":  "Paladins",
         "Size":  31.2,
-        "Location":  "common",
-        "id":  {
-
-               }
+        "Location":  "common"
     },
     {
         "Name":  "PUBG",
-        "Size":  39.94,
-        "Location":  "common",
-        "id":  {
-
-               }
+        "Size":  41.85,
+        "Location":  "common"
+    },
+    {
+        "Name":  "Tom Clancy\u0027s Rainbow Six Siege",
+        "Size":  62.65,
+        "Location":  "common"
     }
 ]

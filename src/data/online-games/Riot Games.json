@@ -1,18 +1,12 @@
 [
     {
         "Name":  "League of Legends",
-        "Size":  32.64,
-        "Location":  "Riot Games",
-        "id":  {
-
-               }
+        "Size":  32.83,
+        "Location":  "Riot Games"
     },
     {
         "Name":  "VALORANT",
-        "Size":  52.03,
-        "Location":  "Riot Games",
-        "id":  {
-
-               }
+        "Size":  26.76,
+        "Location":  "Riot Games"
     }
 ]
