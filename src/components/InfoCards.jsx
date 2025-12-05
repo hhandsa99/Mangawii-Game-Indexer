@@ -27,7 +27,7 @@ const InfoCards = ({ isDark = true }) => {
       icon: Info,
       content: (
         <div className="text-sm leading-relaxed" dir="rtl">
-          <p>هذا ليس موقع تحميل العاب و لكنه يوضح الالعاب المتاحة لدينا في تكنيكال ستور</p>
+          <p><span style={{ color: 'var(--accent-brand, #039be4)' }}>هذا ليس موقع تحميل العاب</span> و لكنه يوضح الالعاب المتاحة لدينا في تكنيكال ستور</p>
         </div>
       ),
     },
