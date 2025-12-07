@@ -9,8 +9,17 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
     textSecondary: isDark ? '#9AA1AD' : '#0f172a',
     surface: isDark ? '#1E2128' : '#f8fafc'
   }), [isDark]);
-  const [localSelection, setLocalSelection] = React.useState(() => selectedList.map(g => g.Name));
-  const initialNames = React.useMemo(() => selectedList.map(g => g.Name), [selectedList]);
+  // helper to create the same canonical key App uses
+  const keyFor = (g) => {
+    if (!g) return '';
+    if (g.Id || g.id) return String(g.Id ?? g.id);
+    const name = String(g.Name ?? g.name ?? '').trim();
+    const src = String(g.JsonName ?? g.__section ?? '').trim();
+    return `${name}::${src}`;
+  };
+
+  const [localSelection, setLocalSelection] = React.useState(() => selectedList.map(g => keyFor(g)));
+  const initialNames = React.useMemo(() => selectedList.map(g => keyFor(g)), [selectedList]);
   const hasChanges = React.useMemo(() => {
     const a = new Set(initialNames);
     const b = new Set(localSelection);
@@ -20,12 +29,12 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
   }, [initialNames, localSelection]);
 
   React.useEffect(() => {
-    setLocalSelection(selectedList.map(g => g.Name));
+    setLocalSelection(selectedList.map(g => keyFor(g)));
   }, [selectedList]);
 
   // Real-time derived stats based on localSelection
   const derived = React.useMemo(() => {
-    const selected = selectedList.filter(g => localSelection.includes(g.Name));
+    const selected = selectedList.filter(g => localSelection.includes(keyFor(g)));
     const selectedCount = selected.length;
     const totalSizeNum = selected.reduce((sum, g) => sum + (parseFloat(g.SizeGB) || 0), 0);
     let totalPriceNum = totalSizeNum;
@@ -72,9 +81,14 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
     const a = new Set(initialNames);
     const b = new Set(localSelection);
     const removed = [];
-    for (const n of a) if (!b.has(n)) removed.push(n);
+    for (const key of a) {
+      if (!b.has(key)) {
+        const g = selectedList.find(x => keyFor(x) === key);
+        removed.push(g ? g.Name : key);
+      }
+    }
     return removed;
-  }, [initialNames, localSelection]);
+  }, [initialNames, localSelection, selectedList]);
 
   return (
     <AnimatePresence>
@@ -163,7 +177,8 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
           <div className="p-4 sm:p-6 max-h-64 sm:max-h-72 overflow-y-auto">
             <ul className="space-y-2">
               {selectedList.map((g, idx) => {
-                const selected = localSelection.includes(g.Name);
+                const k = keyFor(g);
+                const selected = localSelection.includes(k);
                 const size = Number(g.SizeGB ?? g.Size ?? g.size ?? 0).toFixed(2);
                 const status = (g.__section || 'offline') === 'online' ? 'online' : 'offline';
                 return (
@@ -182,7 +197,7 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
                                 onChange={() => {
                                   setLocalSelection(prev => {
                                     const next = new Set(prev);
-                                    if (next.has(g.Name)) next.delete(g.Name); else next.add(g.Name);
+                                    if (next.has(k)) next.delete(k); else next.add(k);
                                     return Array.from(next);
                                   });
                                 }}

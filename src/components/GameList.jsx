@@ -86,7 +86,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
   // Update select all state
   React.useEffect(() => {
     const visibleSelectedCount = games.filter(game => {
-      const gid = game.Id ?? game.id ?? game.Name;
+      const gid = game.Id ?? game.id ?? `${game.Name}::${game.JsonName ?? game.__section ?? ''}`;
       return selectedGames.has(gid);
     }).length;
     setSelectAllChecked(visibleSelectedCount === games.length && games.length > 0);
@@ -326,7 +326,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
               {/* Rows */}
               <div className="space-y-2">
                 {items.map((g, idx) => {
-                  const gid = g.Id ?? g.id ?? g.Name;
+                  const gid = g.Id ?? g.id ?? `${g.Name}::${g.JsonName ?? g.__section ?? ''}`;
                   const selected = selectedGames.has(gid);
                   return (
                     <label
@@ -444,7 +444,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
               className="grid gap-x-4 sm:gap-x-5 gap-y-8 sm:gap-y-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:[grid-template-columns:repeat(6,220.5px)] justify-center items-start"
             >
           {items.map((game, index) => {
-            const gid = game.Id ?? game.id ?? game.Name;
+            const gid = game.Id ?? game.id ?? `${game.Name}::${game.JsonName ?? game.__section ?? ''}`;
             const selected = selectedGames.has(gid);
             return (
               <motion.button

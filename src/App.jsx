@@ -14,6 +14,15 @@ import { Gamepad2, LayoutGrid, List } from 'lucide-react';
 import { matchGameName, buildAliases } from './utils/searchUtils';
 import ContextMenu from './components/ContextMenu';
 function App() {
+  // Helper to compute a stable unique key for a game. Use Id when available,
+  // otherwise fall back to a composite of Name + JsonName (file) or section.
+  const gameKey = (g) => {
+    if (!g) return '';
+    if (g.Id || g.id) return String(g.Id ?? g.id);
+    const name = String(g.Name ?? g.name ?? '').trim();
+    const src = String(g.JsonName ?? g.__section ?? '').trim();
+    return `${name}::${src}`;
+  };
   const [games, setGames] = useState([]);
   const [filteredGames, setFilteredGames] = useState([]);
   const [selectedGames, setSelectedGames] = useState(new Set()); // stores game IDs (fallback to Name if missing)
@@ -252,7 +261,7 @@ function App() {
   // Calculate summary statistics
   const summaryStats = useMemo(() => {
     const selected = games.filter(game => {
-      const gid = game.Id ?? game.id ?? game.Name;
+      const gid = gameKey(game);
       return selectedGames.has(gid);
     });
     const totalSize = selected.reduce((sum, game) => {
@@ -278,12 +287,12 @@ function App() {
   }, [selectedGames, games]);
 
   // Handle game selection
-  const handleGameSelection = (gameIdOrName, isSelected) => {
+  const handleGameSelection = (gameKeyOrId, isSelected) => {
     const newSelected = new Set(selectedGames);
     if (isSelected) {
-      newSelected.add(gameIdOrName);
+      newSelected.add(gameKeyOrId);
     } else {
-      newSelected.delete(gameIdOrName);
+      newSelected.delete(gameKeyOrId);
     }
     setSelectedGames(newSelected);
   };
@@ -291,7 +300,7 @@ function App() {
   // Handle select all
   const handleSelectAll = (isSelected) => {
     if (isSelected) {
-      const allIds = new Set(filteredGames.map(game => (game.Id ?? game.id ?? game.Name)));
+      const allIds = new Set(filteredGames.map(game => gameKey(game)));
       setSelectedGames(allIds);
     } else {
       setSelectedGames(new Set());
@@ -300,9 +309,17 @@ function App() {
 
   // Toggle selection by name (used in modal checklist)
   const applySelectionFromModal = (namesArray) => {
-    // Back-compat: map incoming names to IDs when possible
-    const nameToId = new Map(games.map(g => [g.Name, (g.Id ?? g.id ?? g.Name)]));
-    const next = new Set(namesArray.map(n => nameToId.get(n) ?? n));
+    // `namesArray` now contains canonical keys (Id or composite key). For
+    // backward compatibility, if caller passed plain names, map them to the
+    // first matching game's key. Prefer exact keys when provided.
+    const nameToKey = new Map(games.map(g => [g.Name, gameKey(g)]));
+    const next = new Set(namesArray.map(item => {
+      // If item matches an existing game's key, keep it
+      // Otherwise treat it as a Name and map to first matching key
+      const found = games.find(g => gameKey(g) === item);
+      if (found) return item;
+      return nameToKey.get(item) ?? item;
+    }));
     setSelectedGames(next);
   };
 
