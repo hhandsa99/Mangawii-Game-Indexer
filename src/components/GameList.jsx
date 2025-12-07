@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ImageOff, Gamepad2, SquareCheckBig } from 'lucide-react';
 import { getGameImageUrl, getCachedImageUrlByName } from '../utils/imageProvider';
+import OnlineBadge from './OnlineBadge';
 
 // GameImage component handles the image loading and display logic
 const GameImage = ({ name, imageMap, loadedMap, setLoadedMap, priorityNames }) => {
@@ -486,6 +487,14 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                         <div className="text-sm sm:text-base font-extrabold text-white">تم التحديد</div>
                       </div>
                     </div>
+                  )}
+
+                  {/* Online badge: bottom 25% with blurred gradient + badge image */}
+                  {(game.__section || 'offline') === 'online' && (
+                    <OnlineBadge 
+                      jsonName={game.JsonName}
+                      style={{ height: '25%' }}
+                    />
                   )}
                   </div>
                 </div>

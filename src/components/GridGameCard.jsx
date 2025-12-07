@@ -1,5 +1,6 @@
 import React from 'react';
 import { Check } from 'lucide-react';
+import OnlineBadge from './OnlineBadge';
 
 export default function GridGameCard({
   title,
@@ -9,6 +10,7 @@ export default function GridGameCard({
   imageSrc,
   onClick,
   priority = false,
+  jsonName = '', // Add for online badge
 }) {
   const statusColor = section === 'online' ? '#22c55e' : '#ef4444';
 
@@ -46,6 +48,14 @@ export default function GridGameCard({
         {/* Selected overlay to match site effect */}
         {selected && (
           <div aria-hidden className="absolute inset-0 pointer-events-none rounded-xl bg-primary-500/85" style={{ zIndex: 30 }} />
+        )}
+
+        {/* Online badge: bottom 25% with blurred gradient + badge image */}
+        {section === 'online' && (
+          <OnlineBadge 
+            jsonName={jsonName}
+            style={{ height: '25%' }}
+          />
         )}
 
         {/* Bottom text block (no pills) */}
