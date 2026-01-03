@@ -19,11 +19,12 @@ export async function getBadgeImageUrl(jsonName) {
   const baseName = jsonName.replace(/\.json$/i, '');
   if (!baseName) return '';
 
-  // Try common image extensions in order
-  const extensions = ['.png', '.jpg', '.jpeg', '.webp'];
+  // Try common image extensions, prefer modern webp first to avoid 404 noise
+  const extensions = ['.webp', '.png', '.jpg', '.jpeg'];
 
   for (const ext of extensions) {
-    const url = `${BADGE_BASE_PATH}${baseName}${ext}`;
+    // Ensure name is URL-encoded to handle spaces and special chars
+    const url = `${BADGE_BASE_PATH}${encodeURIComponent(baseName)}${ext}`;
     try {
       // Quick check if the image exists by attempting to load it
       const response = await fetch(url, { method: 'HEAD' });
