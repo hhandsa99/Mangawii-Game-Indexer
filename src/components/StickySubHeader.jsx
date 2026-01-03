@@ -5,13 +5,13 @@ import { Home, Wifi, WifiOff, ChevronDown, Search } from 'lucide-react';
 export default function StickySubHeader({ section, onChangeSection, count, isDark, query, onQuery, headerHidden, onSearchFocusChange }) {
   const placeholder = React.useMemo(() => {
     if (section === 'online') return `ابحث في ${count} لعبة اونلاين`;
-    if (section === 'offline') return `ابحث في ${count} لعبة اوفلاين`;
+    if (section === 'offline') return `ابحث في ${count} لعبة اوفلاين/كراك`;
     return `ابحث في ${count} لعبة`;
   }, [section, count]);
   const filters = React.useMemo(() => ([
-    { id: 'all', label: 'جميع الألعاب', icon: Home },
+    { id: 'all', label: 'اونلاين/كراك', icon: Home },
     { id: 'online', label: 'اونلاين', icon: Wifi },
-    { id: 'offline', label: 'اوفلاين', icon: WifiOff },
+    { id: 'offline', label: 'كراك', icon: WifiOff },
   ]), []);
   const [isFilterDropdownOpen, setIsFilterDropdownOpen] = React.useState(false);
   const activeFilter = filters.find(f => f.id === section) || filters[0];

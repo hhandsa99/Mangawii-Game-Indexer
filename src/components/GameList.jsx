@@ -357,7 +357,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                             </div>
                             {/* Left: size/status plain text */}
                             <div className="order-3 shrink-0 flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap">
-                              <span className="text-gray-600 dark:text-[#9AA1AD]">{Number(g.SizeGB ?? g.Size ?? g.size ?? 0).toFixed(2)} جيجا</span>
+                              <span className="text-gray-600 dark:text-[#9AA1AD]">{Number(g.SizeGB ?? g.Size ?? g.size ?? 0).toFixed(1)} جيجا</span>
                               <span className="mx-1 text-gray-400 dark:text-[#9AA1AD]">|</span>
                               {(g.__section || 'offline') === 'online' ? (
                                 <span className="font-bold" style={{ color: '#22c55e' }}>أونلاين</span>
@@ -500,12 +500,12 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                 </div>
                 {/* Title under image (unlimited lines) */}
                 <div className="px-3 py-2">
-                  <div className={`text-[15px] font-bold leading-snug whitespace-normal break-words text-gray-900 dark:text-white`} title={game.Name} dir="rtl">
+                  <div className={`text-[15px] font-bold leading-snug whitespace-normal break-words text-gray-900 dark:text-white text-center`} title={game.Name} dir="rtl">
                     {game.Name}
                   </div>
-                  {/* Size | Status */}
-                  <div dir="ltr" className="mt-1 text-[14px]">
-                    <span className="text-gray-700 dark:text-[#9AA1AD]">{Number(game.SizeGB ?? game.Size ?? game.size ?? 0).toFixed(2)} جيجا</span>
+                  {/* Size | Status (RTL, centered, Arabic labels) */}
+                  <div dir="rtl" className="mt-1 text-[14px] text-center">
+                    <span className="text-gray-700 dark:text-[#9AA1AD]">{Number(game.SizeGB ?? game.Size ?? game.size ?? 0).toFixed(1)} جيجا</span>
                     <span className="mx-2 text-gray-400 dark:text-[#9AA1AD]">|</span>
                     {(game.__section || 'offline') === 'online' ? (
                       <span className="font-semibold" style={{ color: '#22c55e' }}>أونلاين</span>

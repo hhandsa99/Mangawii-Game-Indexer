@@ -33,7 +33,7 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
   }, [selectedList]);
 
   // Real-time derived stats based on localSelection
-  const derived = React.useMemo(() => {
+    const derived = React.useMemo(() => {
     const selected = selectedList.filter(g => localSelection.includes(keyFor(g)));
     const selectedCount = selected.length;
     const totalSizeNum = selected.reduce((sum, g) => sum + (parseFloat(g.SizeGB) || 0), 0);
@@ -43,7 +43,7 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
     if (selectedCount > 0 && totalPriceNum < 20) totalPriceNum = 20;
     return {
       selectedCount,
-      totalSize: totalSizeNum.toFixed(2),
+      totalSize: totalSizeNum.toFixed(1),
       totalPrice: totalPriceNum.toFixed(2)
     };
   }, [localSelection, selectedList]);
@@ -179,7 +179,7 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
               {selectedList.map((g, idx) => {
                 const k = keyFor(g);
                 const selected = localSelection.includes(k);
-                const size = Number(g.SizeGB ?? g.Size ?? g.size ?? 0).toFixed(2);
+                const size = Number(g.SizeGB ?? g.Size ?? g.size ?? 0).toFixed(1);
                 const status = (g.__section || 'offline') === 'online' ? 'online' : 'offline';
                 return (
                   <li key={`review-${g.Name}-${idx}`} className="min-w-0">
@@ -212,9 +212,9 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
                               <span style={{ color: PALETTE.textSecondary }}>{size} جيجا</span>
                               <span className="mx-1" style={{ color: PALETTE.textSecondary }}>|</span>
                               {status === 'online' ? (
-                                <span className="font-bold" style={{ color: '#22c55e' }}>أونلاين</span>
+                                <span className="font-bold" style={{ color: '#22c55e' }}>Online</span>
                               ) : (
-                                <span className="font-bold" style={{ color: '#ef4444' }}>كراك</span>
+                                <span className="font-bold" style={{ color: '#ef4444' }}>Offline</span>
                               )}
                             </div>
                           </div>

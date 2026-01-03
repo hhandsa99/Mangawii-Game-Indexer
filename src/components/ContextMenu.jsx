@@ -62,6 +62,14 @@ export default function ContextMenu({ open, x, y, gameName, onClose, isDark = tr
         window.open(`https://www.youtube.com/results?search_query=${q}`, '_blank');
         onClose?.();
       },
+    },    {
+      label: 'بحث عن متطلبات التشغيل',
+      icon: <Search className="w-4 h-4" />,
+      run: () => {
+        const q = encodeURIComponent(`متطلبات تشغيل ${gameName || ''}`);
+        window.open(`https://www.google.com/search?q=${q}`, '_blank');
+        onClose?.();
+      },
     },
   ];
 

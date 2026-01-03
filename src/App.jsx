@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DualHeader from './components/DualHeader';
 import GameList from './components/GameList';
-import LoadingSpinner from './components/LoadingSpinner';
 import SummaryModal from './components/SummaryModal';
 import InfoCards from './components/InfoCards';
 // Removed SummaryBar in favor of new FloatingSummary
@@ -28,7 +27,7 @@ function App() {
   const [selectedGames, setSelectedGames] = useState(new Set()); // stores game IDs (fallback to Name if missing)
   const [searchQuery, setSearchQuery] = useState('');
   const [searchInput, setSearchInput] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+  
   const [isDarkMode, setIsDarkMode] = useState(() => {
     try { return localStorage.getItem('darkMode') === '0' ? false : true; } catch { return true; }
   });
@@ -53,11 +52,7 @@ function App() {
   const [showWelcomeTour, setShowWelcomeTour] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
   const scrollStateRef = React.useRef({ lastY: 0, ticking: false });
-  const [showPreloader, setShowPreloader] = useState(true);
-  // Preloader progress [0..100]
-  const [displayProgress, setDisplayProgress] = useState(0);
-  const [preloadVersion, setPreloadVersion] = useState(0);
-  const [preloaderStep, setPreloaderStep] = useState(0); // derived from progress
+  
   const [aboveFoldReady, setAboveFoldReady] = useState(false); // no longer gates hiding
   const [isFirstLaunch, setIsFirstLaunch] = useState(() => {
     try {
@@ -70,7 +65,7 @@ function App() {
   // space to reserve for the fixed subheader overlay so it doesn't cover content
   const [subheaderOffset, setSubheaderOffset] = useState(() => (typeof window !== 'undefined' ? (window.innerWidth < 640 ? 88 : 96) : 96));
   // For loader first two phases: use a single text node, AnimatePresence crossfade on change
-  const [phase01Text, setPhase01Text] = useState('Technical Store');
+  
   const aliasesRef = React.useRef(buildAliases());
   const [ctxMenu, setCtxMenu] = useState({ open: false, x: 0, y: 0, gameName: '' });
 
@@ -106,7 +101,6 @@ function App() {
   // Load games on component mount
   useEffect(() => {
     const loadGames = async () => {
-      setIsLoading(true);
       try {
         const gameData = await loadGamesFromJSON();
         const sortedGames = gameData.sort((a, b) => a.Name.localeCompare(b.Name));
@@ -114,77 +108,13 @@ function App() {
         setFilteredGames(sortedGames);
       } catch (error) {
         console.error('Failed to load games:', error);
-      } finally {
-        setIsLoading(false);
       }
     };
     loadGames();
   }, []);
 
-  // Startup preloader overlay: run for exactly ~1s using rAF timeline
-  useEffect(() => {
-    if (!showPreloader) return;
-    let rafId = 0;
-    const DURATION = 3000; // ms
-    const start = performance.now();
-    const tick = (now) => {
-      const t = Math.min(1, (now - start) / DURATION);
-      setDisplayProgress(Math.round(t * 100));
-      if (t < 1) {
-        rafId = requestAnimationFrame(tick);
-      } else {
-    setShowPreloader(false);
-    setPreloadVersion(v => v + 1);
-  try { localStorage.setItem('firstLaunchDone', '1'); setIsFirstLaunch(false); setShowSidebarHint(false); } catch (_) {}
-        try {
-          const tourDone = localStorage.getItem('welcomeTourDone');
-          if (isFirstLaunch || tourDone !== '1') setShowWelcomeTour(true);
-        } catch (_) {}
-      }
-    };
-    setDisplayProgress(0);
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [showPreloader, isFirstLaunch]);
-
-  // Derive preloader step from progress thresholds (using displayProgress)
-  useEffect(() => {
-    const p = displayProgress;
-    if (p < 20) {
-      setPreloaderStep(0); // Technical Store
-    } else if (p < 60) {
-      setPreloaderStep(1); // قسم الألعاب
-    } else if (p < 90) {
-      setPreloaderStep(2); // Games count + icon
-    } else {
-      setPreloaderStep(3); // Loading
-    }
-  }, [displayProgress]);
-
-  // Update phase01Text when entering phase 0 or 1; AnimatePresence handles the smooth crossfade
-  useEffect(() => {
-    const p = displayProgress;
-    const target = p < 20 ? 'Technical Store' : p < 60 ? 'قسم الألعاب' : p < 90 ? 'Games count + icon' : 'Loading';
-    if (target && target !== phase01Text) setPhase01Text(target);
-  }, [displayProgress, phase01Text]);
-
   // Receive real load progress from GameList
   const handleLoadProgress = () => {};
-
-  // Hide overlay strictly when displayProgress hits 100
-  useEffect(() => {
-    if (!showPreloader) return;
-    if (displayProgress >= 100) {
-    setShowPreloader(false);
-    setPreloadVersion(v => v + 1);
-  try { localStorage.setItem('firstLaunchDone', '1'); setIsFirstLaunch(false); setShowSidebarHint(false); } catch (_) {}
-      // Start welcome tour after overlay hides if not completed before
-      try {
-        const tourDone = localStorage.getItem('welcomeTourDone');
-        if (isFirstLaunch || tourDone !== '1') setShowWelcomeTour(true);
-      } catch (_) {}
-    }
-  }, [displayProgress, showPreloader, isFirstLaunch]);
 
   // Persist view toggle hint dismissal across sessions
   useEffect(() => {
@@ -280,7 +210,7 @@ function App() {
 
     return {
       selectedCount: selected.length,
-      totalSize: totalSize.toFixed(2),
+      totalSize: totalSize.toFixed(1),
       totalPrice: totalPrice.toFixed(2),
       selectedGames: selected
     };
@@ -385,10 +315,10 @@ function App() {
     };
 
     const formatSize = (n) => {
-      if (n == null || isNaN(n)) return '0 GB';
-      const rounded = Math.round(n * 100) / 100;
-      if (Math.abs(rounded - Math.round(rounded)) < 1e-9) return `${Math.round(rounded)} GB`;
-      return `${rounded.toFixed(2).replace(/\.00$/, '')} GB`;
+      if (n == null || isNaN(n)) return '0 جيجا';
+      const rounded = Math.round(n * 10) / 10;
+      if (Math.abs(rounded - Math.round(rounded)) < 1e-9) return `${Math.round(rounded)} جيجا`;
+      return `${rounded.toFixed(1).replace(/\.0$/, '')} جيجا`;
     };
 
     // Group selected games by location. Map 'common' -> 'Steam' for exported text.
@@ -550,9 +480,6 @@ function App() {
           >
             {/* Search moved to StickySubHeader; section toggle also in subheader */}
             
-            {isLoading ? (
-              <LoadingSpinner />
-            ) : (
               <GameList
                 key={layoutMode}
                 games={filteredGames}
@@ -562,12 +489,10 @@ function App() {
                 totalGames={games.length}
                 layoutMode={layoutMode}
                 gridDensity={gridDensity}
-                preloadVersion={preloadVersion}
                 onAboveFoldReady={() => setAboveFoldReady(true)}
                 onLoadProgress={handleLoadProgress}
                 onCardContext={handleCardContext}
               />
-            )}
         </motion.div>
       </main>
 
@@ -596,104 +521,7 @@ function App() {
           )}
         </AnimatePresence>
 
-        {/* Startup preloader overlay (top-most) */}
-        <AnimatePresence>
-          {showPreloader && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[2000]"
-            >
-              {/* Background splash image (cover, responsive) */}
-              <div className="absolute inset-0 overflow-hidden">
-                <img
-                  src={`${import.meta.env.BASE_URL}images/Splash%20Screen.webp`}
-                  alt="Splash Background"
-                  decoding="async"
-                  loading="eager"
-                  fetchpriority="high"
-                  className="w-full h-full object-cover object-center select-none pointer-events-none"
-                  draggable={false}
-                />
-                {/* Dim overlay (~90% opacity) */}
-                <div className="absolute inset-0 bg-black/90" aria-hidden="true" />
-              </div>
-
-              {/* Foreground content */}
-              <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-center px-6">
-                {/* Reserve fixed space for text so progress bar stays fixed */}
-                <div className="relative mb-4 h-9 sm:h-10 w-full flex items-center justify-center">
-                  {/* First two phases: AnimatePresence crossfade keyed by phase01Text */}
-                  {displayProgress < 60 && (
-                    <AnimatePresence mode="popLayout" initial={false}>
-                      <motion.span
-                        key={phase01Text}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        // Individual durations per text while keeping the same fade logic
-                        transition={{
-                          duration: phase01Text === 'Technical Store' ? 0.55 : 0.65,
-                          ease: 'easeInOut'
-                        }}
-                        className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-white whitespace-nowrap"
-                      >
-                        {phase01Text === 'Technical Store' ? (
-                          <span className="text-gradient">Technical Store</span>
-                        ) : (
-                          <span>قسم الألعاب</span>
-                        )}
-                      </motion.span>
-                    </AnimatePresence>
-                  )}
-
-                  {/* Phases 2 and 3: a single presence wrapper, opacity-only dissolves for 60fps smoothness */}
-                  <AnimatePresence initial={false} mode="popLayout">
-                    {preloaderStep === 2 && (
-                      <motion.div
-                        key="phase-2"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, ease: 'easeInOut' }}
-                        style={{ willChange: 'opacity', transform: 'translateZ(0)' }}
-                        className="absolute inset-0 flex items-center justify-center gap-2 text-lg sm:text-xl font-bold"
-                      >
-                        <Gamepad2
-                          className={`h-5 w-5 ${displayProgress < 55 ? 'text-gray-400 dark:text-gray-500' : 'text-accent-600 dark:text-accent-400'}`}
-                        />
-                        <span className="text-white">{games.length} لعبة متاحة</span>
-                      </motion.div>
-                    )}
-                    {preloaderStep === 3 && (
-                      <motion.div
-                        key="phase-3"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.45, ease: 'easeInOut' }}
-                        style={{ willChange: 'opacity', transform: 'translateZ(0)' }}
-                        className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-white"
-                      >
-                        Loading
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-                <div className="w-64 h-3 bg-gray-200 dark:bg-neutral-800 rounded-full overflow-hidden mx-auto shadow-inner">
-                  <div
-                    className="h-full bg-primary-600 transition-[width] duration-100"
-                    style={{ width: `${displayProgress}%` }}
-                  />
-                </div>
-                <div className="mt-3 text-sm font-medium text-gray-200">
-                  {displayProgress}%
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        
         {/* Custom Context Menu */}
         <ContextMenu
           open={ctxMenu.open}
