@@ -212,9 +212,9 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
                               <span style={{ color: PALETTE.textSecondary }}>{size} جيجا</span>
                               <span className="mx-1" style={{ color: PALETTE.textSecondary }}>|</span>
                               {status === 'online' ? (
-                                <span className="font-bold" style={{ color: '#22c55e' }}>Online</span>
+                                <span className="font-bold" style={{ color: '#22c55e' }}>اونلاين</span>
                               ) : (
-                                <span className="font-bold" style={{ color: '#ef4444' }}>Offline</span>
+                                <span className="font-bold" style={{ color: '#ef4444' }}>كراك</span>
                               )}
                             </div>
                           </div>
