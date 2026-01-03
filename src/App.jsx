@@ -637,7 +637,7 @@ function App() {
                           duration: phase01Text === 'Technical Store' ? 0.55 : 0.65,
                           ease: 'easeInOut'
                         }}
-                        className="absolute inset-0 flex items-center justify-center text-2xl font-extrabold text-white whitespace-nowrap"
+                        className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-white whitespace-nowrap"
                       >
                         {phase01Text === 'Technical Store' ? (
                           <span className="text-gradient">Technical Store</span>
@@ -674,7 +674,7 @@ function App() {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.45, ease: 'easeInOut' }}
                         style={{ willChange: 'opacity', transform: 'translateZ(0)' }}
-                        className="absolute inset-0 flex items-center justify-center text-2xl font-extrabold text-white"
+                        className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-white"
                       >
                         Loading
                       </motion.div>

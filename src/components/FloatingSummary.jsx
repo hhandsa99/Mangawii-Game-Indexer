@@ -110,7 +110,7 @@ export default function FloatingSummary({
                     border: `1px solid ${COLORS.border}`,
                   }}
                 >
-                  مسح الكل
+                  الغاء الكل
                 </button>
 
                 <button

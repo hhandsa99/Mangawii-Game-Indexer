@@ -62,7 +62,7 @@ export default function GridGameCard({
         <div className="absolute inset-x-0 bottom-0 z-20 p-3 sm:p-3.5">
           <div className="flex flex-col items-start gap-1.5 w-full">
             <div
-              className={`text-[15px] sm:text-base font-extrabold leading-snug whitespace-normal break-words text-white`}
+              className={`text-[15px] sm:text-base font-bold leading-snug whitespace-normal break-words text-white`}
               dir="rtl"
             >
               {title}
@@ -70,17 +70,17 @@ export default function GridGameCard({
 
             {/* Info row: status dot + label and size as plain text */}
             <div dir="ltr" className="flex items-center gap-2 text-[11px] sm:text-xs">
-              <span className="inline-flex items-center gap-1 text-gray-200">
+                <span className="inline-flex items-center gap-1 text-gray-200">
                 <span
                   className="inline-block w-2 h-2 rounded-full"
                   style={{ backgroundColor: statusColor }}
                   aria-hidden="true"
                 />
-                <span>{section === 'online' ? 'Online' : 'Offline'}</span>
+                <span>{section === 'online' ? 'أونلاين' : 'كراك'}</span>
               </span>
 
               <span style={{ color: '#9AA1AD' }}>
-                {Number(sizeGB).toFixed(2)} GB
+                {Number(sizeGB).toFixed(2)} جيجا
               </span>
             </div>
           </div>

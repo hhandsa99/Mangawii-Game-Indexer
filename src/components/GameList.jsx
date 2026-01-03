@@ -318,7 +318,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
             <div key={`list-sec-${letter}`} className="space-y-2">
               {/* Themed letter header */}
               <div className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center px-3 py-1 rounded-full text-sm font-extrabold tracking-widest bg-primary-50 text-primary-700 border border-primary-200 dark:bg-primary-400/10 dark:text-primary-300 dark:border-primary-500/20">
+                <span className="inline-flex items-center justify-center px-3 py-1 rounded-full text-sm font-bold tracking-widest bg-primary-50 text-primary-700 border border-primary-200 dark:bg-primary-400/10 dark:text-primary-300 dark:border-primary-500/20">
                   {letter}
                 </span>
                 <div className="h-px flex-1 bg-gray-200 dark:bg-neutral-800" />
@@ -350,19 +350,19 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                             </div>
                             {/* Middle: title */}
                             <div
-                              className={`order-2 flex-1 text-right font-extrabold text-sm sm:text-base whitespace-normal break-words ${selected ? 'text-[#039be4]' : 'text-gray-900 dark:text-gray-200'}`}
+                              className={`order-2 flex-1 text-right font-bold text-sm sm:text-base whitespace-normal break-words ${selected ? 'text-[#039be4]' : 'text-gray-900 dark:text-gray-200'}`}
                               title={g.Name}
                             >
                               {g.Name}
                             </div>
                             {/* Left: size/status plain text */}
                             <div className="order-3 shrink-0 flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap">
-                              <span className="text-gray-600 dark:text-[#9AA1AD]">{Number(g.SizeGB ?? g.Size ?? g.size ?? 0).toFixed(2)} GB</span>
+                              <span className="text-gray-600 dark:text-[#9AA1AD]">{Number(g.SizeGB ?? g.Size ?? g.size ?? 0).toFixed(2)} جيجا</span>
                               <span className="mx-1 text-gray-400 dark:text-[#9AA1AD]">|</span>
                               {(g.__section || 'offline') === 'online' ? (
-                                <span className="font-extrabold" style={{ color: '#22c55e' }}>Online</span>
+                                <span className="font-bold" style={{ color: '#22c55e' }}>أونلاين</span>
                               ) : (
-                                <span className="font-extrabold" style={{ color: '#ef4444' }}>Offline</span>
+                                <span className="font-bold" style={{ color: '#ef4444' }}>كراك</span>
                               )}
                             </div>
                           </div>
@@ -435,7 +435,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                 <div className="w-full flex justify-center mb-1">
                   <div className="h-px w-full bg-gray-200 dark:bg-neutral-800" />
                 </div>
-                <div className="px-2 py-1 rounded-md text-center text-gray-400 dark:text-gray-400 text-2xl sm:text-3xl font-extrabold tracking-widest">
+                <div className="px-2 py-1 rounded-md text-center text-gray-400 dark:text-gray-400 text-2xl sm:text-3xl font-bold tracking-widest">
                   {letter}
                 </div>
               </div>
@@ -484,7 +484,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                     <div className="absolute inset-0 grid place-items-center bg-primary-500/85 z-40">
                       <div className="flex flex-col items-center gap-2 text-white">
                         <Check className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
-                        <div className="text-sm sm:text-base font-extrabold text-white">تم التحديد</div>
+                        <div className="text-sm sm:text-base font-bold text-white">تم التحديد</div>
                       </div>
                     </div>
                   )}
@@ -500,17 +500,17 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                 </div>
                 {/* Title under image (unlimited lines) */}
                 <div className="px-3 py-2">
-                  <div className={`text-[15px] font-extrabold leading-snug whitespace-normal break-words text-gray-900 dark:text-white`} title={game.Name} dir="rtl">
+                  <div className={`text-[15px] font-bold leading-snug whitespace-normal break-words text-gray-900 dark:text-white`} title={game.Name} dir="rtl">
                     {game.Name}
                   </div>
                   {/* Size | Status */}
                   <div dir="ltr" className="mt-1 text-[14px]">
-                    <span className="text-gray-700 dark:text-[#9AA1AD]">{Number(game.SizeGB ?? game.Size ?? game.size ?? 0).toFixed(2)} GB</span>
+                    <span className="text-gray-700 dark:text-[#9AA1AD]">{Number(game.SizeGB ?? game.Size ?? game.size ?? 0).toFixed(2)} جيجا</span>
                     <span className="mx-2 text-gray-400 dark:text-[#9AA1AD]">|</span>
                     {(game.__section || 'offline') === 'online' ? (
-                      <span className="font-semibold" style={{ color: '#22c55e' }}>Online</span>
+                      <span className="font-semibold" style={{ color: '#22c55e' }}>أونلاين</span>
                     ) : (
-                      <span className="font-semibold" style={{ color: '#ef4444' }}>Offline</span>
+                      <span className="font-semibold" style={{ color: '#ef4444' }}>كراك</span>
                     )}
                   </div>
                 </div>

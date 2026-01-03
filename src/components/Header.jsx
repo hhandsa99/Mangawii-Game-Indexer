@@ -35,7 +35,7 @@ const Header = ({ isDarkMode, onToggleDarkMode, onSetDarkMode, totalGames, colla
               />
               <div className="min-w-0">
                 <h1 className={`font-bold leading-tight transition-all duration-200 ${collapsed ? 'text-base sm:text-xl' : 'text-lg sm:text-xl'}`}>
-                  <span className="block sm:inline" style={{ color: '#039be4' }}>Technical Store</span>
+                  <span className="block sm:inline" style={{ color: '#039be4' }}>TECHNICAL STORE</span>
                   <span className="mx-2 text-gray-400 dark:text-gray-500 hidden md:inline">|</span>
                   <span className="hidden md:inline text-gray-900 dark:text-gray-200">قسم الألعاب</span>
                 </h1>

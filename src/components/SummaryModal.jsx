@@ -204,7 +204,7 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
                               />
                             </div>
                             {/* Middle: title */}
-                            <div className="order-2 flex-1 text-right font-extrabold text-sm sm:text-base whitespace-normal break-words" title={g.Name} style={{ color: selected ? '#039be4' : PALETTE.textPrimary }}>
+                            <div className="order-2 flex-1 text-right font-bold text-sm sm:text-base whitespace-normal break-words" title={g.Name} style={{ color: selected ? '#039be4' : PALETTE.textPrimary }}>
                               {g.Name}
                             </div>
                             {/* Left: size | status */}
@@ -212,9 +212,9 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
                               <span style={{ color: PALETTE.textSecondary }}>{size} جيجا</span>
                               <span className="mx-1" style={{ color: PALETTE.textSecondary }}>|</span>
                               {status === 'online' ? (
-                                <span className="font-extrabold" style={{ color: '#22c55e' }}>Online</span>
+                                <span className="font-bold" style={{ color: '#22c55e' }}>أونلاين</span>
                               ) : (
-                                <span className="font-extrabold" style={{ color: '#ef4444' }}>Offline</span>
+                                <span className="font-bold" style={{ color: '#ef4444' }}>كراك</span>
                               )}
                             </div>
                           </div>
