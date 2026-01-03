@@ -469,7 +469,7 @@ function App() {
           )}
         </AnimatePresence>
         
-  <main className="py-6 sm:py-8 pb-24 sm:pb-20" style={{ paddingTop: subheaderOffset + 8 }}>
+  <main className="py-6 sm:py-8" style={{ paddingTop: subheaderOffset + 8, paddingBottom: 220 }}>
           {/* Info cards at top of page */}
           <InfoCards isDark={isDarkMode} />
           <motion.div
