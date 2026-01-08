@@ -1,0 +1,57 @@
+[
+    {
+        "Name":  "Apex Legends",
+        "Size":  87.65,
+        "Location":  "common"
+    },
+    {
+        "Name":  "Battlefield 6",
+        "Size":  75.7,
+        "Location":  "common"
+    },
+    {
+        "Name":  "Counter-Strike Global Offensive",
+        "Size":  60.49,
+        "Location":  "common"
+    },
+    {
+        "Name":  "Delta Force",
+        "Size":  144.24,
+        "Location":  "common"
+    },
+    {
+        "Name":  "eFootball",
+        "Size":  51.07,
+        "Location":  "common"
+    },
+    {
+        "Name":  "MarvelRivals",
+        "Size":  113.12,
+        "Location":  "common"
+    },
+    {
+        "Name":  "Once Human",
+        "Size":  66,
+        "Location":  "common"
+    },
+    {
+        "Name":  "Paladins",
+        "Size":  31.2,
+        "Location":  "common"
+    },
+    {
+        "Name":  "PUBG",
+        "Size":  43.53,
+        "Location":  "common"
+    },
+    {
+        "Name":  "Tom Clancy\u0027s Rainbow Six Siege",
+        "Size":  45.68,
+        "Location":  "common"
+    },
+    {
+        "Name":  "Where Winds Meet",
+        "Size":  100.32,
+        "Location":  "common"
+    }
+]

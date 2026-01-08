@@ -8,33 +8,48 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#e6f7fe',
-          100: '#cceefe',
-          200: '#99defd',
-          300: '#66cdfb',
-          400: '#33bdfb',
-          500: '#00a7f9', // Technical Store brand color
-          600: '#008fd7',
-          700: '#0075b1',
-          800: '#005c8a',
-          900: '#004a6d',
+          50: '#eef0fd',
+          100: '#dce0fc',
+          200: '#bcc3f9',
+          300: '#9ba5f6',
+          400: '#7a88f3',
+          500: '#5865F2', // Discord Blurple
+          600: '#4651c2',
+          700: '#353d91',
+          800: '#232861',
+          900: '#121430',
         },
-        accent: {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          200: '#fde68a',
-          300: '#fcd34d',
-          400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
+        discord: {
+          bg: '#111216', // Premium Dark Slate (not void black)
+          sidebar: '#0e0f13', // Slightly darker slate for sidebar
+          element: '#1a1b20', // Lighter slate for elements
+          hover: '#23242a',
+          active: '#2c2d35',
+          green: '#23A559',
+          red: '#ED4245',
+          yellow: '#FEE75C',
+          fuchsia: '#EB459E',
+        },
+        gray: {
+          50: '#f6f6f7',
+          100: '#ebedef',
+          200: '#dfe2e5',
+          300: '#cfd3d7',
+          400: '#babece',
+          500: '#99aab5',
+          600: '#80848e',
+          700: '#4f545c',
+          800: '#36393f',
+          900: '#202225',
         }
       },
+      backgroundImage: {
+        'nitro-gradient': 'linear-gradient(45deg, #5865F2, #EB459E)',
+        'glass-gradient': 'linear-gradient(135deg, rgba(43, 45, 49, 0.7), rgba(30, 31, 34, 0.7))',
+      },
       fontFamily: {
-        'arabic': ['Cairo', 'system-ui', 'sans-serif'],
-        'english': ['Inter', 'system-ui', 'sans-serif'],
+        'arabic': ['Cairo', 'gg sans', 'Inter', 'system-ui', 'sans-serif'],
+        'english': ['gg sans', 'Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
