@@ -1,12 +1,22 @@
 [
     {
+        "Name":  "AsphaltLegendsUnite",
+        "Size":  8.99,
+        "Location":  "Epic Games"
+    },
+    {
+        "Name":  "DeadByDaylight",
+        "Size":  54.25,
+        "Location":  "Epic Games"
+    },
+    {
         "Name":  "FallGuys",
-        "Size":  7.76,
+        "Size":  7.52,
         "Location":  "Epic Games"
     },
     {
         "Name":  "Fortnite",
-        "Size":  93.56,
+        "Size":  95.13,
         "Location":  "Epic Games"
     },
     {
