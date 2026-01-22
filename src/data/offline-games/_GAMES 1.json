@@ -1,25 +1,5 @@
 [
     {
-        "Name":  "A Plague Tale Innocence",
-        "Size":  41.55,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "A Plague Tale Requiem",
-        "Size":  51.72,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "A Way Out",
-        "Size":  21.11,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "Aliens vs Predator",
-        "Size":  15.24,
-        "Location":  "_GAMES 1"
-    },
-    {
         "Name":  "Assassin\u0027s Creed",
         "Size":  7.14,
         "Location":  "_GAMES 1"
@@ -27,16 +7,6 @@
     {
         "Name":  "Assassin\u0027s Creed Brotherhood",
         "Size":  8.54,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "Assassin\u0027s Creed Creed III",
-        "Size":  16.58,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "Assassin\u0027s Creed Creed IV Black Flag",
-        "Size":  19.29,
         "Location":  "_GAMES 1"
     },
     {
@@ -52,6 +22,16 @@
     {
         "Name":  "Assassin\u0027s Creed II",
         "Size":  6.74,
+        "Location":  "_GAMES 1"
+    },
+    {
+        "Name":  "Assassin\u0027s Creed III",
+        "Size":  16.58,
+        "Location":  "_GAMES 1"
+    },
+    {
+        "Name":  "Assassin\u0027s Creed IV Black Flag",
+        "Size":  19.29,
         "Location":  "_GAMES 1"
     },
     {
@@ -176,7 +156,7 @@
     },
     {
         "Name":  "Call of Duty Black Ops Cold War - 2020",
-        "Size":  85.24,
+        "Size":  84.96,
         "Location":  "_GAMES 1"
     },
     {
@@ -237,6 +217,11 @@
     {
         "Name":  "Cities Skylines",
         "Size":  15.88,
+        "Location":  "_GAMES 1"
+    },
+    {
+        "Name":  "Clair Obscur Expedition 33",
+        "Size":  40.59,
         "Location":  "_GAMES 1"
     },
     {
@@ -611,7 +596,7 @@
     },
     {
         "Name":  "Need For Speed Hot Pursuit",
-        "Size":  7.7,
+        "Size":  7.91,
         "Location":  "_GAMES 1"
     },
     {
@@ -766,7 +751,7 @@
     },
     {
         "Name":  "Shank 2",
-        "Size":  4.2,
+        "Size":  5.55,
         "Location":  "_GAMES 1"
     },
     {

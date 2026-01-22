@@ -1,7 +1,27 @@
 [
     {
+        "Name":  "A Plague Tale Innocence",
+        "Size":  41.55,
+        "Location":  "_GAMES 2"
+    },
+    {
+        "Name":  "A Plague Tale Requiem",
+        "Size":  51.72,
+        "Location":  "_GAMES 2"
+    },
+    {
+        "Name":  "A Way Out",
+        "Size":  21.11,
+        "Location":  "_GAMES 2"
+    },
+    {
         "Name":  "Age of Empires III Definitive Edition",
         "Size":  11.65,
+        "Location":  "_GAMES 2"
+    },
+    {
+        "Name":  "Aliens vs Predator",
+        "Size":  15.24,
         "Location":  "_GAMES 2"
     },
     {
@@ -121,7 +141,7 @@
     },
     {
         "Name":  "FIFA 23 - Patch 2025",
-        "Size":  104.81,
+        "Size":  54.74,
         "Location":  "_GAMES 2"
     },
     {
@@ -136,7 +156,7 @@
     },
     {
         "Name":  "Forza Horizon 5",
-        "Size":  101.37,
+        "Size":  141.58,
         "Location":  "_GAMES 2"
     },
     {
@@ -151,12 +171,12 @@
     },
     {
         "Name":  "Hogwarts Legacy",
-        "Size":  72.94,
+        "Size":  72.92,
         "Location":  "_GAMES 2"
     },
     {
         "Name":  "Injustice 2",
-        "Size":  49.7,
+        "Size":  49.69,
         "Location":  "_GAMES 2"
     },
     {
@@ -356,7 +376,7 @@
     },
     {
         "Name":  "Resident Evil 2",
-        "Size":  23.84,
+        "Size":  23.59,
         "Location":  "_GAMES 2"
     },
     {
@@ -457,11 +477,6 @@
     {
         "Name":  "The Amazing Spider-Man",
         "Size":  7.89,
-        "Location":  "_GAMES 2"
-    },
-    {
-        "Name":  "The Amazing Spider-Man 2",
-        "Size":  8.05,
         "Location":  "_GAMES 2"
     },
     {
