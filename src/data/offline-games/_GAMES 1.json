@@ -40,11 +40,6 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed Origins",
-        "Size":  69.17,
-        "Location":  "_GAMES 1"
-    },
-    {
         "Name":  "Assassin\u0027s Creed Revelations",
         "Size":  6.57,
         "Location":  "_GAMES 1"
@@ -121,7 +116,7 @@
     },
     {
         "Name":  "Blur",
-        "Size":  7.13,
+        "Size":  7.3,
         "Location":  "_GAMES 1"
     },
     {
@@ -171,7 +166,7 @@
     },
     {
         "Name":  "Call of Duty Modern Warfare - 2019",
-        "Size":  93.92,
+        "Size":  93.89,
         "Location":  "_GAMES 1"
     },
     {
@@ -230,11 +225,6 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "CRYSIS",
-        "Size":  7.32,
-        "Location":  "_GAMES 1"
-    },
-    {
         "Name":  "CRYSIS 2",
         "Size":  8.34,
         "Location":  "_GAMES 1"
@@ -242,6 +232,11 @@
     {
         "Name":  "Crysis 3",
         "Size":  14.33,
+        "Location":  "_GAMES 1"
+    },
+    {
+        "Name":  "Crysis Remastered",
+        "Size":  19.9,
         "Location":  "_GAMES 1"
     },
     {
@@ -295,11 +290,6 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Detroit Become Human",
-        "Size":  59.09,
-        "Location":  "_GAMES 1"
-    },
-    {
         "Name":  "Devil May Cry 5",
         "Size":  37.42,
         "Location":  "_GAMES 1"
@@ -350,6 +340,11 @@
         "Location":  "_GAMES 1"
     },
     {
+        "Name":  "Fallout 4",
+        "Size":  41.62,
+        "Location":  "_GAMES 1"
+    },
+    {
         "Name":  "Far Cry 3",
         "Size":  9.7,
         "Location":  "_GAMES 1"
@@ -376,7 +371,7 @@
     },
     {
         "Name":  "Gotham Knights",
-        "Size":  40.98,
+        "Size":  51.64,
         "Location":  "_GAMES 1"
     },
     {
@@ -406,7 +401,7 @@
     },
     {
         "Name":  "Hitman Absolution",
-        "Size":  23.49,
+        "Size":  23.6,
         "Location":  "_GAMES 1"
     },
     {
@@ -452,16 +447,6 @@
     {
         "Name":  "Left 4 Dead 2",
         "Size":  6.2,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "Mafia II",
-        "Size":  7.44,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "Mafia III",
-        "Size":  29.3,
         "Location":  "_GAMES 1"
     },
     {
@@ -515,16 +500,6 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Metro 2033 Redux",
-        "Size":  7.81,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "Metro Exodus",
-        "Size":  51.18,
-        "Location":  "_GAMES 1"
-    },
-    {
         "Name":  "Metro Last Light Redux",
         "Size":  9.3,
         "Location":  "_GAMES 1"
@@ -547,6 +522,11 @@
     {
         "Name":  "Minecraft Legends",
         "Size":  9.21,
+        "Location":  "_GAMES 1"
+    },
+    {
+        "Name":  "Minecraft Story Mode Season Two",
+        "Size":  19.76,
         "Location":  "_GAMES 1"
     },
     {
@@ -611,7 +591,7 @@
     },
     {
         "Name":  "Need for Speed Most Wanted - 2012",
-        "Size":  5.45,
+        "Size":  6.25,
         "Location":  "_GAMES 1"
     },
     {
@@ -740,11 +720,6 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Scorn",
-        "Size":  28.1,
-        "Location":  "_GAMES 1"
-    },
-    {
         "Name":  "Shadow of the Tomb Raider Definitive Edition",
         "Size":  38.64,
         "Location":  "_GAMES 1"
@@ -865,21 +840,6 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Tomb Raider",
-        "Size":  13.54,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "Tomb Raider Legend",
-        "Size":  7.13,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "Tomb Raider Underworld",
-        "Size":  7.33,
-        "Location":  "_GAMES 1"
-    },
-    {
         "Name":  "Tony Hawk\u0027s Underground 2",
         "Size":  1.69,
         "Location":  "_GAMES 1"
@@ -920,11 +880,6 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Wolfenstein II The New Colossus",
-        "Size":  44.08,
-        "Location":  "_GAMES 1"
-    },
-    {
         "Name":  "Wolfenstein The New Order",
         "Size":  43.63,
         "Location":  "_GAMES 1"
@@ -932,11 +887,6 @@
     {
         "Name":  "Wolfenstein The Old Blood",
         "Size":  36.43,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "WWE 2K17",
-        "Size":  47.27,
         "Location":  "_GAMES 1"
     },
     {

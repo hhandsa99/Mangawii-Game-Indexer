@@ -35,11 +35,6 @@
         "Location":  "_GAMES 2"
     },
     {
-        "Name":  "Beyond Two Souls",
-        "Size":  43.27,
-        "Location":  "_GAMES 2"
-    },
-    {
         "Name":  "Bright Memory Infinite",
         "Size":  12.11,
         "Location":  "_GAMES 2"
@@ -170,18 +165,13 @@
         "Location":  "_GAMES 2"
     },
     {
-        "Name":  "God of War 1",
-        "Size":  64.29,
-        "Location":  "_GAMES 2"
-    },
-    {
         "Name":  "Hogwarts Legacy",
         "Size":  72.92,
         "Location":  "_GAMES 2"
     },
     {
         "Name":  "Injustice 2",
-        "Size":  49.69,
+        "Size":  41.64,
         "Location":  "_GAMES 2"
     },
     {
@@ -215,6 +205,11 @@
         "Location":  "_GAMES 2"
     },
     {
+        "Name":  "Little Nightmares III",
+        "Size":  13.11,
+        "Location":  "_GAMES 2"
+    },
+    {
         "Name":  "MADiSON",
         "Size":  8.1,
         "Location":  "_GAMES 2"
@@ -222,11 +217,6 @@
     {
         "Name":  "Mafia Definitive Edition",
         "Size":  27.98,
-        "Location":  "_GAMES 2"
-    },
-    {
-        "Name":  "Mafia II - Definitive Edition",
-        "Size":  34.3,
         "Location":  "_GAMES 2"
     },
     {
@@ -240,7 +230,7 @@
         "Location":  "_GAMES 2"
     },
     {
-        "Name":  "Max Payne 3 The Complete Edition",
+        "Name":  "Max Payne 3",
         "Size":  32.45,
         "Location":  "_GAMES 2"
     },
@@ -355,8 +345,8 @@
         "Location":  "_GAMES 2"
     },
     {
-        "Name":  "Pro Evolution Soccer 2021 - Patch 2025",
-        "Size":  31.98,
+        "Name":  "Pro Evolution Soccer 2021 Patch 2026",
+        "Size":  34.02,
         "Location":  "_GAMES 2"
     },
     {
@@ -506,7 +496,7 @@
     },
     {
         "Name":  "The Sims 4",
-        "Size":  72.46,
+        "Size":  0,
         "Location":  "_GAMES 2"
     },
     {

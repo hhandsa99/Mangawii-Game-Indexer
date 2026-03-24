@@ -5,11 +5,6 @@
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "Alan Wake 2",
-        "Size":  110.3,
-        "Location":  "_GAMES 3"
-    },
-    {
         "Name":  "Alan Wake Remastered",
         "Size":  36.36,
         "Location":  "_GAMES 3"
@@ -20,13 +15,13 @@
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "Assassin\u0027s Creed Mirage",
-        "Size":  41.25,
+        "Name":  "Assassin\u0027s Creed Chronicles India",
+        "Size":  3.88,
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "Assassin\u0027s Creed Valhalla",
-        "Size":  158.5,
+        "Name":  "Assassin\u0027s Creed Mirage",
+        "Size":  39.96,
         "Location":  "_GAMES 3"
     },
     {
@@ -37,11 +32,6 @@
     {
         "Name":  "Attack on Titan 2",
         "Size":  24.37,
-        "Location":  "_GAMES 3"
-    },
-    {
-        "Name":  "Baldur\u0027s Gate III",
-        "Size":  150.27,
         "Location":  "_GAMES 3"
     },
     {
@@ -56,7 +46,12 @@
     },
     {
         "Name":  "Call of Duty Black Ops 6 Campaign - 2024",
-        "Size":  49.11,
+        "Size":  49.18,
+        "Location":  "_GAMES 3"
+    },
+    {
+        "Name":  "Call of Duty Modern Warfare 3 - 2023",
+        "Size":  48.06,
         "Location":  "_GAMES 3"
     },
     {
@@ -130,18 +125,18 @@
         "Location":  "_GAMES 3"
     },
     {
+        "Name":  "Forza Motorsport 7 Ultimate Edition",
+        "Size":  99.24,
+        "Location":  "_GAMES 3"
+    },
+    {
         "Name":  "Ghost of Tsushima",
-        "Size":  53.97,
+        "Size":  51.43,
         "Location":  "_GAMES 3"
     },
     {
         "Name":  "Ghostwire Tokyo",
         "Size":  16.82,
-        "Location":  "_GAMES 3"
-    },
-    {
-        "Name":  "God of War Ragnarok",
-        "Size":  175.8,
         "Location":  "_GAMES 3"
     },
     {
@@ -317,6 +312,11 @@
     {
         "Name":  "The Lord of the Rings Gollum",
         "Size":  44.74,
+        "Location":  "_GAMES 3"
+    },
+    {
+        "Name":  "The Surge",
+        "Size":  9.78,
         "Location":  "_GAMES 3"
     },
     {
