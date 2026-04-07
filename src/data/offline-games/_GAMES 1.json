@@ -40,6 +40,11 @@
         "Location":  "_GAMES 1"
     },
     {
+        "Name":  "Assassin\u0027s Creed Origins",
+        "Size":  69.17,
+        "Location":  "_GAMES 1"
+    },
+    {
         "Name":  "Assassin\u0027s Creed Revelations",
         "Size":  6.57,
         "Location":  "_GAMES 1"
@@ -275,11 +280,6 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Dead Rising 3",
-        "Size":  0.06,
-        "Location":  "_GAMES 1"
-    },
-    {
         "Name":  "Dead Space (2008)",
         "Size":  7.4,
         "Location":  "_GAMES 1"
@@ -287,6 +287,11 @@
     {
         "Name":  "Dead Space 3",
         "Size":  12.28,
+        "Location":  "_GAMES 1"
+    },
+    {
+        "Name":  "Detroit Become Human",
+        "Size":  59.09,
         "Location":  "_GAMES 1"
     },
     {
@@ -450,6 +455,16 @@
         "Location":  "_GAMES 1"
     },
     {
+        "Name":  "Mafia II",
+        "Size":  7.44,
+        "Location":  "_GAMES 1"
+    },
+    {
+        "Name":  "Mafia III",
+        "Size":  29.3,
+        "Location":  "_GAMES 1"
+    },
+    {
         "Name":  "Martha Is Dead",
         "Size":  16.92,
         "Location":  "_GAMES 1"
@@ -497,6 +512,16 @@
     {
         "Name":  "Medal of Honor Warfighter",
         "Size":  15.98,
+        "Location":  "_GAMES 1"
+    },
+    {
+        "Name":  "Metro 2033 Redux",
+        "Size":  7.81,
+        "Location":  "_GAMES 1"
+    },
+    {
+        "Name":  "Metro Exodus",
+        "Size":  51.18,
         "Location":  "_GAMES 1"
     },
     {
@@ -552,16 +577,6 @@
     {
         "Name":  "NARUTO Ultimate Ninja Storm",
         "Size":  7.54,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "NBA 2K17",
-        "Size":  61.67,
-        "Location":  "_GAMES 1"
-    },
-    {
-        "Name":  "NBA 2K20",
-        "Size":  80.25,
         "Location":  "_GAMES 1"
     },
     {
@@ -877,6 +892,11 @@
     {
         "Name":  "Wheelman",
         "Size":  7.81,
+        "Location":  "_GAMES 1"
+    },
+    {
+        "Name":  "Wolfenstein II The New Colossus",
+        "Size":  44.08,
         "Location":  "_GAMES 1"
     },
     {
