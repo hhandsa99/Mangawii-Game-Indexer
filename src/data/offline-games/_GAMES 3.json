@@ -5,6 +5,11 @@
         "Location":  "_GAMES 3"
     },
     {
+        "Name":  "Alan Wake 2",
+        "Size":  110.3,
+        "Location":  "_GAMES 3"
+    },
+    {
         "Name":  "Alan Wake Remastered",
         "Size":  36.36,
         "Location":  "_GAMES 3"
@@ -25,6 +30,11 @@
         "Location":  "_GAMES 3"
     },
     {
+        "Name":  "Assassin\u0027s Creed Valhalla",
+        "Size":  158.5,
+        "Location":  "_GAMES 3"
+    },
+    {
         "Name":  "Atomic Heart",
         "Size":  79.91,
         "Location":  "_GAMES 3"
@@ -32,6 +42,11 @@
     {
         "Name":  "Attack on Titan 2",
         "Size":  24.37,
+        "Location":  "_GAMES 3"
+    },
+    {
+        "Name":  "Baldur\u0027s Gate III",
+        "Size":  150.27,
         "Location":  "_GAMES 3"
     },
     {
@@ -140,6 +155,11 @@
         "Location":  "_GAMES 3"
     },
     {
+        "Name":  "God of War Ragnarok",
+        "Size":  154.65,
+        "Location":  "_GAMES 3"
+    },
+    {
         "Name":  "Half-Life Alyx",
         "Size":  67.94,
         "Location":  "_GAMES 3"
@@ -187,11 +207,6 @@
     {
         "Name":  "Liar\u0027s Bar",
         "Size":  4.02,
-        "Location":  "_GAMES 3"
-    },
-    {
-        "Name":  "Mario",
-        "Size":  9.54,
         "Location":  "_GAMES 3"
     },
     {
@@ -245,8 +260,18 @@
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "Resident Evil 4",
-        "Size":  57.79,
+        "Name":  "Resident Evil 2",
+        "Size":  24.07,
+        "Location":  "_GAMES 3"
+    },
+    {
+        "Name":  "Resident Evil 3 Remake",
+        "Size":  22.46,
+        "Location":  "_GAMES 3"
+    },
+    {
+        "Name":  "Resident Evil 4 Remake",
+        "Size":  69.34,
         "Location":  "_GAMES 3"
     },
     {
@@ -257,6 +282,11 @@
     {
         "Name":  "Resident Evil 8 Village",
         "Size":  36.56,
+        "Location":  "_GAMES 3"
+    },
+    {
+        "Name":  "Resident Evil 9 Requiem",
+        "Size":  75.9,
         "Location":  "_GAMES 3"
     },
     {
@@ -287,6 +317,11 @@
     {
         "Name":  "Suicide Squad Kill The Justice League",
         "Size":  97.53,
+        "Location":  "_GAMES 3"
+    },
+    {
+        "Name":  "Super Mario (odyssey      +3D world)",
+        "Size":  9.54,
         "Location":  "_GAMES 3"
     },
     {

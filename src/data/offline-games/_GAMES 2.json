@@ -35,6 +35,11 @@
         "Location":  "_GAMES 2"
     },
     {
+        "Name":  "Beyond Two Souls",
+        "Size":  43.27,
+        "Location":  "_GAMES 2"
+    },
+    {
         "Name":  "Bright Memory Infinite",
         "Size":  12.11,
         "Location":  "_GAMES 2"
@@ -165,6 +170,11 @@
         "Location":  "_GAMES 2"
     },
     {
+        "Name":  "God of War 1",
+        "Size":  64.29,
+        "Location":  "_GAMES 2"
+    },
+    {
         "Name":  "Hogwarts Legacy",
         "Size":  72.92,
         "Location":  "_GAMES 2"
@@ -280,16 +290,6 @@
         "Location":  "_GAMES 2"
     },
     {
-        "Name":  "Poopy Playtime Chapter 3 A Blue Lost",
-        "Size":  36.53,
-        "Location":  "_GAMES 2"
-    },
-    {
-        "Name":  "Poppy Playtime",
-        "Size":  5.81,
-        "Location":  "_GAMES 2"
-    },
-    {
         "Name":  "Pro Evolution Soccer 2009",
         "Size":  7.49,
         "Location":  "_GAMES 2"
@@ -372,16 +372,6 @@
     {
         "Name":  "Red Alert 3",
         "Size":  14.25,
-        "Location":  "_GAMES 2"
-    },
-    {
-        "Name":  "Resident Evil 2",
-        "Size":  24.07,
-        "Location":  "_GAMES 2"
-    },
-    {
-        "Name":  "Resident Evil 3 Remake",
-        "Size":  22.46,
         "Location":  "_GAMES 2"
     },
     {
