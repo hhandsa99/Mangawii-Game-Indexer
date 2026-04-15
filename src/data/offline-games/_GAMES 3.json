@@ -156,7 +156,7 @@
     },
     {
         "Name":  "God of War Ragnarok",
-        "Size":  154.65,
+        "Size":  151.24,
         "Location":  "_GAMES 3"
     },
     {
@@ -207,6 +207,11 @@
     {
         "Name":  "Liar\u0027s Bar",
         "Size":  4.02,
+        "Location":  "_GAMES 3"
+    },
+    {
+        "Name":  "Mario",
+        "Size":  9.54,
         "Location":  "_GAMES 3"
     },
     {
@@ -271,7 +276,7 @@
     },
     {
         "Name":  "Resident Evil 4 Remake",
-        "Size":  69.34,
+        "Size":  69,
         "Location":  "_GAMES 3"
     },
     {
@@ -317,11 +322,6 @@
     {
         "Name":  "Suicide Squad Kill The Justice League",
         "Size":  97.53,
-        "Location":  "_GAMES 3"
-    },
-    {
-        "Name":  "Super Mario (odyssey      +3D world)",
-        "Size":  9.54,
         "Location":  "_GAMES 3"
     },
     {
