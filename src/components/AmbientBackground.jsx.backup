@@ -6,7 +6,7 @@ const AmbientBackground = memo(({ isDark }) => {
     return (
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
             {/* Base Pitch Black */}
-            <div className="absolute inset-0 bg-[#101014]" />
+            <div className="absolute inset-0 bg-[#111111]" />
         </div>
     );
 });

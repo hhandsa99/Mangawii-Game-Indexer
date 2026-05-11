@@ -74,7 +74,7 @@ const LazyImage = ({ name, imageMap, setImageMap }) => {
   return <div ref={ref} className="absolute inset-0" aria-hidden="true" />;
 };
 
-const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGames, layoutMode = 'grid', gridDensity = 'cozy', preloadVersion = 0, onAboveFoldReady, onLoadProgress, onCardContext }) => {
+const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGames, layoutMode = 'grid', gridDensity = 'cozy', preloadVersion = 0, onAboveFoldReady, onLoadProgress, onCardContext, showLocation = false }) => {
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [imageMap, setImageMap] = useState({});
   const [lightbox, setLightbox] = useState({ open: false, src: '', title: '' });
@@ -126,14 +126,14 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
 
   // For the new GRID, we do not group by letters. We'll sort by name once.
   const sortedForGrid = React.useMemo(
-    () => [...games].sort((a, b) => (a.Name || '').localeCompare(b.Name || '')),
+    () => [...games].sort((a, b) => (a.DisplayName || a.Name || '').localeCompare(b.DisplayName || b.Name || '')),
     [games]
   );
   // Group for GRID sections by first letter
   const groupedForGrid = React.useMemo(() => {
     const groups = {};
     for (const g of sortedForGrid) {
-      const letter = (g.Name?.[0] || '#').toUpperCase();
+      const letter = ((g.DisplayName || g.Name)?.[0] || '#').toUpperCase();
       if (!groups[letter]) groups[letter] = [];
       groups[letter].push(g);
     }
@@ -301,7 +301,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
             <input
               type="checkbox"
               className="w-4 h-4"
-              style={{ accentColor: '#5865F2' }}
+              style={{ accentColor: '#0099ff' }}
               checked={selectAllChecked}
               ref={(el) => { if (el) el.indeterminate = selectAllIndeterminate; }}
               onChange={handleSelectAll}
@@ -350,10 +350,16 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                             {/* Middle: title */}
                             <div
                               className={`order-2 flex-1 text-right font-bold text-sm sm:text-base whitespace-normal break-words ${selected ? 'text-[#5865F2]' : 'text-gray-900 dark:text-gray-200'}`}
-                              title={g.Name}
+                              title={g.DisplayName || g.Name}
                             >
-                              {g.Name}
+                              {g.DisplayName || g.Name}
                             </div>
+                            {/* Location badge */}
+                            {showLocation && g.Location && (
+                              <div className="order-2 text-right text-[11px] font-medium" dir="ltr" style={{ color: '#0099ff' }}>
+                                {g.Location.toLowerCase() === 'common' ? 'Steam' : g.Location}
+                              </div>
+                            )}
                             {/* Left: size/status plain text */}
                             <div className="order-3 shrink-0 flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap">
                               <span className="text-gray-600 dark:text-[#9AA1AD]">{Number(g.SizeGB ?? g.Size ?? g.size ?? 0).toFixed(1)} جيجا</span>
@@ -406,7 +412,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
             ref={(el) => { if (el) el.indeterminate = selectAllIndeterminate; }}
             onChange={handleSelectAll}
             className="w-4 h-4"
-            style={{ accentColor: '#5865F2' }}
+            style={{ accentColor: '#0099ff' }}
           />
           <SquareCheckBig className="h-4 w-4 text-gray-600 dark:text-gray-300" />
           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -480,7 +486,7 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                         />
                         {/* Selected overlay: cover image with a big check and text */}
                         {selected && (
-                          <div className="absolute inset-0 grid place-items-center bg-primary-500/85 z-40">
+                          <div className="absolute inset-0 grid place-items-center bg-nitro-gradient opacity-75 z-40">
                             <div className="flex flex-col items-center gap-2 text-white">
                               <Check className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
                               <div className="text-sm sm:text-base font-bold text-white">تم التحديد</div>
@@ -493,9 +499,15 @@ const GameList = ({ games, selectedGames, onGameSelection, onSelectAll, totalGam
                     </div>
                     {/* Title under image (unlimited lines) */}
                     <div className="px-3 py-2">
-                      <div className={`text-[15px] font-bold leading-snug whitespace-normal break-words text-gray-900 dark:text-white text-center`} title={game.Name} dir="rtl">
-                        {game.Name}
+                      <div className={`text-[15px] font-bold leading-snug whitespace-normal break-words text-gray-900 dark:text-white text-center`} title={game.DisplayName || game.Name} dir="rtl">
+                        {game.DisplayName || game.Name}
                       </div>
+                      {/* Location label */}
+                      {showLocation && game.Location && (
+                        <div className="text-[12px] font-medium text-center mt-0.5" dir="ltr" style={{ color: '#0099ff' }}>
+                          {game.Location.toLowerCase() === 'common' ? 'Steam' : game.Location}
+                        </div>
+                      )}
                       {/* Size | Status (RTL, centered, Arabic labels) */}
                       <div dir="rtl" className="mt-1 text-[14px] text-center">
                         <span className="text-gray-700 dark:text-[#9AA1AD]">{Number(game.SizeGB ?? game.Size ?? game.size ?? 0).toFixed(1)} جيجا</span>

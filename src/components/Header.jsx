@@ -31,11 +31,11 @@ const Header = ({ isDarkMode, onToggleDarkMode, onSetDarkMode, totalGames, colla
               <img
                 src={`${import.meta.env.BASE_URL}images/Site-logo.svg`}
                 alt="شعار الموقع"
-                className="h-8 sm:h-10 w-8 sm:w-10 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 lg:ml-2 xl:ml-3 2xl:ml-4"
+                className="h-8 sm:h-10 w-14 sm:w-16 shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 lg:ml-2 xl:ml-3 2xl:ml-4"
               />
               <div className="min-w-0">
                 <h1 className={`font-bold leading-tight transition-all duration-200 ${collapsed ? 'text-base sm:text-xl' : 'text-lg sm:text-xl'}`}>
-                  <span className="block sm:inline bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(90deg, #b473f5 0%, #e292aa 100%)' }}>TECHNICAL STORE</span>
+                  <span className="block sm:inline bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(90deg, #0099ff 0%, #0099ff 100%)' }}>TECHNICAL STORE</span>
                   <span className="mx-2 text-gray-400 dark:text-gray-500 hidden md:inline">|</span>
                   <span className="hidden md:inline text-gray-900 dark:text-gray-200">قسم الألعاب</span>
                 </h1>

@@ -69,6 +69,9 @@ function App() {
 
   const aliasesRef = React.useRef(buildAliases());
   const [ctxMenu, setCtxMenu] = useState({ open: false, x: 0, y: 0, gameName: '' });
+  const [showLocation, setShowLocation] = useState(() => {
+    try { return localStorage.getItem('showLocation') === '1'; } catch { return false; }
+  });
 
   // Hint overlay anchoring (Grid/List button clone position)
   const hintAnchorElRef = React.useRef(null);
@@ -178,7 +181,7 @@ function App() {
       setFilteredGames(base);
     } else {
       const q = searchQuery;
-      const filtered = base.filter(game => matchGameName(game.Name, q, aliasesRef.current));
+      const filtered = base.filter(game => matchGameName(game.Name, q, aliasesRef.current) || (game.DisplayName && game.DisplayName !== game.Name && matchGameName(game.DisplayName, q, aliasesRef.current)));
       setFilteredGames(filtered);
     }
   }, [searchQuery, games, activeSection]);
@@ -496,6 +499,7 @@ function App() {
               onAboveFoldReady={() => setAboveFoldReady(true)}
               onLoadProgress={handleLoadProgress}
               onCardContext={handleCardContext}
+              showLocation={showLocation}
             />
           </motion.div>
         </main>
@@ -534,6 +538,14 @@ function App() {
           gameName={ctxMenu.gameName}
           onClose={closeContextMenu}
           isDark={isDarkMode}
+          showLocation={showLocation}
+          onToggleLocation={() => {
+            setShowLocation(prev => {
+              const next = !prev;
+              try { localStorage.setItem('showLocation', next ? '1' : '0'); } catch (_) { }
+              return next;
+            });
+          }}
         />
       </div>
     </div>

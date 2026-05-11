@@ -70,8 +70,8 @@ export default function StickySubHeader({ section, onChangeSection, count, isDar
               </div>
 
               {/* Search input (rest of the pill) */}
-              <div className="flex items-center gap-2 px-3 py-2 flex-1">
-                <Search className="h-5 w-5" style={{ color: isDark ? '#949BA4' : '#6B7280' }} />
+              <div className="flex items-center gap-2 px-3 py-2 flex-1 min-w-0 overflow-hidden">
+                <Search className="h-5 w-5 flex-shrink-0" style={{ color: isDark ? '#949BA4' : '#6B7280' }} />
                 <input
                   ref={inputRef}
                   type="text"
@@ -80,7 +80,7 @@ export default function StickySubHeader({ section, onChangeSection, count, isDar
                   onFocus={() => onSearchFocusChange && onSearchFocusChange(true)}
                   onBlur={() => onSearchFocusChange && onSearchFocusChange(false)}
                   placeholder={placeholder}
-                  className={`flex-1 bg-transparent outline-none text-sm ${inputTextClass} text-right font-['gg_sans']`}
+                  className={`flex-1 min-w-0 bg-transparent outline-none text-sm ${inputTextClass} text-right font-['gg_sans']`}
                   autoComplete="off"
                   aria-label={placeholder}
                   dir="rtl"
@@ -88,8 +88,8 @@ export default function StickySubHeader({ section, onChangeSection, count, isDar
                 <button
                   type="button"
                   onClick={focusInput}
-                  className="text-sm px-4 py-1.5 rounded-xl text-white hover:brightness-110 transition-all font-bold shadow-[0_4px_15px_rgba(180,115,245,0.4)]"
-                  style={{ background: 'linear-gradient(90deg, #b473f5 0%, #e292aa 100%)' }}
+                  className="flex-shrink-0 text-sm px-4 py-1.5 rounded-xl text-white hover:brightness-110 transition-all font-bold shadow-[0_4px_15px_rgba(180,115,245,0.4)]"
+                  style={{ background: 'linear-gradient(90deg, #0099ff 0%, #0099ff 100%)' }}
                 >
                   بحث
                 </button>

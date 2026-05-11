@@ -1,7 +1,7 @@
 import React from 'react';
-import { Copy, Search, Youtube } from 'lucide-react';
+import { Copy, Search, Youtube, MapPin } from 'lucide-react';
 
-export default function ContextMenu({ open, x, y, gameName, onClose, isDark = true }) {
+export default function ContextMenu({ open, x, y, gameName, onClose, isDark = true, showLocation = false, onToggleLocation }) {
   const ref = React.useRef(null);
 
   React.useEffect(() => {
@@ -102,10 +102,33 @@ export default function ContextMenu({ open, x, y, gameName, onClose, isDark = tr
           </li>
         ))}
         <div className={`my-1 mx-1 h-[1px] ${isDark ? 'bg-gray-700/50' : 'bg-gray-200'}`} />
+        <li>
+          <button
+            onClick={() => { onToggleLocation && onToggleLocation(); }}
+            className={`w-full flex items-center justify-between gap-3 text-right px-2 py-1.5 text-sm rounded-sm transition-colors group ${isDark
+              ? 'hover:bg-[#5865F2] hover:text-white'
+              : 'hover:bg-gray-100'
+              }`}
+          >
+            <span className="flex-1 font-medium">إظهار المكان</span>
+            {/* Toggle switch */}
+            <span
+              dir="ltr"
+              className="relative inline-flex items-center w-9 h-5 rounded-full shrink-0 transition-colors duration-200"
+              style={{ backgroundColor: showLocation ? '#5865F2' : (isDark ? '#4B5563' : '#D1D5DB') }}
+            >
+              <span
+                className="inline-block w-3.5 h-3.5 rounded-full bg-white shadow transform transition-transform duration-200"
+                style={{ transform: showLocation ? 'translateX(18px)' : 'translateX(3px)' }}
+              />
+            </span>
+          </button>
+        </li>
+        <div className={`my-1 mx-1 h-[1px] ${isDark ? 'bg-gray-700/50' : 'bg-gray-200'}`} />
         <li className={`px-2 py-1.5 text-[10px] uppercase font-bold tracking-wide text-center select-none ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
           Made with ❤️ by Mangawii
         </li>
       </ul>
-    </div>
+    </div >
   );
 }

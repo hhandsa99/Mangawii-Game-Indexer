@@ -1,6 +1,8 @@
 // src/data/games.js - New loader that discovers JSON files per folder
 
-// Normalize text to avoid mojibake like Assassin's in Chromium
+import nameOverrides from './nameOverrides.json';
+
+// Normalize text to avoid mojibake like Assassin'€™s in Chromium
 function cleanText(s) {
   if (typeof s !== 'string') return '';
   // Replace common smart quotes and dashes
@@ -24,7 +26,7 @@ function cleanText(s) {
   out = out.replace(/\s{2,}/g, ' ');
   try {
     out = out.normalize('NFC');
-  } catch (_) {}
+  } catch (_) { }
   return out.trim();
 }
 // Normalizes a game object to a consistent shape
@@ -37,9 +39,11 @@ function normalizeGame(obj) {
   const sizeGB = Number.isFinite(parsedSize) ? parsedSize : 0;
   const location = obj.Location || obj.location || '';
   const id = obj.Id || obj.id || obj.ID || undefined;
+  const cleanedName = cleanText(rawName);
   return {
     ...obj,
-    Name: cleanText(rawName),
+    Name: cleanedName,
+    DisplayName: nameOverrides[cleanedName] || cleanedName,
     SizeGB: sizeGB,
     Location: location,
     Id: id,

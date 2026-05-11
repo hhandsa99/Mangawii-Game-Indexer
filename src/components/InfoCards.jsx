@@ -11,11 +11,11 @@ const InfoCards = ({ isDark = true }) => {
       content: (
         <div className="space-y-3" dir="rtl">
           <div className="flex items-center gap-2">
-            <Phone className="w-4 h-4 flex-shrink-0" style={{ color: '#b473f5' }} />
+            <Phone className="w-4 h-4 flex-shrink-0" style={{ color: '#0099ff' }} />
             <span className="text-sm">01204838286</span>
           </div>
           <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 flex-shrink-0" style={{ color: '#b473f5' }} />
+            <MapPin className="w-4 h-4 flex-shrink-0" style={{ color: '#0099ff' }} />
             <span className="text-sm">بورسعيد - شارع اوجينا و ابو الحسن</span>
           </div>
         </div>
@@ -27,7 +27,7 @@ const InfoCards = ({ isDark = true }) => {
       icon: Info,
       content: (
         <div className="text-sm leading-relaxed" dir="rtl">
-          <p><span style={{ color: '#fbbf24', fontWeight: 'bold' }}>هذا ليس موقع تحميل العاب</span> و لكنه يوضح الالعاب المتاحة لدينا في تكنيكال ستور</p>
+          <p><span style={{ color: '#0099ff', fontWeight: 'bold' }}>هذا ليس موقع تحميل العاب</span> و لكنه يوضح الالعاب المتاحة لدينا في تكنيكال ستور</p>
         </div>
       ),
     },
@@ -37,13 +37,13 @@ const InfoCards = ({ isDark = true }) => {
       icon: DollarSign,
       content: (
         <div className="space-y-2 text-sm" dir="rtl">
-          <div className="flex justify-between items-center py-1.5 px-2 rounded" style={{ background: 'rgba(180,115,245, 0.08)', border: '1px solid rgba(180,115,245,0.1)' }}>
+          <div className="flex justify-between items-center py-1.5 px-2 rounded" style={{ background: 'rgba(0,153,255, 0.08)', border: '1px solid rgba(180,115,245,0.1)' }}>
             <span>أقل من 100 جيجا</span>
-            <span style={{ color: '#dea0d6', fontWeight: 'bold' }}>الجيجا = جنية</span>
+            <span style={{ color: '#0099ff', fontWeight: 'bold' }}>الجيجا = جنية</span>
           </div>
-          <div className="flex justify-between items-center py-1.5 px-2 rounded" style={{ background: 'rgba(180,115,245, 0.08)', border: '1px solid rgba(180,115,245,0.1)' }}>
+          <div className="flex justify-between items-center py-1.5 px-2 rounded" style={{ background: 'rgba(0,153,255, 0.08)', border: '1px solid rgba(180,115,245,0.1)' }}>
             <span>اكثر من 100 جيجا</span>
-            <span style={{ color: '#dea0d6', fontWeight: 'bold' }}>الجيجا = نصف جنية</span>
+            <span style={{ color: '#0099ff', fontWeight: 'bold' }}>الجيجا = نصف جنية</span>
           </div>
         </div>
       ),
@@ -77,9 +77,9 @@ const InfoCards = ({ isDark = true }) => {
               <div className="flex items-center gap-4 mb-4 relative z-10" dir="rtl">
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_15px_rgba(180,115,245,0.3)]"
-                  style={{ background: 'linear-gradient(135deg, rgba(180,115,245,0.1), rgba(226,146,170,0.1))', border: '1px solid rgba(180,115,245,0.2)' }}
+                  style={{ background: 'linear-gradient(135deg, rgba(0, 153, 255, 0), rgba(146, 183, 226, 0.1))', border: '1px solid rgba(0, 153, 255, 1)' }}
                 >
-                  <Icon className="w-6 h-6 transition-colors duration-300" style={{ color: '#dea0d6' }} />
+                  <Icon className="w-6 h-6 transition-colors duration-300" style={{ color: '#0099ff' }} />
                 </div>
                 <h3
                   className="text-lg font-bold tracking-wide"

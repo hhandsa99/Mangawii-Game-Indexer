@@ -208,8 +208,8 @@ const SummaryModal = ({ summaryText, stats, selectedList = [], onApplySelection,
                               />
                             </div>
                             {/* Middle: title */}
-                            <div className="order-2 flex-1 text-right font-bold text-sm sm:text-base whitespace-normal break-words" title={g.Name} style={{ color: selected ? '#5865F2' : PALETTE.textPrimary }}>
-                              {g.Name}
+                            <div className="order-2 flex-1 text-right font-bold text-sm sm:text-base whitespace-normal break-words" title={g.DisplayName || g.Name} style={{ color: selected ? '#5865F2' : PALETTE.textPrimary }}>
+                              {g.DisplayName || g.Name}
                             </div>
                             {/* Left: size | status */}
                             <div className="order-3 shrink-0 flex items-center gap-2 text-xs sm:text-sm whitespace-nowrap">

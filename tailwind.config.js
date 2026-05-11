@@ -44,7 +44,7 @@ export default {
         }
       },
       backgroundImage: {
-        'nitro-gradient': 'linear-gradient(45deg, #5865F2, #EB459E)',
+        'nitro-gradient': 'linear-gradient(45deg, #0099ff, #0099ff)',
         'glass-gradient': 'linear-gradient(135deg, rgba(43, 45, 49, 0.7), rgba(30, 31, 34, 0.7))',
       },
       fontFamily: {
