@@ -6,12 +6,17 @@
     },
     {
         "Name":  "Battlefield 6",
-        "Size":  97.71,
+        "Size":  97.73,
+        "Location":  "common"
+    },
+    {
+        "Name":  "Call of Duty HQ",
+        "Size":  134.21,
         "Location":  "common"
     },
     {
         "Name":  "Counter-Strike Global Offensive",
-        "Size":  63.46,
+        "Size":  66.93,
         "Location":  "common"
     },
     {
@@ -21,17 +26,22 @@
     },
     {
         "Name":  "eFootball",
-        "Size":  48.66,
+        "Size":  48.7,
         "Location":  "common"
     },
     {
         "Name":  "MarvelRivals",
-        "Size":  108.37,
+        "Size":  110.39,
         "Location":  "common"
     },
     {
         "Name":  "Once Human",
         "Size":  104.16,
+        "Location":  "common"
+    },
+    {
+        "Name":  "Overwatch",
+        "Size":  66.01,
         "Location":  "common"
     },
     {
@@ -46,7 +56,7 @@
     },
     {
         "Name":  "Where Winds Meet",
-        "Size":  119.21,
+        "Size":  123.45,
         "Location":  "common"
     }
 ]
