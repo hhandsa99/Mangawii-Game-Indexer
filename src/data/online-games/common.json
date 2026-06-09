@@ -1,22 +1,22 @@
 [
     {
         "Name":  "Apex Legends",
-        "Size":  92.74,
+        "Size":  92.7,
         "Location":  "common"
     },
     {
         "Name":  "Battlefield 6",
-        "Size":  102,
+        "Size":  101.94,
         "Location":  "common"
     },
     {
         "Name":  "Call of Duty HQ",
-        "Size":  132.96,
+        "Size":  137.17,
         "Location":  "common"
     },
     {
         "Name":  "Counter-Strike Global Offensive",
-        "Size":  68.85,
+        "Size":  68.86,
         "Location":  "common"
     },
     {
@@ -26,7 +26,7 @@
     },
     {
         "Name":  "eFootball",
-        "Size":  49.02,
+        "Size":  49,
         "Location":  "common"
     },
     {
@@ -56,7 +56,7 @@
     },
     {
         "Name":  "Where Winds Meet",
-        "Size":  123.45,
+        "Size":  158.83,
         "Location":  "common"
     }
 ]
