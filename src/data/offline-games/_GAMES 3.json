@@ -26,7 +26,12 @@
     },
     {
         "Name":  "Assassin\u0027s Creed Mirage",
-        "Size":  62.6,
+        "Size":  62.62,
+        "Location":  "_GAMES 3"
+    },
+    {
+        "Name":  "Assassin\u0027s Creed Shadows",
+        "Size":  155.08,
         "Location":  "_GAMES 3"
     },
     {
@@ -356,7 +361,7 @@
     },
     {
         "Name":  "The Last of Us",
-        "Size":  68.56,
+        "Size":  67.89,
         "Location":  "_GAMES 3"
     },
     {
