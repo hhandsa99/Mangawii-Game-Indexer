@@ -80,6 +80,11 @@
         "Location":  "_GAMES 3"
     },
     {
+        "Name":  "Crimson Desert",
+        "Size":  130.69,
+        "Location":  "_GAMES 3"
+    },
+    {
         "Name":  "Dead Island 2",
         "Size":  45.91,
         "Location":  "_GAMES 3"
@@ -231,7 +236,7 @@
     },
     {
         "Name":  "Mario",
-        "Size":  9.88,
+        "Size":  9.84,
         "Location":  "_GAMES 3"
     },
     {
