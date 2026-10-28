@@ -1,12 +1,17 @@
 [
     {
         "Name":  "League of Legends",
-        "Size":  37.28,
+        "Size":  36.91,
+        "Location":  "Riot Games"
+    },
+    {
+        "Name":  "Teamfight Tactics",
+        "Size":  7.79,
         "Location":  "Riot Games"
     },
     {
         "Name":  "VALORANT",
-        "Size":  31.61,
+        "Size":  35.22,
         "Location":  "Riot Games"
     }
 ]
