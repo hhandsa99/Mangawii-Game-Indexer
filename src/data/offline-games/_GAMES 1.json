@@ -1,61 +1,61 @@
 [
     {
-        "Name":  "Assassin\u0027s Creed",
+        "Name":  "Assassin's Creed",
         "Size":  7.14,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed Brotherhood",
+        "Name":  "Assassin's Creed Brotherhood",
         "Size":  8.54,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed Creed Liberation HD",
+        "Name":  "Assassin's Creed Creed Liberation HD",
         "Size":  2.52,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed Creed Rogue",
+        "Name":  "Assassin's Creed Creed Rogue",
         "Size":  12.7,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed II",
+        "Name":  "Assassin's Creed II",
         "Size":  6.74,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed III",
+        "Name":  "Assassin's Creed III",
         "Size":  16.58,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed IV Black Flag",
+        "Name":  "Assassin's Creed IV Black Flag",
         "Size":  19.29,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed Odyssey",
+        "Name":  "Assassin's Creed Odyssey",
         "Size":  89.27,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed Origins",
+        "Name":  "Assassin's Creed Origins",
         "Size":  69.17,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed Revelations",
+        "Name":  "Assassin's Creed Revelations",
         "Size":  6.57,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed Syndicate",
+        "Name":  "Assassin's Creed Syndicate",
         "Size":  41.97,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Assassin\u0027s Creed Unity",
+        "Name":  "Assassin's Creed Unity",
         "Size":  36.44,
         "Location":  "_GAMES 1"
     },
@@ -76,7 +76,7 @@
     },
     {
         "Name":  "Batman Arkham Knight",
-        "Size":  67.27,
+        "Size":  67.28,
         "Location":  "_GAMES 1"
     },
     {
@@ -136,7 +136,7 @@
     },
     {
         "Name":  "Call of Duty Advanced Warfare - 2014",
-        "Size":  45.19,
+        "Size":  45.21,
         "Location":  "_GAMES 1"
     },
     {
@@ -176,7 +176,7 @@
     },
     {
         "Name":  "Call of Duty Modern Warfare 2 -  2022",
-        "Size":  37.97,
+        "Size":  37.81,
         "Location":  "_GAMES 1"
     },
     {
@@ -211,7 +211,7 @@
     },
     {
         "Name":  "Call of Juarez Bound in Blood",
-        "Size":  2.8,
+        "Size":  2.81,
         "Location":  "_GAMES 1"
     },
     {
@@ -320,7 +320,7 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "DON\u0027T SCREAM",
+        "Name":  "DON'T SCREAM",
         "Size":  4.03,
         "Location":  "_GAMES 1"
     },
@@ -385,7 +385,7 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Hellblade Senua\u0027s Sacrifice",
+        "Name":  "Hellblade Senua's Sacrifice",
         "Size":  21.51,
         "Location":  "_GAMES 1"
     },
@@ -411,7 +411,7 @@
     },
     {
         "Name":  "Hitman Absolution",
-        "Size":  23.6,
+        "Size":  23.66,
         "Location":  "_GAMES 1"
     },
     {
@@ -475,28 +475,28 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Marvel\u0027s Guardians of the Galaxy",
+        "Name":  "Marvel's Guardians of the Galaxy",
         "Size":  67.59,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Marvel\u0027s Spider-Man 2",
+        "Name":  "Marvel's Spider-Man 2",
         "Size":  116.73,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Marvel\u0027s Spider-Man Miles Morales",
+        "Name":  "Marvel's Spider-Man Miles Morales",
         "Size":  48.26,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Marvel\u0027s Spider-Man Remastered",
-        "Size":  72.81,
+        "Name":  "Marvel's Spider-Man Remastered",
+        "Size":  70.87,
         "Location":  "_GAMES 1"
     },
     {
         "Name":  "Medal of Honor",
-        "Size":  10.21,
+        "Size":  10.22,
         "Location":  "_GAMES 1"
     },
     {
@@ -560,12 +560,12 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Mirror\u0027s Edge",
+        "Name":  "Mirror's Edge",
         "Size":  7.32,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Mirror\u0027s Edge Catalyst",
+        "Name":  "Mirror's Edge Catalyst",
         "Size":  23.3,
         "Location":  "_GAMES 1"
     },
@@ -705,7 +705,7 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Ratchet \u0026 Clank Rift Apart",
+        "Name":  "Ratchet & Clank Rift Apart",
         "Size":  39.56,
         "Location":  "_GAMES 1"
     },
@@ -840,22 +840,22 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Tom Clancy\u0027s Ghost Recon Wildlands",
+        "Name":  "Tom Clancy's Ghost Recon Wildlands",
         "Size":  82.78,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Tom Clancy\u0027s Splinter Cell",
+        "Name":  "Tom Clancy's Splinter Cell",
         "Size":  21.09,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Tom Clancy\u0027s Splinter Cell Conviction",
+        "Name":  "Tom Clancy's Splinter Cell Conviction",
         "Size":  6.91,
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Tom Clancy\u0027s Splinter Cell Double Agent",
+        "Name":  "Tom Clancy's Splinter Cell Double Agent",
         "Size":  10.65,
         "Location":  "_GAMES 1"
     },
@@ -875,7 +875,7 @@
         "Location":  "_GAMES 1"
     },
     {
-        "Name":  "Tony Hawk\u0027s Underground 2",
+        "Name":  "Tony Hawk's Underground 2",
         "Size":  1.69,
         "Location":  "_GAMES 1"
     },

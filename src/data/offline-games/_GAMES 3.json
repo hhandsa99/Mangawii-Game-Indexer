@@ -16,26 +16,26 @@
     },
     {
         "Name":  "Alan Wake Remastered",
-        "Size":  36.36,
+        "Size":  36.4,
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "Assassin\u0027s Creed Chronicles China",
+        "Name":  "Assassin's Creed Chronicles China",
         "Size":  3.16,
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "Assassin\u0027s Creed Mirage",
+        "Name":  "Assassin's Creed Mirage",
         "Size":  62.62,
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "Assassin\u0027s Creed Shadows",
+        "Name":  "Assassin's Creed Shadows",
         "Size":  155.08,
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "Assassin\u0027s Creed Valhalla",
+        "Name":  "Assassin's Creed Valhalla",
         "Size":  158.5,
         "Location":  "_GAMES 3"
     },
@@ -50,7 +50,7 @@
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "Baldur\u0027s Gate III",
+        "Name":  "Baldur's Gate III",
         "Size":  150.27,
         "Location":  "_GAMES 3"
     },
@@ -66,7 +66,7 @@
     },
     {
         "Name":  "Blair Witch",
-        "Size":  13.25,
+        "Size":  13.43,
         "Location":  "_GAMES 3"
     },
     {
@@ -76,7 +76,12 @@
     },
     {
         "Name":  "Call of Duty Modern Warfare 3 - 2023",
-        "Size":  48.06,
+        "Size":  48.08,
+        "Location":  "_GAMES 3"
+    },
+    {
+        "Name":  "Call of Duty Modern Warfare 4 - 2026",
+        "Size":  74.92,
         "Location":  "_GAMES 3"
     },
     {
@@ -201,7 +206,7 @@
     },
     {
         "Name":  "House Flipper",
-        "Size":  3.76,
+        "Size":  3.79,
         "Location":  "_GAMES 3"
     },
     {
@@ -211,7 +216,7 @@
     },
     {
         "Name":  "It Takes Two",
-        "Size":  43.53,
+        "Size":  43.54,
         "Location":  "_GAMES 3"
     },
     {
@@ -225,7 +230,7 @@
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "Liar\u0027s Bar",
+        "Name":  "Liar's Bar",
         "Size":  4.02,
         "Location":  "_GAMES 3"
     },
@@ -236,7 +241,7 @@
     },
     {
         "Name":  "Mario",
-        "Size":  9.79,
+        "Size":  10.13,
         "Location":  "_GAMES 3"
     },
     {
@@ -255,7 +260,7 @@
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "MY HERO ONE\u0027S JUSTICE 2",
+        "Name":  "MY HERO ONE'S JUSTICE 2",
         "Size":  8.38,
         "Location":  "_GAMES 3"
     },
@@ -330,7 +335,7 @@
         "Location":  "_GAMES 3"
     },
     {
-        "Name":  "Senua\u0027s Saga Hellblade II",
+        "Name":  "Senua's Saga Hellblade II",
         "Size":  49.44,
         "Location":  "_GAMES 3"
     },
